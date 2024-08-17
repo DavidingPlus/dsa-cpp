@@ -10,14 +10,14 @@
 
 #include "Entry/Entry.h"
 template <typename T> struct QNode;
-template <typename T> using QNodePosi = QNode<T>*; //Ìø×ª±í½ÚµãÎ»ÖÃ
-template <typename T> struct QNode { //ËÄÁª½Úµã
-   T entry; //Ëù´æ´ÊÌõ
-   QNodePosi<T> pred, succ, above, below; //Ç°Çı¡¢ºó¼Ì¡¢ÉÏÁÚ¡¢ÏÂÁÚ
+template <typename T> using QNodePosi = QNode<T>*; //è·³è½¬è¡¨èŠ‚ç‚¹ä½ç½®
+template <typename T> struct QNode { //å››è”èŠ‚ç‚¹
+   T entry; //æ‰€å­˜è¯æ¡
+   QNodePosi<T> pred, succ, above, below; //å‰é©±ã€åç»§ã€ä¸Šé‚»ã€ä¸‹é‚»
    QNode( T e = T(), QNodePosi<T> p = NULL, QNodePosi<T> s = NULL,
-          QNodePosi<T> a = NULL, QNodePosi<T> b = NULL ) //¹¹ÔìÆ÷
+          QNodePosi<T> a = NULL, QNodePosi<T> b = NULL ) //æ„é€ å™¨
       : entry( e ), pred( p ), succ( s ), above( a ), below( b ) {}
-   QNodePosi<T> insert( T const& e, QNodePosi<T> b = NULL ); //½«e×÷Îªµ±Ç°½ÚµãµÄºó¼Ì¡¢bµÄÉÏÁÚ²åÈë
+   QNodePosi<T> insert( T const& e, QNodePosi<T> b = NULL ); //å°†eä½œä¸ºå½“å‰èŠ‚ç‚¹çš„åç»§ã€bçš„ä¸Šé‚»æ’å…¥
 };
 
 #include "QuadlistNode_implementation.h"

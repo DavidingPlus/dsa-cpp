@@ -8,25 +8,25 @@
 
 #pragma once
 
-template <typename Tv, typename Te> //Éî¶ÈÓÅÏÈËÑË÷DFSËã·¨£¨È«Í¼£©
+template <typename Tv, typename Te> //æ·±åº¦ä¼˜å…ˆæœç´¢DFSç®—æ³•ï¼ˆå…¨å›¾ï¼‰
 void Graph<Tv, Te>::dfs( Rank s ) { // s < n
-   reset(); Rank clock = 0; //È«Í¼¸´Î»
-   for ( Rank v = s; v < s + n; v++ ) //´ÓsÆğË³´Î¼ì²éËùÓĞ¶¥µã
-      if ( UNDISCOVERED == status( v % n ) ) //Ò»µ©Óöµ½ÉĞÎ´·¢ÏÖÕß
-         DFS( v % n, clock ); //¼´´ÓËü³ö·¢Æô¶¯Ò»´ÎDFS
-} //Èç´Ë¿ÉÍêÕû¸²¸ÇÈ«Í¼£¬ÇÒ×ÜÌå¸´ÔÓ¶ÈÒÀÈ»±£³ÖÎªO(n+e)
+   reset(); Rank clock = 0; //å…¨å›¾å¤ä½
+   for ( Rank v = s; v < s + n; v++ ) //ä»sèµ·é¡ºæ¬¡æ£€æŸ¥æ‰€æœ‰é¡¶ç‚¹
+      if ( UNDISCOVERED == status( v % n ) ) //ä¸€æ—¦é‡åˆ°å°šæœªå‘ç°è€…
+         DFS( v % n, clock ); //å³ä»å®ƒå‡ºå‘å¯åŠ¨ä¸€æ¬¡DFS
+} //å¦‚æ­¤å¯å®Œæ•´è¦†ç›–å…¨å›¾ï¼Œä¸”æ€»ä½“å¤æ‚åº¦ä¾ç„¶ä¿æŒä¸ºO(n+e)
 
-template <typename Tv, typename Te> //Éî¶ÈÓÅÏÈËÑË÷DFSËã·¨£¨µ¥¸öÁ¬Í¨Óò£©
+template <typename Tv, typename Te> //æ·±åº¦ä¼˜å…ˆæœç´¢DFSç®—æ³•ï¼ˆå•ä¸ªè¿é€šåŸŸï¼‰
 void Graph<Tv, Te>::DFS( Rank v, Rank& clock ) { // v < n
-   dTime( v ) = clock++; status( v ) = DISCOVERED; //·¢ÏÖµ±Ç°¶¥µãv
-   for ( Rank u = firstNbr( v ); - 1 != u; u = nextNbr( v, u ) ) //¿¼²évµÄÃ¿Ò»¸öÁÚ¾Óu
-      switch ( status( u ) ) { //²¢ÊÓÆä×´Ì¬·Ö±ğ´¦Àí
-         case UNDISCOVERED : // uÉĞÎ´·¢ÏÖ£¬ÒâÎ¶×ÅÖ§³ÅÊ÷¿ÉÔÚ´ËÍØÕ¹
+   dTime( v ) = clock++; status( v ) = DISCOVERED; //å‘ç°å½“å‰é¡¶ç‚¹v
+   for ( Rank u = firstNbr( v ); - 1 != u; u = nextNbr( v, u ) ) //è€ƒæŸ¥vçš„æ¯ä¸€ä¸ªé‚»å±…u
+      switch ( status( u ) ) { //å¹¶è§†å…¶çŠ¶æ€åˆ†åˆ«å¤„ç†
+         case UNDISCOVERED : // uå°šæœªå‘ç°ï¼Œæ„å‘³ç€æ”¯æ’‘æ ‘å¯åœ¨æ­¤æ‹“å±•
             type( v, u ) = TREE; parent( u ) = v; DFS( u, clock ); break;
-         case DISCOVERED : // uÒÑ±»·¢ÏÖµ«ÉĞÎ´·ÃÎÊÍê±Ï£¬Ó¦Êô±»ºó´úÖ¸ÏòµÄ×æÏÈ
+         case DISCOVERED : // uå·²è¢«å‘ç°ä½†å°šæœªè®¿é—®å®Œæ¯•ï¼Œåº”å±è¢«åä»£æŒ‡å‘çš„ç¥–å…ˆ
             type( v, u ) = BACKWARD; break;
-         default : // uÒÑ·ÃÎÊÍê±Ï£¨VISITED£¬ÓĞÏòÍ¼£©£¬ÔòÊÓ³ĞÏ®¹ØÏµ·ÖÎªÇ°Ïò±ß»ò¿ç±ß
+         default : // uå·²è®¿é—®å®Œæ¯•ï¼ˆVISITEDï¼Œæœ‰å‘å›¾ï¼‰ï¼Œåˆ™è§†æ‰¿è¢­å…³ç³»åˆ†ä¸ºå‰å‘è¾¹æˆ–è·¨è¾¹
             type( v, u ) = ( dTime( v ) < dTime( u ) ) ? FORWARD : CROSS; break;
       }
-   status( v ) = VISITED; fTime( v ) = clock++; //ÖÁ´Ë£¬µ±Ç°¶¥µãv·½¸æ·ÃÎÊÍê±Ï
+   status( v ) = VISITED; fTime( v ) = clock++; //è‡³æ­¤ï¼Œå½“å‰é¡¶ç‚¹væ–¹å‘Šè®¿é—®å®Œæ¯•
 }

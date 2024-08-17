@@ -8,7 +8,7 @@
 
 #pragma once
 
-template <typename T> void heapify( T* A, const Rank n ) { //ÂùÁ¦½¨¶ÑËã·¨£¬O(nlogn)Ê±¼ä
-   for ( Rank i = 1; i < n; i++ ) //×Ô¶¥¶øÏÂ£¬ÒÀ´Î
-      percolateUp( A, i ); //¾­ÉÏÂË²åÈë¸÷½Úµã
+template <typename T> void heapify( T* A, const Rank n ) { //è›®åŠ›å»ºå †ç®—æ³•ï¼ŒO(nlogn)æ—¶é—´
+   for ( Rank i = 1; i < n; i++ ) //è‡ªé¡¶è€Œä¸‹ï¼Œä¾æ¬¡
+      percolateUp( A, i ); //ç»ä¸Šæ»¤æ’å…¥å„èŠ‚ç‚¹
 }

@@ -8,11 +8,11 @@
 
 #pragma once
 
-template <typename T> bool AVL<T>::remove( const T& e ) { //´ÓAVLÊ÷ÖĞÉ¾³ı¹Ø¼üÂëe
-   BinNodePosi<T>& x = search( e ); if ( !x ) return false; //É¾³ıÊ§°Ü
-   removeAt( x, _hot ); _size--; //ÏÈ°´BST¹æÔòÉ¾³ıÖ®£¨´Ëºó£¬Ô­½ÚµãÖ®¸¸_hot¼°Æä×æÏÈ¾ù¿ÉÄÜÊ§ºâ£©
-   for ( BinNodePosi<T> g = _hot; g; g->updateHeight(), g = g->parent ) //Öğ²ãÉÏËİ
-      if ( !AvlBalanced( g ) ) //Ã¿µ±·¢ÏÖÊ§ºâ×æÏÈg£¬¶¼
-         rotateAt( tallerChild( tallerChild( g ) ) ); //£¨²ÉÓÃ¡°3+4¡±Ëã·¨£©Ê¹Ö®¸´ºâ
-   return true; //É¾³ı³É¹¦
-} //¿ÉÄÜĞè×öOmega(logn)´Îµ÷Õû
+template <typename T> bool AVL<T>::remove( const T& e ) { //ä»AVLæ ‘ä¸­åˆ é™¤å…³é”®ç e
+   BinNodePosi<T>& x = search( e ); if ( !x ) return false; //åˆ é™¤å¤±è´¥
+   removeAt( x, _hot ); _size--; //å…ˆæŒ‰BSTè§„åˆ™åˆ é™¤ä¹‹ï¼ˆæ­¤åï¼ŒåŸèŠ‚ç‚¹ä¹‹çˆ¶_hotåŠå…¶ç¥–å…ˆå‡å¯èƒ½å¤±è¡¡ï¼‰
+   for ( BinNodePosi<T> g = _hot; g; g->updateHeight(), g = g->parent ) //é€å±‚ä¸Šæº¯
+      if ( !AvlBalanced( g ) ) //æ¯å½“å‘ç°å¤±è¡¡ç¥–å…ˆgï¼Œéƒ½
+         rotateAt( tallerChild( tallerChild( g ) ) ); //ï¼ˆé‡‡ç”¨â€œ3+4â€ç®—æ³•ï¼‰ä½¿ä¹‹å¤è¡¡
+   return true; //åˆ é™¤æˆåŠŸ
+} //å¯èƒ½éœ€åšOmega(logn)æ¬¡è°ƒæ•´

@@ -8,9 +8,9 @@
 
 #pragma once
 
-template <typename K, typename V> Hashtable<K, V>::~Hashtable() { //Îö¹¹Ç°ÊÍ·ÅÍ°Êı×é¼°·Ç¿Õ´ÊÌõ
-   for ( Rank i = 0; i < M; i++ ) //ÖğÒ»¼ì²é¸÷Í°
-      if ( ht[i] ) delete ht[i]; //ÊÍ·Å·Ç¿ÕµÄÍ°
-   delete ht; //ÊÍ·ÅÍ°Êı×é
-   delete removed; //ÊÍ·ÅÀÁ¶èÉ¾³ı±ê¼Ç
+template <typename K, typename V> Hashtable<K, V>::~Hashtable() { //ææ„å‰é‡Šæ”¾æ¡¶æ•°ç»„åŠéç©ºè¯æ¡
+   for ( Rank i = 0; i < M; i++ ) //é€ä¸€æ£€æŸ¥å„æ¡¶
+      if ( ht[i] ) delete ht[i]; //é‡Šæ”¾éç©ºçš„æ¡¶
+   delete ht; //é‡Šæ”¾æ¡¶æ•°ç»„
+   delete removed; //é‡Šæ”¾æ‡’æƒ°åˆ é™¤æ ‡è®°
 }

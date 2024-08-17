@@ -14,21 +14,21 @@
 #include <memory.h>
 using Rank = unsigned int;
 
-class Bitmap { //Î»Í¼BitmapÀà
+class Bitmap { //ä½å›¾Bitmapç±»
 private:
    unsigned char* M;
-   Rank N, _sz; //Î»Í¼¿Õ¼äM[]£¬N*sizeof(char)*8¸ö±ÈÌØÖĞº¬_sz¸öÓĞĞ§Î»
+   Rank N, _sz; //ä½å›¾ç©ºé—´M[]ï¼ŒN*sizeof(char)*8ä¸ªæ¯”ç‰¹ä¸­å«_szä¸ªæœ‰æ•ˆä½
 protected:
    void init( Rank n )
       { M = new unsigned char[N = ( n + 7 ) / 8]; memset( M, 0, N ); _sz = 0; }
 public:
-   Bitmap( Rank n = 8 ) { init( n ); } //°´Ö¸¶¨ÈİÁ¿´´½¨Î»Í¼£¨Îª²âÊÔÔİÊ±Ñ¡ÓÃ½ÏĞ¡µÄÄ¬ÈÏÖµ£©
-   Bitmap( char* file, Rank n = 8 ) { //°´Ö¸¶¨»òÄ¬ÈÏ¹æÄ££¬´ÓÖ¸¶¨ÎÄ¼şÖĞ¶ÁÈ¡Î»Í¼
+   Bitmap( Rank n = 8 ) { init( n ); } //æŒ‰æŒ‡å®šå®¹é‡åˆ›å»ºä½å›¾ï¼ˆä¸ºæµ‹è¯•æš‚æ—¶é€‰ç”¨è¾ƒå°çš„é»˜è®¤å€¼ï¼‰
+   Bitmap( char* file, Rank n = 8 ) { //æŒ‰æŒ‡å®šæˆ–é»˜è®¤è§„æ¨¡ï¼Œä»æŒ‡å®šæ–‡ä»¶ä¸­è¯»å–ä½å›¾
       init( n );
       FILE* fp = fopen( file, "r" ); fread( M, sizeof( char ), N, fp ); fclose( fp );
       for ( Rank k = 0, _sz = 0; k < n; k++ ) _sz += test(k);
    }
-   ~Bitmap() { delete[] M; M = NULL; _sz = 0; } //Îö¹¹Ê±ÊÍ·ÅÎ»Í¼¿Õ¼ä
+   ~Bitmap() { delete[] M; M = NULL; _sz = 0; } //ææ„æ—¶é‡Šæ”¾ä½å›¾ç©ºé—´
 
    Rank size() { return _sz; }
    void reset() { memset( M, 0, N ); _sz = 0; }
@@ -36,22 +36,22 @@ public:
    void clear ( Rank k ) { if (!test(k) ) return; expand( k ); _sz--; M[k >> 3] &= ~ ( 0x80 >> ( k & 0x07 ) ); }
    bool test  ( Rank k ) { expand( k ); return M[k >> 3] &    ( 0x80 >> ( k & 0x07 ) ); }
 
-   void dump( char* file ) //½«Î»Í¼ÕûÌåµ¼³öÖÁÖ¸¶¨µÄÎÄ¼ş£¬ÒÔ±ã¶Ô´ËºóµÄĞÂÎ»Í¼ÅúÁ¿³õÊ¼»¯
+   void dump( char* file ) //å°†ä½å›¾æ•´ä½“å¯¼å‡ºè‡³æŒ‡å®šçš„æ–‡ä»¶ï¼Œä»¥ä¾¿å¯¹æ­¤åçš„æ–°ä½å›¾æ‰¹é‡åˆå§‹åŒ–
    { FILE* fp = fopen( file, "w" ); fwrite( M, sizeof ( char ), N, fp ); fclose( fp ); }
-   char* bits2string( Rank n ) { //½«Ç°nÎ»×ª»»Îª×Ö·û´®¡ª¡ª
-      expand( n - 1 ); //´ËÊ±¿ÉÄÜ±»·ÃÎÊµÄ×î¸ßÎ»Îªbitmap[n - 1]
-      char* s = new char[n + 1]; s[n] = '\0'; //×Ö·û´®ËùÕ¼¿Õ¼ä£¬ÓÉÉÏ²ãµ÷ÓÃÕß¸ºÔğÊÍ·Å
+   char* bits2string( Rank n ) { //å°†å‰nä½è½¬æ¢ä¸ºå­—ç¬¦ä¸²â€”â€”
+      expand( n - 1 ); //æ­¤æ—¶å¯èƒ½è¢«è®¿é—®çš„æœ€é«˜ä½ä¸ºbitmap[n - 1]
+      char* s = new char[n + 1]; s[n] = '\0'; //å­—ç¬¦ä¸²æ‰€å ç©ºé—´ï¼Œç”±ä¸Šå±‚è°ƒç”¨è€…è´Ÿè´£é‡Šæ”¾
       for ( Rank i = 0; i < n; i++ ) s[i] = test( i ) ? '1' : '0';
-      return s; //·µ»Ø×Ö·û´®Î»ÖÃ
+      return s; //è¿”å›å­—ç¬¦ä¸²ä½ç½®
    }
-   void expand( Rank k ) { //Èô±»·ÃÎÊµÄBitmap[k]ÒÑ³ö½ç£¬ÔòĞèÀ©Èİ
-      if ( k < 8 * N ) return; //ÈÔÔÚ½çÄÚ£¬ÎŞĞèÀ©Èİ
+   void expand( Rank k ) { //è‹¥è¢«è®¿é—®çš„Bitmap[k]å·²å‡ºç•Œï¼Œåˆ™éœ€æ‰©å®¹
+      if ( k < 8 * N ) return; //ä»åœ¨ç•Œå†…ï¼Œæ— éœ€æ‰©å®¹
       Rank oldN = N; unsigned char* oldM = M;
-      init( 2 * k ); //ÓëÏòÁ¿ÀàËÆ£¬¼Ó±¶²ßÂÔ
+      init( 2 * k ); //ä¸å‘é‡ç±»ä¼¼ï¼ŒåŠ å€ç­–ç•¥
       memcpy_s( M, N, oldM, oldN );
-      delete[] oldM; //Ô­Êı¾İ×ªÒÆÖÁĞÂ¿Õ¼ä
+      delete[] oldM; //åŸæ•°æ®è½¬ç§»è‡³æ–°ç©ºé—´
    }
    /*DSA*/
-   /*DSA*/   void print( Rank n ) //ÖğÎ»´òÓ¡ÒÔ¼ìÑéÎ»Í¼ÄÚÈİ£¬·Ç±ØĞè½Ó¿Ú
+   /*DSA*/   void print( Rank n ) //é€ä½æ‰“å°ä»¥æ£€éªŒä½å›¾å†…å®¹ï¼Œéå¿…éœ€æ¥å£
    /*DSA*/   {  expand( n ); for ( Rank i = 0; i < n; i++ ) printf( test ( i ) ? "1" : "0" );  }
 };

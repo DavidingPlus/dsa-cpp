@@ -11,20 +11,20 @@
  ******************************************************************************************/
 #include "vector_test.h"
 
-int testID = 0; //²âÊÔ±àºÅ
+int testID = 0; //æµ‹è¯•ç¼–å·
 
 /******************************************************************************************
- * ²âÊÔ£ºÎŞĞòÏòÁ¿µÄ£¨Ë³Ğò£©²éÕÒ
+ * æµ‹è¯•ï¼šæ— åºå‘é‡çš„ï¼ˆé¡ºåºï¼‰æŸ¥æ‰¾
  ******************************************************************************************/
 template <typename T> void TestFind( Vector<T>& V ) {
-   for ( Rank i = 0; i < V.size(); i++ ) { //ÒÀ´Î²éÕÒÏòÁ¿ÖĞÔªËØ£¬µ±È»³É¹¦
+   for ( Rank i = 0; i < V.size(); i++ ) { //ä¾æ¬¡æŸ¥æ‰¾å‘é‡ä¸­å…ƒç´ ï¼Œå½“ç„¶æˆåŠŸ
       T e =  V[i]; print ( e );
       Rank r = V.find ( e );
       if ( -1 != r ) printf ( " : found at V[%d] = %d", r, V[r] );
       else printf ( " : not found until V[%d] <> %d", r, e );
       printf ( "\n" );
    }
-   for ( Rank i = 0; i <= V.size(); i++ ) { //ÒÀ´Î²éÕÒÃ¿¶ÔÏàÁÚÔªËØµÄ¾ùÖµ£¬¿ÉÄÜ³É¹¦
+   for ( Rank i = 0; i <= V.size(); i++ ) { //ä¾æ¬¡æŸ¥æ‰¾æ¯å¯¹ç›¸é‚»å…ƒç´ çš„å‡å€¼ï¼Œå¯èƒ½æˆåŠŸ
       T a = ( 0 < i ) ? V[i - 1] : V[0] - 4;
       T b = ( i < V.size() ) ? V[i] : V[V.size()-1] + 4;
       T e =  ( a + b ) / 2; print ( e );
@@ -36,17 +36,17 @@ template <typename T> void TestFind( Vector<T>& V ) {
 }
 
 /******************************************************************************************
- * ²âÊÔ£ºÓĞĞòÏòÁ¿µÄ²éÕÒ£¨binSearch»òfibSearch£©
+ * æµ‹è¯•ï¼šæœ‰åºå‘é‡çš„æŸ¥æ‰¾ï¼ˆbinSearchæˆ–fibSearchï¼‰
  ******************************************************************************************/
 template <typename T> void TestSearch( Vector<T>& V ) {
-   for ( Rank i = 0; i < V.size(); i++ ) { //ÒÀ´Î²éÕÒÏòÁ¿ÖĞÔªËØ£¬µ±È»³É¹¦
+   for ( Rank i = 0; i < V.size(); i++ ) { //ä¾æ¬¡æŸ¥æ‰¾å‘é‡ä¸­å…ƒç´ ï¼Œå½“ç„¶æˆåŠŸ
       T e =  V[i]; print ( e ); printf(": by ");
       Rank r = V.search ( e );
       if ( V[r] == e ) printf ( "found at V[%d] = %d", r, V[r] );
       else printf ( "found at V[%d] = %d <> %d\a\a", r, V[r], e );
       printf ( "\n\n" );
    }
-   for ( Rank i = 0; i <= V.size(); i++ ) { //ÒÀ´ÎÏàÁÚÔªËØµÄ¾ùÖµ£¬¿ÉÄÜ³É¹¦
+   for ( Rank i = 0; i <= V.size(); i++ ) { //ä¾æ¬¡ç›¸é‚»å…ƒç´ çš„å‡å€¼ï¼Œå¯èƒ½æˆåŠŸ
       T a = ( 0 < i ) ? V[i - 1] : V[0] - 4;
       T b = ( i < V.size() ) ? V[i] : V[V.size()-1] + 4;
       T e =  ( a + b ) / 2; print ( e ); printf(": by ");
@@ -62,9 +62,9 @@ template <typename T> void TestSearch( Vector<T>& V ) {
 }
 
 /******************************************************************************************
- * ²âÊÔ£ºÓĞĞòÏòÁ¿µÄ²åÈë
+ * æµ‹è¯•ï¼šæœ‰åºå‘é‡çš„æ’å…¥
  ******************************************************************************************/
-template <typename T> //ÔªËØÀàĞÍ
+template <typename T> //å…ƒç´ ç±»å‹
 void TestOrderedInsertion( Vector<T>& V, Rank n ) {
    while ( n * 2 > V.size() ) {
       T e = dice ( ( T ) n * 2 );
@@ -75,20 +75,20 @@ void TestOrderedInsertion( Vector<T>& V, Rank n ) {
 }
 
 /******************************************************************************************
- * ²âÊÔÏòÁ¿
+ * æµ‹è¯•å‘é‡
  ******************************************************************************************/
-template <typename T> //ÔªËØÀàĞÍ
+template <typename T> //å…ƒç´ ç±»å‹
 void testVector( Rank testSize ) {
    printf ( "\n  ==== Test %2d. Generate a random vector\n", testID++ );
    Vector<T> V;
-   for ( Rank i = 0; i < testSize; i++ ) //ÔÚ[0,3n)ÖĞËæ»úÑ¡Ôñn¸öÊı
+   for ( Rank i = 0; i < testSize; i++ ) //åœ¨[0,3n)ä¸­éšæœºé€‰æ‹©nä¸ªæ•°
       V.insert ( dice ( i + 1 ), dice ( ( T ) testSize * 3 ) );
    PRINT ( V );
 //
    printf ( "\n  ==== Test %2d. Sort by selection\n", testID++ );
    Vector<T> S(testSize);
    for ( Rank k = 0; k < testSize; k++ )
-      S.insert( V[V.select( k )] ); //½«µÚk´óµÄÔªËØ·Åµ½[k]
+      S.insert( V[V.select( k )] ); //å°†ç¬¬kå¤§çš„å…ƒç´ æ”¾åˆ°[k]
    PRINT( S );
 //
    printf ( "\n  ==== Test %2d. unsort\n", testID++ );
@@ -154,12 +154,12 @@ void testVector( Rank testSize ) {
 }
 
 /******************************************************************************************
- * ²âÊÔÏòÁ¿
+ * æµ‹è¯•å‘é‡
  ******************************************************************************************/
 int main( int argc, char* argv[] ) {
    if ( 2 > argc ) { printf ( "Usage: %s <size of test>\a\a\n", argv[0] ); return 1; }
-   srand((unsigned int)time(NULL)); //Ëæ»úÖÖ×Ó
-   //srand( 31415926 ); //¹Ì¶¨ÖÖ×Ó£¨¼ÙÖÖ×Ó£¬µ÷ÊÔÓÃ£©
-   testVector<int> ( atoi ( argv[1] ) ); //ÔªËØÀàĞÍ¿ÉÒÔÔÚÕâÀïÈÎÒâÑ¡Ôñ
+   srand((unsigned int)time(NULL)); //éšæœºç§å­
+   //srand( 31415926 ); //å›ºå®šç§å­ï¼ˆå‡ç§å­ï¼Œè°ƒè¯•ç”¨ï¼‰
+   testVector<int> ( atoi ( argv[1] ) ); //å…ƒç´ ç±»å‹å¯ä»¥åœ¨è¿™é‡Œä»»æ„é€‰æ‹©
    return 0;
 }

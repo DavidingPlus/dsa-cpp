@@ -13,7 +13,7 @@
 #include <windows.h>
 
 /******************************************************************************************
- * Õë¶Ô»ùÓÚÁĞ±í¡¢ÏòÁ¿ÒÔ¼°×óÊ½¶ÑÊµÏÖµÄÓÅÏÈ¼¶¶ÓÁĞ£¬×ö¹ı³ÌÍ³Ò»µÄ²âÊÔ
+ * é’ˆå¯¹åŸºäºåˆ—è¡¨ã€å‘é‡ä»¥åŠå·¦å¼å †å®ç°çš„ä¼˜å…ˆçº§é˜Ÿåˆ—ï¼Œåšè¿‡ç¨‹ç»Ÿä¸€çš„æµ‹è¯•
  ******************************************************************************************/
 void verifySMMH( SMMH<int> H ) {
    Rank s = H.size(); Rank k = 0;
@@ -30,7 +30,7 @@ void verifySMMH( SMMH<int> H ) {
 void testSMMH( Rank n ) {
    SMMH<int> H; //init an empty DEPQ implemented as an SMMH
    /*DSA*/ print(H); printf("\n");
-   while ( H.size() < n ) { //Ëæ»ú²âÊÔ
+   while ( H.size() < n ) { //éšæœºæµ‹è¯•
       if ( dice ( 100 ) < 70 ) { //insert with a prob. of 70%
          int e = dice ( 7 * n ); /*DSA*/printf ( "Inserting" ); print ( e ); printf ( " ...\n" );
          H.insert ( e ); /*DSA*/printf ( "Insertion done\n" );
@@ -57,14 +57,14 @@ void testSMMH( Rank n ) {
 }
 
 /******************************************************************************************
- * ÓÅÏÈ¼¶¶ÓÁĞ²âÊÔ
+ * ä¼˜å…ˆçº§é˜Ÿåˆ—æµ‹è¯•
  ******************************************************************************************/
 int main ( int argc, char* argv[] ) {
    if ( 2 > argc ) { printf ( "Usage: %s <size of test>\a\a\n", argv[0] ); return 1; }
-   srand((unsigned int)time(NULL)); //Ëæ»úÖÖ×Ó
-   //srand( 31415926 ); //¹Ì¶¨ÖÖ×Ó£¨¼ÙÖÖ×Ó£¬µ÷ÊÔÓÃ£©
+   srand((unsigned int)time(NULL)); //éšæœºç§å­
+   //srand( 31415926 ); //å›ºå®šç§å­ï¼ˆå‡ç§å­ï¼Œè°ƒè¯•ç”¨ï¼‰
 #if defined(DSA_DEPQ_SMMH)
-   testSMMH( atoi ( argv[1] ) ); //´ÊÌõÀàĞÍ¿ÉÔÚ´ËÖ¸¶¨
+   testSMMH( atoi ( argv[1] ) ); //è¯æ¡ç±»å‹å¯åœ¨æ­¤æŒ‡å®š
 #else
    printf ( "PQ type not defined yet\n" );
 #endif

@@ -8,10 +8,10 @@
 
 #pragma once
 
-#include "List/List.h" //ÒÔÁĞ±íÎª»ùÀà£¬ÅÉÉú³öÕ»Ä£°åÀà
-template <typename T> class Stack: public List<T> { //½«ÁĞ±íµÄÊ×/Ä©¶Ë×÷ÎªÕ»µ×/¶¥
-public: //Ô­ÓĞ½Ó¿ÚÒ»¸ÅÑØÓÃ
-   void push ( T const& e ) { insertLast ( e ); } //ÈëÕ»£ºµÈĞ§ÓÚ½«ĞÂÔªËØ×÷ÎªÁĞ±íµÄÄ©ÔªËØ²åÈë
-   T pop() { return remove ( last() ); } //³öÕ»£ºµÈĞ§ÓÚÉ¾³ıÁĞ±íµÄÄ©ÔªËØ
-   T& top() { return last()->data; } //È¡¶¥£ºÖ±½Ó·µ»ØÁĞ±íµÄÄ©ÔªËØ
+#include "List/List.h" //ä»¥åˆ—è¡¨ä¸ºåŸºç±»ï¼Œæ´¾ç”Ÿå‡ºæ ˆæ¨¡æ¿ç±»
+template <typename T> class Stack: public List<T> { //å°†åˆ—è¡¨çš„é¦–/æœ«ç«¯ä½œä¸ºæ ˆåº•/é¡¶
+public: //åŸæœ‰æ¥å£ä¸€æ¦‚æ²¿ç”¨
+   void push ( T const& e ) { insertLast ( e ); } //å…¥æ ˆï¼šç­‰æ•ˆäºå°†æ–°å…ƒç´ ä½œä¸ºåˆ—è¡¨çš„æœ«å…ƒç´ æ’å…¥
+   T pop() { return remove ( last() ); } //å‡ºæ ˆï¼šç­‰æ•ˆäºåˆ é™¤åˆ—è¡¨çš„æœ«å…ƒç´ 
+   T& top() { return last()->data; } //å–é¡¶ï¼šç›´æ¥è¿”å›åˆ—è¡¨çš„æœ«å…ƒç´ 
 };

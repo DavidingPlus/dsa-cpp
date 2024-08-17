@@ -8,16 +8,16 @@
 
 #pragma once
 
-#include "fibonacci/Fib.h" //ÒıÈëFibÊıÁĞÀà
-//Fibonacci²éÕÒËã·¨£¨°æ±¾B£©£ºÔÚÓĞĞòÏòÁ¿µÄÇø¼ä[lo, hi)ÄÚ²éÕÒÔªËØe£¬0 <= lo <= hi <= _size
+#include "fibonacci/Fib.h" //å¼•å…¥Fibæ•°åˆ—ç±»
+//FibonacciæŸ¥æ‰¾ç®—æ³•ï¼ˆç‰ˆæœ¬Bï¼‰ï¼šåœ¨æœ‰åºå‘é‡çš„åŒºé—´[lo, hi)å†…æŸ¥æ‰¾å…ƒç´ eï¼Œ0 <= lo <= hi <= _size
 template <typename T> static Rank fibSearch( T* S, T const& e, Rank lo, Rank hi ) {
    /*DSA*/printf ( "FIB search (B)\n" );
-   for ( Fib fib( hi - lo ); lo < hi; ) { //FibÖÆ±í±¸²é£»´ËºóÃ¿²½µü´ú½öÒ»´Î±È½Ï¡¢Á½¸ö·ÖÖ§
+   for ( Fib fib( hi - lo ); lo < hi; ) { //Fibåˆ¶è¡¨å¤‡æŸ¥ï¼›æ­¤åæ¯æ­¥è¿­ä»£ä»…ä¸€æ¬¡æ¯”è¾ƒã€ä¸¤ä¸ªåˆ†æ”¯
       /*DSA*/ //for ( int i = 0; i < lo; i++ ) printf ( "     " ); if ( lo >= 0 ) for ( int i = lo; i < hi; i++ ) printf ( "....^" ); else printf ( "<<<<|" ); printf ( "\n" );
-      while ( hi - lo < fib.get() ) fib.prev(); //×ÔºóÏòÇ°Ë³Ğò²éÕÒ£¨·ÖÌ¯O(1)£©
-      Rank mi = lo + fib.get() - 1; //È·¶¨ĞÎÈçFib(k) - 1µÄÖáµã
-      ( e < S[mi] ) ? hi = mi : lo = mi + 1; //±È½ÏºóÈ·¶¨ÉîÈëÇ°°ë¶Î[lo, mi)»òºó°ë¶Î(mi, hi)
-   } //¼´±ãÒÑ¾­ÕÒµ½£¬Ò²²»ÄÜÌáÇ°ÖÕÖ¹
+      while ( hi - lo < fib.get() ) fib.prev(); //è‡ªåå‘å‰é¡ºåºæŸ¥æ‰¾ï¼ˆåˆ†æ‘ŠO(1)ï¼‰
+      Rank mi = lo + fib.get() - 1; //ç¡®å®šå½¢å¦‚Fib(k) - 1çš„è½´ç‚¹
+      ( e < S[mi] ) ? hi = mi : lo = mi + 1; //æ¯”è¾ƒåç¡®å®šæ·±å…¥å‰åŠæ®µ[lo, mi)æˆ–ååŠæ®µ(mi, hi)
+   } //å³ä¾¿å·²ç»æ‰¾åˆ°ï¼Œä¹Ÿä¸èƒ½æå‰ç»ˆæ­¢
    /*DSA*/ //for( int i = 0; i < lo - 1; i++ ) printf ( "     " ); if ( lo > 0 ) printf ( "....|\n" ); else printf ( "<<<<|\n" );
-   return lo - 1; //ÖÁ´Ë£¬[lo]Îª´óÓÚeµÄ×îĞ¡Õß£¬¹Ê[lo-1]¼´Îª²»´óÓÚeµÄ×î´óÕß
-} //ÓĞ¶à¸öÃüÖĞÔªËØÊ±£¬·µ»Ø×î¿¿ºóÕß£»²éÕÒÊ§°ÜÊ±£¬·µ»ØÊ§°ÜµÄÎ»ÖÃ
+   return lo - 1; //è‡³æ­¤ï¼Œ[lo]ä¸ºå¤§äºeçš„æœ€å°è€…ï¼Œæ•…[lo-1]å³ä¸ºä¸å¤§äºeçš„æœ€å¤§è€…
+} //æœ‰å¤šä¸ªå‘½ä¸­å…ƒç´ æ—¶ï¼Œè¿”å›æœ€é åè€…ï¼›æŸ¥æ‰¾å¤±è´¥æ—¶ï¼Œè¿”å›å¤±è´¥çš„ä½ç½®

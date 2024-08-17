@@ -8,12 +8,12 @@
 
 #pragma once
 
-template <typename T> //½«e²åÈëÖÁ[r]
+template <typename T> //å°†eæ’å…¥è‡³[r]
 Rank Vector<T>::insert ( Rank r, T const & e ) { //0 <= r <= size
    //print( e );
-   expand(); //Èç±ØÒª£¬ÏÈÀ©Èİ
-   for ( Rank i = _size; r < i; i-- ) //×ÔºóÏòÇ°£¬ºó¼ÌÔªËØ
-      _elem[i] = _elem[i-1]; //Ë³´ÎºóÒÆÒ»¸öµ¥Ôª
-   _elem[r] = e; _size++; //ÖÃÈëĞÂÔªËØ²¢¸üĞÂÈİÁ¿
-   return r; //·µ»ØÖÈ
+   expand(); //å¦‚å¿…è¦ï¼Œå…ˆæ‰©å®¹
+   for ( Rank i = _size; r < i; i-- ) //è‡ªåå‘å‰ï¼Œåç»§å…ƒç´ 
+      _elem[i] = _elem[i-1]; //é¡ºæ¬¡åç§»ä¸€ä¸ªå•å…ƒ
+   _elem[r] = e; _size++; //ç½®å…¥æ–°å…ƒç´ å¹¶æ›´æ–°å®¹é‡
+   return r; //è¿”å›ç§©
 }

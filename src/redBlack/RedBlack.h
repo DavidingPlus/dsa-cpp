@@ -8,15 +8,15 @@
 
 #pragma once
 
-#include "BST/BST.h" //基于BST实现RedBlack
-template <typename T> class RedBlack : public BST<T> { //RedBlack树模板类
+#include "BST/BST.h" //鍩轰簬BST瀹炵幇RedBlack
+template <typename T> class RedBlack : public BST<T> { //RedBlack鏍戞ā鏉跨被
 protected:
-   void solveDoubleRed( BinNodePosi<T> x ); //双红修正
-   void solveDoubleBlack( BinNodePosi<T> x ); //双黑修正
+   void solveDoubleRed( BinNodePosi<T> x ); //鍙岀孩淇
+   void solveDoubleBlack( BinNodePosi<T> x ); //鍙岄粦淇
 public:
-   BinNodePosi<T> insert( const T& e ); //插入（重写）
-   bool remove( const T& e ); //删除（重写）
-// BST::search()等其余接口可直接沿用
+   BinNodePosi<T> insert( const T& e ); //鎻掑叆锛堥噸鍐欙級
+   bool remove( const T& e ); //鍒犻櫎锛堥噸鍐欙級
+// BST::search()绛夊叾浣欐帴鍙ｅ彲鐩存帴娌跨敤
 };
 
 #include "RedBlack_implementation.h"

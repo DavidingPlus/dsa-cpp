@@ -8,4 +8,4 @@
 
 #pragma once
 
-template <typename T> T & PQ_LeftHeap<T>::getMax() { return _root->data; } //¶Ñ¶¥¼´ÊÇ×î´ó´ÊÌõ
+template <typename T> T & PQ_LeftHeap<T>::getMax() { return _root->data; } //å †é¡¶å³æ˜¯æœ€å¤§è¯æ¡

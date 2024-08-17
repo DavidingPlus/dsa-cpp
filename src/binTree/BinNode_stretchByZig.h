@@ -8,15 +8,15 @@
 
 #pragma once
 
-//Í¨¹ızigĞı×ªµ÷Õû£¬½«BST×ÓÊ÷xÀ­Éì³É×îÓÒ²àÍ¨Â·
+//é€šè¿‡zigæ—‹è½¬è°ƒæ•´ï¼Œå°†BSTå­æ ‘xæ‹‰ä¼¸æˆæœ€å³ä¾§é€šè·¯
 template <typename T> void stretchByZig( BinNodePosi<T>& x ) {
    if ( !x ) return;
-   /*DSA*/int c = 0; //¼ÇÂ¼Ğı×ª´ÎÊı
-   BinNodePosi<T> r = x; while ( r->lc ) r = r->lc; //×îĞ¡½Úµã£¬±ØÊÇ×ÓÊ÷×îÖÕµÄ¸ù
-   BinNodePosi<T> v = x; while ( v->rc ) v = v->rc; //´Ó×îÓÒ²àÍ¨Â·µÄÄ©¶Ë³ö·¢
-   while ( v != r ) //Öğ²ã´¦Àí£¬Ö±µ½µÖ´ï×ÓÊ÷µÄ¸ù
-      if ( v == v->zig() ) //ÒÔvÎªÖá×özigĞı×ª£¨Í¬Ê±¸üĞÂ¸ß¶È£©
-         ( v = v->parent )->updateHeight(); //Ö±ÖÁÃ»ÓĞ×óº¢×Ó
+   /*DSA*/int c = 0; //è®°å½•æ—‹è½¬æ¬¡æ•°
+   BinNodePosi<T> r = x; while ( r->lc ) r = r->lc; //æœ€å°èŠ‚ç‚¹ï¼Œå¿…æ˜¯å­æ ‘æœ€ç»ˆçš„æ ¹
+   BinNodePosi<T> v = x; while ( v->rc ) v = v->rc; //ä»æœ€å³ä¾§é€šè·¯çš„æœ«ç«¯å‡ºå‘
+   while ( v != r ) //é€å±‚å¤„ç†ï¼Œç›´åˆ°æŠµè¾¾å­æ ‘çš„æ ¹
+      if ( v == v->zig() ) //ä»¥vä¸ºè½´åšzigæ—‹è½¬ï¼ˆåŒæ—¶æ›´æ–°é«˜åº¦ï¼‰
+         ( v = v->parent )->updateHeight(); //ç›´è‡³æ²¡æœ‰å·¦å­©å­
       /*DSA*/else
          /*DSA*/c++;
    v->updateHeightAbove();

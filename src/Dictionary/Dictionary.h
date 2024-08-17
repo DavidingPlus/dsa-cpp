@@ -8,9 +8,9 @@
 
 #pragma once
 
-template <typename K, typename V> struct Dictionary { //´ÊµäDictionaryÄ£°åÀà
-   virtual Rank size() const = 0; //µ±Ç°´ÊÌõ×ÜÊı
-   virtual bool put( K, V ) = 0; //²åÈë´ÊÌõ
-   virtual V* get( K k ) = 0; //¶ÁÈ¡´ÊÌõ
-   virtual bool remove( K k ) = 0; //É¾³ı´ÊÌõ
+template <typename K, typename V> struct Dictionary { //è¯å…¸Dictionaryæ¨¡æ¿ç±»
+   virtual Rank size() const = 0; //å½“å‰è¯æ¡æ€»æ•°
+   virtual bool put( K, V ) = 0; //æ’å…¥è¯æ¡
+   virtual V* get( K k ) = 0; //è¯»å–è¯æ¡
+   virtual bool remove( K k ) = 0; //åˆ é™¤è¯æ¡
 };

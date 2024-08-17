@@ -17,7 +17,7 @@ BinNodePosi<T> NodeCopy( BinNodePosi<T> p, BinNodePosi<T> s ) {
    return t;
 }
 
-template <typename T> //通过复制来构造二叉树
+template <typename T> //閫氳繃澶嶅埗鏉ユ瀯閫犱簩鍙夋爲
 BinTree<T>::BinTree( BinTree<T> const & s ) {
    _size = s.size();
    _root = NodeCopy<T>( NULL, s._root );

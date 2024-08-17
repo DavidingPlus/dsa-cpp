@@ -8,7 +8,7 @@
 
 #pragma once
 
-template <typename T> //ÏòÁ¿Ï£¶ûÅÅĞò
+template <typename T> //å‘é‡å¸Œå°”æ’åº
 void Vector<T>::shellSort( Rank lo, Rank hi ) { // 0 <= lo < hi <= size <= 2^31
    /*DSA*/ // printf( "Shellsort [%3d, %3d)\n", lo, hi );
    for ( Rank d = 0x7FFFFFFF; 0 < d; d >>= 1 ) // PS Sequence: { 1, 3, 7, 15, 31, ... }

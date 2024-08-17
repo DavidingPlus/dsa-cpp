@@ -8,15 +8,15 @@
 
 #pragma once
 
-template <typename T> //É¾³ı¶ş²æÊ÷ÖĞÎ»ÖÃx´¦µÄ½Úµã¼°Æäºó´ú£¬·µ»Ø±»É¾³ı½ÚµãµÄÊıÖµ
-Rank BinTree<T>::remove( BinNodePosi<T> x ) { // assert: xÎª¶ş²æÊ÷ÖĞµÄºÏ·¨Î»ÖÃ
-   FromParentTo( x ) = NULL; //ÇĞ¶ÏÀ´×Ô¸¸½ÚµãµÄÖ¸Õë
-   x->parent->updateHeightAbove(); //¸üĞÂ×æÏÈ¸ß¶È
-   Rank n = removeAt( x ); _size -= n; return n; //É¾³ı×ÓÊ÷x£¬¸üĞÂ¹æÄ££¬·µ»ØÉ¾³ı½Úµã×ÜÊı
+template <typename T> //åˆ é™¤äºŒå‰æ ‘ä¸­ä½ç½®xå¤„çš„èŠ‚ç‚¹åŠå…¶åä»£ï¼Œè¿”å›è¢«åˆ é™¤èŠ‚ç‚¹çš„æ•°å€¼
+Rank BinTree<T>::remove( BinNodePosi<T> x ) { // assert: xä¸ºäºŒå‰æ ‘ä¸­çš„åˆæ³•ä½ç½®
+   FromParentTo( x ) = NULL; //åˆ‡æ–­æ¥è‡ªçˆ¶èŠ‚ç‚¹çš„æŒ‡é’ˆ
+   x->parent->updateHeightAbove(); //æ›´æ–°ç¥–å…ˆé«˜åº¦
+   Rank n = removeAt( x ); _size -= n; return n; //åˆ é™¤å­æ ‘xï¼Œæ›´æ–°è§„æ¨¡ï¼Œè¿”å›åˆ é™¤èŠ‚ç‚¹æ€»æ•°
 }
-template <typename T> //É¾³ı¶ş²æÊ÷ÖĞÎ»ÖÃx´¦µÄ½Úµã¼°Æäºó´ú£¬·µ»Ø±»É¾³ı½ÚµãµÄÊıÖµ
-static Rank removeAt( BinNodePosi<T> x ) { // assert: xÎª¶ş²æÊ÷ÖĞµÄºÏ·¨Î»ÖÃ
-   if ( !x ) return 0; //µİ¹é»ù£º¿ÕÊ÷
-   Rank n = 1 + removeAt( x->lc ) + removeAt( x->rc ); //µİ¹éÊÍ·Å×ó¡¢ÓÒ×ÓÊ÷
-   delete x; return n; //ÊÍ·Å±»Õª³ı½Úµã£¬²¢·µ»ØÉ¾³ı½Úµã×ÜÊı
+template <typename T> //åˆ é™¤äºŒå‰æ ‘ä¸­ä½ç½®xå¤„çš„èŠ‚ç‚¹åŠå…¶åä»£ï¼Œè¿”å›è¢«åˆ é™¤èŠ‚ç‚¹çš„æ•°å€¼
+static Rank removeAt( BinNodePosi<T> x ) { // assert: xä¸ºäºŒå‰æ ‘ä¸­çš„åˆæ³•ä½ç½®
+   if ( !x ) return 0; //é€’å½’åŸºï¼šç©ºæ ‘
+   Rank n = 1 + removeAt( x->lc ) + removeAt( x->rc ); //é€’å½’é‡Šæ”¾å·¦ã€å³å­æ ‘
+   delete x; return n; //é‡Šæ”¾è¢«æ‘˜é™¤èŠ‚ç‚¹ï¼Œå¹¶è¿”å›åˆ é™¤èŠ‚ç‚¹æ€»æ•°
 }

@@ -12,7 +12,7 @@ template <typename T> Rank List<T>::dedup() {
    Rank oldSize = _size; ListNodePosi<T> p = first();
    for ( Rank r = 0; p != tail; p = p->succ ) //O(n)
       if ( ListNodePosi<T> q = find(p->data, r, p) )
-         remove(q); //´ËÊ±qÓëpÏàµÈ£¬µ«É¾³ıÇ°Õß¸üÎª¼òÃ÷
-      else r++; //rÎªÎŞÖØÇ°×ºµÄ³¤¶È
-   return oldSize - _size; //É¾³ıÔªËØ×ÜÊı
+         remove(q); //æ­¤æ—¶qä¸pç›¸ç­‰ï¼Œä½†åˆ é™¤å‰è€…æ›´ä¸ºç®€æ˜
+      else r++; //rä¸ºæ— é‡å‰ç¼€çš„é•¿åº¦
+   return oldSize - _size; //åˆ é™¤å…ƒç´ æ€»æ•°
 }

@@ -9,9 +9,9 @@
 #pragma once
 
 template <typename T> Rank Vector<T>::remove( Rank lo, Rank hi ) { //0 <= lo <= hi <= n
-   if ( lo == hi ) return 0; //³öÓÚÐ§ÂÊ¿¼ÂÇ£¬µ¥¶À´¦ÀíÍË»¯Çé¿ö
-   while ( hi < _size ) _elem[lo++] = _elem[hi++]; //ºó×º[hi, _size)Ë³´ÎÇ°ÒÆhi-loÎ»
-   _size = lo; shrink(); //¸üÐÂ¹æÄ££¬lo=_sizeÖ®ºóµÄÄÚÈÝÎÞÐèÇåÁã£»Èç±ØÒª£¬ÔòËõÈÝ
-   //ÈôÓÐ±ØÒª£¬ÔòËõÈÝ
-   return hi - lo; //·µ»Ø±»É¾³ýÔªËØµÄÊýÄ¿
+   if ( lo == hi ) return 0; //å‡ºäºŽæ•ˆçŽ‡è€ƒè™‘ï¼Œå•ç‹¬å¤„ç†é€€åŒ–æƒ…å†µ
+   while ( hi < _size ) _elem[lo++] = _elem[hi++]; //åŽç¼€[hi, _size)é¡ºæ¬¡å‰ç§»hi-loä½
+   _size = lo; shrink(); //æ›´æ–°è§„æ¨¡ï¼Œlo=_sizeä¹‹åŽçš„å†…å®¹æ— éœ€æ¸…é›¶ï¼›å¦‚å¿…è¦ï¼Œåˆ™ç¼©å®¹
+   //è‹¥æœ‰å¿…è¦ï¼Œåˆ™ç¼©å®¹
+   return hi - lo; //è¿”å›žè¢«åˆ é™¤å…ƒç´ çš„æ•°ç›®
 }

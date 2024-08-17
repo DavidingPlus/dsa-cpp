@@ -8,11 +8,11 @@
 
 #pragma once
 
-template <typename T> Rank percolateUp( T* A, Rank i ) { //¶Ô´ÊÌõA[i]×öÉÏÂË£¬0 <= i < _size
-   while ( 0 < i ) { //ÔÚµÖ´ï¶Ñ¶¥Ö®Ç°£¬·´¸´µØ
-      Rank j = Parent( i ); //¿¼²é[i]Ö®¸¸Ç×[j]
-      if ( !( A[j] < A[i] ) ) break; //Ò»µ©¸¸×ÓË³Ğò£¬ÉÏÂËĞı¼´Íê³É£»·ñÔò
-      swap( A[i], A[j] ); i = j; //¸¸×Ó»»Î»£¬²¢¼ÌĞø¿¼²éÉÏÒ»²ã
+template <typename T> Rank percolateUp( T* A, Rank i ) { //å¯¹è¯æ¡A[i]åšä¸Šæ»¤ï¼Œ0 <= i < _size
+   while ( 0 < i ) { //åœ¨æŠµè¾¾å †é¡¶ä¹‹å‰ï¼Œåå¤åœ°
+      Rank j = Parent( i ); //è€ƒæŸ¥[i]ä¹‹çˆ¶äº²[j]
+      if ( !( A[j] < A[i] ) ) break; //ä¸€æ—¦çˆ¶å­é¡ºåºï¼Œä¸Šæ»¤æ—‹å³å®Œæˆï¼›å¦åˆ™
+      swap( A[i], A[j] ); i = j; //çˆ¶å­æ¢ä½ï¼Œå¹¶ç»§ç»­è€ƒæŸ¥ä¸Šä¸€å±‚
    } //while
-   return i; //·µ»ØÉÏÂË×îÖÕµÖ´ïµÄÎ»ÖÃ
+   return i; //è¿”å›ä¸Šæ»¤æœ€ç»ˆæŠµè¾¾çš„ä½ç½®
 }

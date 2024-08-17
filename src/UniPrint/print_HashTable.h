@@ -12,20 +12,20 @@
  * Hashtable
  ******************************************************************************************/
 
-template <typename K, typename V> //e¡¢value
-void UniPrint::p ( Hashtable<K, V>& HT ) { //ÒıÓÃ
-   printf( "%s[%d]*(%d + %d)/%d:\n", typeid( HT ).name(), (int)&HT, HT.N, HT.removed->size(), HT.M ); //»ù±¾ĞÅÏ¢
-   for ( Rank i = 0; i < HT.M; i++ ) //Êä³öÍ°±àºÅ
+template <typename K, typename V> //eã€value
+void UniPrint::p ( Hashtable<K, V>& HT ) { //å¼•ç”¨
+   printf( "%s[%d]*(%d + %d)/%d:\n", typeid( HT ).name(), (int)&HT, HT.N, HT.removed->size(), HT.M ); //åŸºæœ¬ä¿¡æ¯
+   for ( Rank i = 0; i < HT.M; i++ ) //è¾“å‡ºæ¡¶ç¼–å·
       printf ( " %4d ", i );
    printf ( "\n" );
-   for ( Rank i = 0; i < HT.M; i++ ) //Êä³öËùÓĞÔªËØ
-      if ( HT.ht[i] ) printf ( "<%04d>", HT.ht[i]->key ); //ÑİÊ¾ÓÃ£¬½öÊÊÓÃÓÚint
+   for ( Rank i = 0; i < HT.M; i++ ) //è¾“å‡ºæ‰€æœ‰å…ƒç´ 
+      if ( HT.ht[i] ) printf ( "<%04d>", HT.ht[i]->key ); //æ¼”ç¤ºç”¨ï¼Œä»…é€‚ç”¨äºint
       else if ( HT.removed->test(i) ) printf ( "<****>" );
       else printf ( "------" );
    printf ( "\n" );
-   for ( Rank i = 0; i < HT.M; i++ ) //Êä³öËùÓĞÔªËØ
-      if ( HT.ht[i] ) printf ( "    %c ", HT.ht[i]->value ); //ÑİÊ¾ÓÃ£¬½öÊÊÓÃÓÚchar
-//      if (ht.ht[i]) printf("%8s", ht.ht[i]->value); //Õë¶ÔHuffman±àÂëÖĞÊ¹ÓÃµÄÉ¢ÁĞ±í
+   for ( Rank i = 0; i < HT.M; i++ ) //è¾“å‡ºæ‰€æœ‰å…ƒç´ 
+      if ( HT.ht[i] ) printf ( "    %c ", HT.ht[i]->value ); //æ¼”ç¤ºç”¨ï¼Œä»…é€‚ç”¨äºchar
+//      if (ht.ht[i]) printf("%8s", ht.ht[i]->value); //é’ˆå¯¹Huffmanç¼–ç ä¸­ä½¿ç”¨çš„æ•£åˆ—è¡¨
       else if ( HT.removed->test(i) ) printf ( "   *  " );
       else printf ( "      " );
    printf ( "\n" );

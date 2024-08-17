@@ -14,21 +14,21 @@
 #include "UniPrint/print.h"
 #include "vector/vector.h"
 
-int main( int argc, char* argv[] ) { //»ùÓÚ¿ìËÙ»®·ÖµÄkÑ¡È¡Ëã·¨²âÊÔ
+int main( int argc, char* argv[] ) { //åŸºäºŽå¿«é€Ÿåˆ’åˆ†çš„ké€‰å–ç®—æ³•æµ‹è¯•
    if ( 2 > argc ) { printf ( "Usage: %s <n>\a\a\n", argv[0] ); return 1; }
    Rank n = atoi( argv[1] );
    if ( n < 1 ) { printf ( "Invalid arguments\a\a\n" ); return 1; }
-   srand((unsigned int)time(NULL)); //Ëæ»úÖÖ×Ó
-   //srand( 31415926 ); //¹Ì¶¨ÖÖ×Ó£¨¼ÙÖÖ×Ó£¬µ÷ÊÔÓÃ£©
+   srand((unsigned int)time(NULL)); //éšæœºç§å­
+   //srand( 31415926 ); //å›ºå®šç§å­ï¼ˆå‡ç§å­ï¼Œè°ƒè¯•ç”¨ï¼‰
 
    Vector<int> A;
-   for ( Rank k = 0; k < n; k++ ) //Ëæ»ú´´½¨Ò»¸öÏòÁ¿
+   for ( Rank k = 0; k < n; k++ ) //éšæœºåˆ›å»ºä¸€ä¸ªå‘é‡
       A.insert( rand() % (4*n + 1) );
    printf( "A random vector of size %d created:\n", n ); PRINT( A );
 
    Vector<int> S;
    for ( Rank k = 0; k < n; k++ )
-      S.insert( A[ A.select(k) ] ); //Í¨¹ýÒÀ´Îselect£¬µÃµ½¶ÔÓ¦µÄÅÅÐòÏòÁ¿£¨Ô­ÏòÁ¿±£³Ö²»±ä£©
+      S.insert( A[ A.select(k) ] ); //é€šè¿‡ä¾æ¬¡selectï¼Œå¾—åˆ°å¯¹åº”çš„æŽ’åºå‘é‡ï¼ˆåŽŸå‘é‡ä¿æŒä¸å˜ï¼‰
    printf( "A sorted copy of the vector has been created by %d selection(s):\n", n ); PRINT( S );
    printf( "The vector has been sorted:\n" ); A.sort(); PRINT( A );
 

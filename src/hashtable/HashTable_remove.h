@@ -8,9 +8,9 @@
 
 #pragma once
 
-template <typename K, typename V> bool Hashtable<K, V>::remove( K k ) { //É¢ÁĞ±í´ÊÌõÉ¾³ıËã·¨
-   Rank r = probe4Hit( k ); if ( !ht[r] ) return false; //È·ÈÏÄ¿±ê´ÊÌõÈ·Êµ´æÔÚ
-   delete ht[r]; ht[r] = NULL; --N; //Çå³ı´ÊÌõ
-   removed->set(r); //ÉèÖÃÀÁ¶èÉ¾³ı±ê¼Ç
+template <typename K, typename V> bool Hashtable<K, V>::remove( K k ) { //æ•£åˆ—è¡¨è¯æ¡åˆ é™¤ç®—æ³•
+   Rank r = probe4Hit( k ); if ( !ht[r] ) return false; //ç¡®è®¤ç›®æ ‡è¯æ¡ç¡®å®å­˜åœ¨
+   delete ht[r]; ht[r] = NULL; --N; //æ¸…é™¤è¯æ¡
+   removed->set(r); //è®¾ç½®æ‡’æƒ°åˆ é™¤æ ‡è®°
    return true;
 }

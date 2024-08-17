@@ -9,12 +9,12 @@
 #pragma once
 
 /******************************************************************************************
- * Skiplist´ÊÌõ²éÕÒËã·¨£¨¹©ÄÚ²¿µ÷ÓÃ£©
- * ·µ»Ø¹Ø¼üÂë²»´óÓÚkµÄ×îºóÒ»¸ö´ÊÌõ£¨Ëù¶ÔÓ¦ËþµÄ»ù×ù£©
+ * Skiplistè¯æ¡æŸ¥æ‰¾ç®—æ³•ï¼ˆä¾›å†…éƒ¨è°ƒç”¨ï¼‰
+ * è¿”å›žå…³é”®ç ä¸å¤§äºŽkçš„æœ€åŽä¸€ä¸ªè¯æ¡ï¼ˆæ‰€å¯¹åº”å¡”çš„åŸºåº§ï¼‰
  ******************************************************************************************/
 template <typename K, typename V> QNodePosi<Entry<K, V>> Skiplist<K, V>::search( K k ) {
-   for ( QNodePosi<Entry<K, V>> p = first()->data->head; ; ) //´Ó¶¥²ãQuadlistµÄÊ×½Úµãp³ö·¢
-      if ( ( p->succ->succ ) && ( p->succ->entry.key <= k ) ) p = p->succ; //¾¡¿ÉÄÜÓÒÒÆ
-      else if ( p->below ) p = p->below; //Ë®Æ½Ô½½çÊ±£¬ÏÂÒÆ
-      else return p; //ÑéÖ¤£º´ËÊ±µÄp·ûºÏÊä³öÔ¼¶¨£¨¿ÉÄÜÊÇ×îµ×²ãÁÐ±íµÄhead£©
-} //Ìå»á£ºµÃÒæÓÚÉÚ±øµÄÉèÖÃ£¬ÄÄÐ©»·½Ú±»¼ò»¯ÁË£¿
+   for ( QNodePosi<Entry<K, V>> p = first()->data->head; ; ) //ä»Žé¡¶å±‚Quadlistçš„é¦–èŠ‚ç‚¹på‡ºå‘
+      if ( ( p->succ->succ ) && ( p->succ->entry.key <= k ) ) p = p->succ; //å°½å¯èƒ½å³ç§»
+      else if ( p->below ) p = p->below; //æ°´å¹³è¶Šç•Œæ—¶ï¼Œä¸‹ç§»
+      else return p; //éªŒè¯ï¼šæ­¤æ—¶çš„pç¬¦åˆè¾“å‡ºçº¦å®šï¼ˆå¯èƒ½æ˜¯æœ€åº•å±‚åˆ—è¡¨çš„headï¼‰
+} //ä½“ä¼šï¼šå¾—ç›ŠäºŽå“¨å…µçš„è®¾ç½®ï¼Œå“ªäº›çŽ¯èŠ‚è¢«ç®€åŒ–äº†ï¼Ÿ

@@ -9,10 +9,10 @@
 #pragma once
 
 template <typename T> BinNodePosi<T> BinTree<T>::insert( T const& e )
-   { _size = 1; return _root = new BinNode<T>( e ); } //将e当作根节点插入空的二叉树
+   { _size = 1; return _root = new BinNode<T>( e ); } //灏唀褰撲綔鏍硅妭鐐规彃鍏ョ┖鐨勪簩鍙夋爲
 
 template <typename T> BinNodePosi<T> BinTree<T>::insert( T const& e, BinNodePosi<T> x )
-   { _size++; x->insertLc( e ); x->updateHeightAbove(); return x->lc; } // e插入为x的左孩子
+   { _size++; x->insertLc( e ); x->updateHeightAbove(); return x->lc; } // e鎻掑叆涓簒鐨勫乏瀛╁瓙
 
 template <typename T> BinNodePosi<T> BinTree<T>::insert( BinNodePosi<T> x, T const& e )
-   { _size++; x->insertRc( e ); x->updateHeightAbove(); return x->rc; } // e插入为x的右孩子
+   { _size++; x->insertRc( e ); x->updateHeightAbove(); return x->rc; } // e鎻掑叆涓簒鐨勫彸瀛╁瓙

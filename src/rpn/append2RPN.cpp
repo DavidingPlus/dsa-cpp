@@ -8,14 +8,14 @@
 
 /*DSA*/#include "rpn.h"
 
-void append ( char* rpn, double opnd ) { //½«²Ù×÷Êı½ÓÖÁRPNÄ©Î²
+void append ( char* rpn, double opnd ) { //å°†æ“ä½œæ•°æ¥è‡³RPNæœ«å°¾
    char buf[64];
-   if ( ( int ) opnd < opnd ) sprintf ( buf, "%6.2f \0", opnd ); //¸¡µã¸ñÊ½£¬»ò
-   else                       sprintf ( buf, "%d \0", ( int ) opnd ); //ÕûÊı¸ñÊ½
-   strcat ( rpn, buf ); //RPN¼Ó³¤
+   if ( ( int ) opnd < opnd ) sprintf ( buf, "%6.2f \0", opnd ); //æµ®ç‚¹æ ¼å¼ï¼Œæˆ–
+   else                       sprintf ( buf, "%d \0", ( int ) opnd ); //æ•´æ•°æ ¼å¼
+   strcat ( rpn, buf ); //RPNåŠ é•¿
 }
 
-void append ( char* rpn, char optr ) { //½«ÔËËã·û½ÓÖÁRPNÄ©Î²
-   int n = strlen ( rpn ); //RPNµ±Ç°³¤¶È£¨ÒÔ'\0'½áÎ²£¬³¤¶Èn + 1£©
-   sprintf ( rpn + n, "%c \0", optr ); //½ÓÈëÖ¸¶¨µÄÔËËã·û
+void append ( char* rpn, char optr ) { //å°†è¿ç®—ç¬¦æ¥è‡³RPNæœ«å°¾
+   int n = strlen ( rpn ); //RPNå½“å‰é•¿åº¦ï¼ˆä»¥'\0'ç»“å°¾ï¼Œé•¿åº¦n + 1ï¼‰
+   sprintf ( rpn + n, "%c \0", optr ); //æ¥å…¥æŒ‡å®šçš„è¿ç®—ç¬¦
 }

@@ -9,13 +9,13 @@
 #include "sum/sum.h"
 extern int s_lo, s_hi;
 
-int gs_BF( int A[], int n ) { //ÂùÁ¦²ßÂÔ£ºO(n^3)
+int gs_BF( int A[], int n ) { //è›®åŠ›ç­–ç•¥ï¼šO(n^3)
    int gs = A[0]; s_lo = 0; s_hi = 1;
-   for ( int lo = 0; lo < n; lo++ ) //Ã¶¾ÙËùÓĞµÄ
-      for ( int hi = lo; hi < n; ) { //O(n^2)¸öÇø¶Î
-         int s = sum(A, lo, ++hi); //ÓÃO(n)Ê±¼äÇóºÍ£¨¸ÄÓÃsum(A+lo,++hi-lo)¿Õ¼äĞ§ÂÊ¸ü¸ß£©
+   for ( int lo = 0; lo < n; lo++ ) //æšä¸¾æ‰€æœ‰çš„
+      for ( int hi = lo; hi < n; ) { //O(n^2)ä¸ªåŒºæ®µ
+         int s = sum(A, lo, ++hi); //ç”¨O(n)æ—¶é—´æ±‚å’Œï¼ˆæ”¹ç”¨sum(A+lo,++hi-lo)ç©ºé—´æ•ˆç‡æ›´é«˜ï¼‰
          if ( gs < s )
-            { gs = s; s_lo = lo; s_hi = hi; } //ÔñÓÅ¡¢¸üĞÂ
+            { gs = s; s_lo = lo; s_hi = hi; } //æ‹©ä¼˜ã€æ›´æ–°
       }
    return gs;
 }

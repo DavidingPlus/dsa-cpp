@@ -7,20 +7,20 @@
  ******************************************************************************************/
 
 #pragma once
-using Rank = unsigned int; //ÖÈ
+using Rank = unsigned int; //ç§©
 
 template <typename T> struct ListNode;
-template <typename T> using ListNodePosi = ListNode<T>*; //ÁĞ±í½ÚµãÎ»ÖÃ
-template <typename T> struct ListNode { //ÁĞ±í½ÚµãÄ£°åÀà£¨ÒÔË«ÏòÁ´±íĞÎÊ½ÊµÏÖ£©
-// ³ÉÔ±
-   T data; ListNodePosi<T> pred, succ; //ÊıÖµ¡¢Ç°Çı¡¢ºó¼Ì
-// ¹¹Ôì·½·¨
-   ListNode() {} //Õë¶ÔheadºÍtailµÄ¹¹Ôì
+template <typename T> using ListNodePosi = ListNode<T>*; //åˆ—è¡¨èŠ‚ç‚¹ä½ç½®
+template <typename T> struct ListNode { //åˆ—è¡¨èŠ‚ç‚¹æ¨¡æ¿ç±»ï¼ˆä»¥åŒå‘é“¾è¡¨å½¢å¼å®ç°ï¼‰
+// æˆå‘˜
+   T data; ListNodePosi<T> pred, succ; //æ•°å€¼ã€å‰é©±ã€åç»§
+// æ„é€ æ–¹æ³•
+   ListNode() {} //é’ˆå¯¹headå’Œtailçš„æ„é€ 
    ListNode ( T const& e, ListNodePosi<T> p = NULL, ListNodePosi<T> s = NULL )
-      : data( e ), pred( p ), succ( s ) {} //Ä¬ÈÏ¹¹ÔìÆ÷£¨ÀàTĞë¶¨Òå¸´ÖÆ·½·¨£©
-// ²Ù×÷½Ó¿Ú
-   ListNodePosi<T> insertPred( T const& e ); //½ô¿¿µ±Ç°½ÚµãÖ®Ç°²åÈëĞÂ½Úµã
-   ListNodePosi<T> insertSucc( T const& e ); //½ôËæµ±Ç°½ÚµãÖ®ºó²åÈëĞÂ½Úµã
+      : data( e ), pred( p ), succ( s ) {} //é»˜è®¤æ„é€ å™¨ï¼ˆç±»Té¡»å®šä¹‰å¤åˆ¶æ–¹æ³•ï¼‰
+// æ“ä½œæ¥å£
+   ListNodePosi<T> insertPred( T const& e ); //ç´§é å½“å‰èŠ‚ç‚¹ä¹‹å‰æ’å…¥æ–°èŠ‚ç‚¹
+   ListNodePosi<T> insertSucc( T const& e ); //ç´§éšå½“å‰èŠ‚ç‚¹ä¹‹åæ’å…¥æ–°èŠ‚ç‚¹
 };
 
 #include "listNode_implementation.h"

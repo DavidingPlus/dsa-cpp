@@ -9,7 +9,7 @@
 #pragma once
 
 template <typename T> void BinNode<T>::attachLc( BinNodePosi<T> x )
-   { lc = x; if ( x ) x->parent = this; } //½ÓÈë×ó×ÓÊ÷
+   { lc = x; if ( x ) x->parent = this; } //æ¥å…¥å·¦å­æ ‘
 
 template <typename T> void BinNode<T>::attachRc( BinNodePosi<T> x )
-   { rc = x; if ( x ) x->parent = this ; } //½ÓÈëÓÒ×ÓÊ÷
+   { rc = x; if ( x ) x->parent = this ; } //æ¥å…¥å³å­æ ‘

@@ -8,19 +8,19 @@
 
 #pragma once
 
-template <typename K, typename V> bool Skiplist<K, V>::remove( K k ) { //Ìø×ª±í´ÊÌõÉ¾³ıËã·¨
-   QNodePosi< Entry<K, V> > p = search ( k ); //²éÕÒÄ¿±ê´ÊÌõ
-   if ( !p->pred || (k != p->entry.key) )  return false; //Èô²»´æÔÚ£¬Ö±½Ó·µ»Ø
-   ListNodePosi< Quadlist< Entry<K, V> >* > qlist = last(); //´Óµ×²ãQuadlist¿ªÊ¼
-   while ( p->above ) { qlist = qlist->pred; p = p->above; } //ÉıÖÁËş¶¥
-   do { //Öğ²ã²ğËş
-      QNodePosi< Entry<K, V> > lower = p->below; //¼Ç×¡ÏÂÒ»²ã½Úµã£¬²¢
-      qlist->data->remove( p ); //É¾³ıµ±Ç°²ã½Úµã£¬ÔÙ
-      p = lower; qlist = qlist->succ; //×ªÈëÏÂÒ»²ã
-   } while ( qlist->succ ); //Ö±µ½Ëş»ù
-   while ( (1 < height()) && (first()->data->_size < 1) ) { //Öğ²ãÇå³ı
+template <typename K, typename V> bool Skiplist<K, V>::remove( K k ) { //è·³è½¬è¡¨è¯æ¡åˆ é™¤ç®—æ³•
+   QNodePosi< Entry<K, V> > p = search ( k ); //æŸ¥æ‰¾ç›®æ ‡è¯æ¡
+   if ( !p->pred || (k != p->entry.key) )  return false; //è‹¥ä¸å­˜åœ¨ï¼Œç›´æ¥è¿”å›
+   ListNodePosi< Quadlist< Entry<K, V> >* > qlist = last(); //ä»åº•å±‚Quadlistå¼€å§‹
+   while ( p->above ) { qlist = qlist->pred; p = p->above; } //å‡è‡³å¡”é¡¶
+   do { //é€å±‚æ‹†å¡”
+      QNodePosi< Entry<K, V> > lower = p->below; //è®°ä½ä¸‹ä¸€å±‚èŠ‚ç‚¹ï¼Œå¹¶
+      qlist->data->remove( p ); //åˆ é™¤å½“å‰å±‚èŠ‚ç‚¹ï¼Œå†
+      p = lower; qlist = qlist->succ; //è½¬å…¥ä¸‹ä¸€å±‚
+   } while ( qlist->succ ); //ç›´åˆ°å¡”åŸº
+   while ( (1 < height()) && (first()->data->_size < 1) ) { //é€å±‚æ¸…é™¤
       List::remove( first() ); 
       first()->data->head->above = NULL;
-   } //ÒÑ²»º¬´ÊÌõµÄQuadlist£¨ÖÁÉÙ±£Áô×îµ×²ã¿Õ±í£©
-   return true; //É¾³ı³É¹¦
-} //Ìå»á£ºµÃÒæÓÚÉÚ±øµÄÉèÖÃ£¬ÄÄĞ©»·½Ú±»¼ò»¯ÁË£¿
+   } //å·²ä¸å«è¯æ¡çš„Quadlistï¼ˆè‡³å°‘ä¿ç•™æœ€åº•å±‚ç©ºè¡¨ï¼‰
+   return true; //åˆ é™¤æˆåŠŸ
+} //ä½“ä¼šï¼šå¾—ç›Šäºå“¨å…µçš„è®¾ç½®ï¼Œå“ªäº›ç¯èŠ‚è¢«ç®€åŒ–äº†ï¼Ÿ

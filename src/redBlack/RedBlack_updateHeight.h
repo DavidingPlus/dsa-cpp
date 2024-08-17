@@ -8,12 +8,12 @@
 
 #pragma once
 
-template <typename T> Rank BinNode<T>::updateHeight() { //¸üĞÂ½Úµã¸ß¶È
-   return height = color + max( stature( lc ), stature( rc ) ); //º¢×ÓºÚ¸ß¶ÈÍ¨³£ÏàµÈ£¬³ı·Ç³öÏÖË«ºÚ
-   /*DSA*/// ºìºÚÊ÷ÖĞ¸÷½Úµã×ó¡¢ÓÒº¢×ÓµÄºÚ¸ß¶ÈÍ¨³£ÏàµÈ
-   /*DSA*/// ÕâÀïÖ®ËùÒÔÈ¡¸ü´óÖµ£¬ÊÇ±ãÓÚÔÚÉ¾³ı½ÚµãºóµÄÆ½ºâµ÷Õû¹ı³ÌÖĞ£¬ÕıÈ·¸üĞÂ±»É¾³ı½Úµã¸¸Ç×µÄºÚ¸ß¶È
-   /*DSA*/// ·ñÔò£¬rotateAt()»á¸ù¾İ±»É¾³ı½ÚµãµÄÌæ´úÕß£¨¸ß¶ÈĞ¡Ò»£©ÉèÖÃ¸¸½ÚµãµÄºÚ¸ß¶È
+template <typename T> Rank BinNode<T>::updateHeight() { //æ›´æ–°èŠ‚ç‚¹é«˜åº¦
+   return height = color + max( stature( lc ), stature( rc ) ); //å­©å­é»‘é«˜åº¦é€šå¸¸ç›¸ç­‰ï¼Œé™¤éå‡ºç°åŒé»‘
+   /*DSA*/// çº¢é»‘æ ‘ä¸­å„èŠ‚ç‚¹å·¦ã€å³å­©å­çš„é»‘é«˜åº¦é€šå¸¸ç›¸ç­‰
+   /*DSA*/// è¿™é‡Œä¹‹æ‰€ä»¥å–æ›´å¤§å€¼ï¼Œæ˜¯ä¾¿äºåœ¨åˆ é™¤èŠ‚ç‚¹åçš„å¹³è¡¡è°ƒæ•´è¿‡ç¨‹ä¸­ï¼Œæ­£ç¡®æ›´æ–°è¢«åˆ é™¤èŠ‚ç‚¹çˆ¶äº²çš„é»‘é«˜åº¦
+   /*DSA*/// å¦åˆ™ï¼ŒrotateAt()ä¼šæ ¹æ®è¢«åˆ é™¤èŠ‚ç‚¹çš„æ›¿ä»£è€…ï¼ˆé«˜åº¦å°ä¸€ï¼‰è®¾ç½®çˆ¶èŠ‚ç‚¹çš„é»‘é«˜åº¦
 }
 
-template <typename T> void BinNode<T>::updateHeightAbove() //¸üĞÂµ±Ç°½Úµã¼°Æä×æÏÈµÄ¸ß¶È
-   { for ( BinNodePosi<T> x = this; x; x = x->parent ) x->updateHeight(); } //¿ÉÓÅ»¯
+template <typename T> void BinNode<T>::updateHeightAbove() //æ›´æ–°å½“å‰èŠ‚ç‚¹åŠå…¶ç¥–å…ˆçš„é«˜åº¦
+   { for ( BinNodePosi<T> x = this; x; x = x->parent ) x->updateHeight(); } //å¯ä¼˜åŒ–

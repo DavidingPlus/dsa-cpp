@@ -8,62 +8,62 @@
 
 #pragma once
 
-#include "listNode.h" //ÒıÈëÁĞ±í½ÚµãÀà
+#include "listNode.h" //å¼•å…¥åˆ—è¡¨èŠ‚ç‚¹ç±»
 
-template <typename T> class List { //ÁĞ±íÄ£°åÀà
+template <typename T> class List { //åˆ—è¡¨æ¨¡æ¿ç±»
 
 private:
-   Rank _size; ListNodePosi<T> head, tail; //¹æÄ£¡¢Í·ÉÚ±ø¡¢Î²ÉÚ±ø
+   Rank _size; ListNodePosi<T> head, tail; //è§„æ¨¡ã€å¤´å“¨å…µã€å°¾å“¨å…µ
 
 protected:
-   void init(); //ÁĞ±í´´½¨Ê±µÄ³õÊ¼»¯
-   Rank clear(); //Çå³ıËùÓĞ½Úµã
-   void copyNodes( ListNodePosi<T>, Rank ); //¸´ÖÆÁĞ±íÖĞ×ÔÎ»ÖÃpÆğµÄnÏî
-   ListNodePosi<T> merge( ListNodePosi<T>, Rank, List<T>&, ListNodePosi<T>, Rank ); //¹é²¢
-   void mergeSort( ListNodePosi<T>&, Rank ); //¶Ô´Óp¿ªÊ¼Á¬ĞøµÄn¸ö½Úµã¹é²¢ÅÅĞò
-   void selectionSort( ListNodePosi<T>, Rank ); //¶Ô´Óp¿ªÊ¼Á¬ĞøµÄn¸ö½ÚµãÑ¡ÔñÅÅĞò
-   void insertionSort( ListNodePosi<T>, Rank ); //¶Ô´Óp¿ªÊ¼Á¬ĞøµÄn¸ö½Úµã²åÈëÅÅĞò
-   void radixSort( ListNodePosi<T>, Rank ); //¶Ô´Óp¿ªÊ¼Á¬ĞøµÄn¸ö½Úµã»ùÊıÅÅĞò
+   void init(); //åˆ—è¡¨åˆ›å»ºæ—¶çš„åˆå§‹åŒ–
+   Rank clear(); //æ¸…é™¤æ‰€æœ‰èŠ‚ç‚¹
+   void copyNodes( ListNodePosi<T>, Rank ); //å¤åˆ¶åˆ—è¡¨ä¸­è‡ªä½ç½®pèµ·çš„né¡¹
+   ListNodePosi<T> merge( ListNodePosi<T>, Rank, List<T>&, ListNodePosi<T>, Rank ); //å½’å¹¶
+   void mergeSort( ListNodePosi<T>&, Rank ); //å¯¹ä»på¼€å§‹è¿ç»­çš„nä¸ªèŠ‚ç‚¹å½’å¹¶æ’åº
+   void selectionSort( ListNodePosi<T>, Rank ); //å¯¹ä»på¼€å§‹è¿ç»­çš„nä¸ªèŠ‚ç‚¹é€‰æ‹©æ’åº
+   void insertionSort( ListNodePosi<T>, Rank ); //å¯¹ä»på¼€å§‹è¿ç»­çš„nä¸ªèŠ‚ç‚¹æ’å…¥æ’åº
+   void radixSort( ListNodePosi<T>, Rank ); //å¯¹ä»på¼€å§‹è¿ç»­çš„nä¸ªèŠ‚ç‚¹åŸºæ•°æ’åº
 
 public:
-// ¹¹Ôì·½·¨
-   List() { init(); } //Ä¬ÈÏ
-   List( List<T> const& L ); //ÕûÌå¸´ÖÆÁĞ±íL
-   List( List<T> const& L, Rank r, Rank n ); //¸´ÖÆÁĞ±íLÖĞ×ÔµÚrÏîÆğµÄnÏî
-   List( ListNodePosi<T> p, Rank n ); //¸´ÖÆÁĞ±íÖĞ×ÔÎ»ÖÃpÆğµÄnÏî
-   // Îö¹¹·½·¨
-   ~List(); //ÊÍ·Å£¨°üº¬Í·¡¢Î²ÉÚ±øÔÚÄÚµÄ£©ËùÓĞ½Úµã
-// Ö»¶Á·ÃÎÊ½Ó¿Ú
-   Rank size() const { return _size; } //¹æÄ£
-   bool empty() const { return _size <= 0; } //ÅĞ¿Õ
-   ListNodePosi<T> operator[]( Rank r ) const; //ÖØÔØ£¬Ö§³ÖÑ­ÖÈ·ÃÎÊ£¨Ğ§ÂÊµÍ£©
-   ListNodePosi<T> first() const { return head->succ; } //Ê×½ÚµãÎ»ÖÃ
-   ListNodePosi<T> last() const { return tail->pred; } //Ä©½ÚµãÎ»ÖÃ
-   bool valid( ListNodePosi<T> p ) //ÅĞ¶ÏÎ»ÖÃpÊÇ·ñ¶ÔÍâºÏ·¨
-   { return p && ( tail != p ) && ( head != p ); } //½«Í·¡¢Î²½ÚµãµÈÍ¬ÓÚNULL
-   ListNodePosi<T> find( T const& e ) const //ÎŞĞòÁĞ±í²éÕÒ
+// æ„é€ æ–¹æ³•
+   List() { init(); } //é»˜è®¤
+   List( List<T> const& L ); //æ•´ä½“å¤åˆ¶åˆ—è¡¨L
+   List( List<T> const& L, Rank r, Rank n ); //å¤åˆ¶åˆ—è¡¨Lä¸­è‡ªç¬¬ré¡¹èµ·çš„né¡¹
+   List( ListNodePosi<T> p, Rank n ); //å¤åˆ¶åˆ—è¡¨ä¸­è‡ªä½ç½®pèµ·çš„né¡¹
+   // ææ„æ–¹æ³•
+   ~List(); //é‡Šæ”¾ï¼ˆåŒ…å«å¤´ã€å°¾å“¨å…µåœ¨å†…çš„ï¼‰æ‰€æœ‰èŠ‚ç‚¹
+// åªè¯»è®¿é—®æ¥å£
+   Rank size() const { return _size; } //è§„æ¨¡
+   bool empty() const { return _size <= 0; } //åˆ¤ç©º
+   ListNodePosi<T> operator[]( Rank r ) const; //é‡è½½ï¼Œæ”¯æŒå¾ªç§©è®¿é—®ï¼ˆæ•ˆç‡ä½ï¼‰
+   ListNodePosi<T> first() const { return head->succ; } //é¦–èŠ‚ç‚¹ä½ç½®
+   ListNodePosi<T> last() const { return tail->pred; } //æœ«èŠ‚ç‚¹ä½ç½®
+   bool valid( ListNodePosi<T> p ) //åˆ¤æ–­ä½ç½®pæ˜¯å¦å¯¹å¤–åˆæ³•
+   { return p && ( tail != p ) && ( head != p ); } //å°†å¤´ã€å°¾èŠ‚ç‚¹ç­‰åŒäºNULL
+   ListNodePosi<T> find( T const& e ) const //æ— åºåˆ—è¡¨æŸ¥æ‰¾
    { return find( e, _size, tail ); }
-   ListNodePosi<T> find( T const& e, Rank n, ListNodePosi<T> p ) const; //ÎŞĞòÇø¼ä²éÕÒ
-   ListNodePosi<T> search( T const& e ) const //ÓĞĞòÁĞ±í²éÕÒ
+   ListNodePosi<T> find( T const& e, Rank n, ListNodePosi<T> p ) const; //æ— åºåŒºé—´æŸ¥æ‰¾
+   ListNodePosi<T> search( T const& e ) const //æœ‰åºåˆ—è¡¨æŸ¥æ‰¾
    { return search( e, _size, tail ); }
-   ListNodePosi<T> search( T const& e, Rank n, ListNodePosi<T> p ) const; //ÓĞĞòÇø¼ä²éÕÒ
-   ListNodePosi<T> selectMax( ListNodePosi<T> p, Rank n ); //ÔÚp¼°Æän-1¸öºó¼ÌÖĞÑ¡³ö×î´óÕß
-   ListNodePosi<T> selectMax() { return selectMax( head->succ, _size ); } //ÕûÌå×î´óÕß
-// ¿ÉĞ´·ÃÎÊ½Ó¿Ú
-   ListNodePosi<T> insertFirst( T const& e ); //½«eµ±×÷Ê×½Úµã²åÈë
-   ListNodePosi<T> insertLast( T const& e ); //½«eµ±×÷Ä©½Úµã²åÈë
-   ListNodePosi<T> insert( ListNodePosi<T> p, T const& e ); //½«eµ±×÷pµÄºó¼Ì²åÈë
-   ListNodePosi<T> insert( T const& e, ListNodePosi<T> p ); //½«eµ±×÷pµÄÇ°Çı²åÈë
-   T remove( ListNodePosi<T> p ); //É¾³ıºÏ·¨Î»ÖÃp´¦µÄ½Úµã,·µ»Ø±»É¾³ı½Úµã
-   void merge( List<T>& L ) { merge( head->succ, _size, L, L.head->succ, L._size ); } //È«ÁĞ±í¹é²¢
-   void sort( ListNodePosi<T>, Rank ); //ÁĞ±íÇø¼äÅÅĞò
-   void sort() { sort( first(), _size ); } //ÁĞ±íÕûÌåÅÅĞò
-   Rank dedup(); //ÎŞĞòÈ¥ÖØ
-   Rank uniquify(); //ÓĞĞòÈ¥ÖØ
-   void reverse(); //Ç°ºóµ¹ÖÃ£¨Ï°Ìâ£©
-// ±éÀú
-   void traverse( void ( * )( T& ) ); //ÒÀ´ÎÊµÊ©visit²Ù×÷£¨º¯ÊıÖ¸Õë£©
-   template <typename VST> void traverse( VST& ); //ÒÀ´ÎÊµÊ©visit²Ù×÷£¨º¯Êı¶ÔÏó£©
+   ListNodePosi<T> search( T const& e, Rank n, ListNodePosi<T> p ) const; //æœ‰åºåŒºé—´æŸ¥æ‰¾
+   ListNodePosi<T> selectMax( ListNodePosi<T> p, Rank n ); //åœ¨påŠå…¶n-1ä¸ªåç»§ä¸­é€‰å‡ºæœ€å¤§è€…
+   ListNodePosi<T> selectMax() { return selectMax( head->succ, _size ); } //æ•´ä½“æœ€å¤§è€…
+// å¯å†™è®¿é—®æ¥å£
+   ListNodePosi<T> insertFirst( T const& e ); //å°†eå½“ä½œé¦–èŠ‚ç‚¹æ’å…¥
+   ListNodePosi<T> insertLast( T const& e ); //å°†eå½“ä½œæœ«èŠ‚ç‚¹æ’å…¥
+   ListNodePosi<T> insert( ListNodePosi<T> p, T const& e ); //å°†eå½“ä½œpçš„åç»§æ’å…¥
+   ListNodePosi<T> insert( T const& e, ListNodePosi<T> p ); //å°†eå½“ä½œpçš„å‰é©±æ’å…¥
+   T remove( ListNodePosi<T> p ); //åˆ é™¤åˆæ³•ä½ç½®på¤„çš„èŠ‚ç‚¹,è¿”å›è¢«åˆ é™¤èŠ‚ç‚¹
+   void merge( List<T>& L ) { merge( head->succ, _size, L, L.head->succ, L._size ); } //å…¨åˆ—è¡¨å½’å¹¶
+   void sort( ListNodePosi<T>, Rank ); //åˆ—è¡¨åŒºé—´æ’åº
+   void sort() { sort( first(), _size ); } //åˆ—è¡¨æ•´ä½“æ’åº
+   Rank dedup(); //æ— åºå»é‡
+   Rank uniquify(); //æœ‰åºå»é‡
+   void reverse(); //å‰åå€’ç½®ï¼ˆä¹ é¢˜ï¼‰
+// éå†
+   void traverse( void ( * )( T& ) ); //ä¾æ¬¡å®æ–½visitæ“ä½œï¼ˆå‡½æ•°æŒ‡é’ˆï¼‰
+   template <typename VST> void traverse( VST& ); //ä¾æ¬¡å®æ–½visitæ“ä½œï¼ˆå‡½æ•°å¯¹è±¡ï¼‰
 }; //List
 
 #include "List_implementation.h"

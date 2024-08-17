@@ -8,8 +8,8 @@
 
 #pragma once
 
-template <typename T> Rank BinNode<T>::updateHeight() //¸üĞÂµ±Ç°½Úµã¸ß¶È
-   { return height = 1 + max( stature( lc ), stature( rc ) ); } //¾ßÌå¹æÔò£¬ÒòÊ÷¶øÒì
+template <typename T> Rank BinNode<T>::updateHeight() //æ›´æ–°å½“å‰èŠ‚ç‚¹é«˜åº¦
+   { return height = 1 + max( stature( lc ), stature( rc ) ); } //å…·ä½“è§„åˆ™ï¼Œå› æ ‘è€Œå¼‚
 
-template <typename T> void BinNode<T>::updateHeightAbove() //¸üĞÂµ±Ç°½Úµã¼°Æä×æÏÈµÄ¸ß¶È
-   { for ( BinNodePosi<T> x = this; x; x = x->parent ) x->updateHeight(); } //¿ÉÓÅ»¯
+template <typename T> void BinNode<T>::updateHeightAbove() //æ›´æ–°å½“å‰èŠ‚ç‚¹åŠå…¶ç¥–å…ˆçš„é«˜åº¦
+   { for ( BinNodePosi<T> x = this; x; x = x->parent ) x->updateHeight(); } //å¯ä¼˜åŒ–

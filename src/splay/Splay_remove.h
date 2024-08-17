@@ -8,14 +8,14 @@
 
 #pragma once
 
-template <typename T> bool Splay<T>::remove( const T& e ) { //´ÓÉìÕ¹Ê÷ÖĞÉ¾³ı¹Ø¼üÂëe
-   if ( !_root || ( e != search( e )->data ) ) return false; //ÈôÄ¿±ê´æÔÚ£¬ÔòÉìÕ¹ÖÁ¸ù
-   BinNodePosi<T> L = _root->lc, R = _root->rc; delete _root; //¼ÇÏÂ×ó¡¢ÓÒ×ÓÊ÷L¡¢Rºó£¬ÊÍ·ÅÖ®
-   if ( !R ) { //ÈôR¿Õ£¬Ôò
-      if ( L ) L->parent = NULL; _root = L; //L¼´ÊÇÓàÊ÷
-   } else { //·ñÔò
-      _root = R; R->parent = NULL; search( e ); //²éÕÒ±Ø°Ü£¬µ«RµÄ×îĞ¡½Úµã±ØÉìÕ¹ÖÁ¸ù£¬ÇÒÎŞ×óº¢×Ó
-      _root->attachLc( L ); //¹Ê¿ÉÁîÆäÒÔL×÷Îª×ó×ÓÊ÷
+template <typename T> bool Splay<T>::remove( const T& e ) { //ä»ä¼¸å±•æ ‘ä¸­åˆ é™¤å…³é”®ç e
+   if ( !_root || ( e != search( e )->data ) ) return false; //è‹¥ç›®æ ‡å­˜åœ¨ï¼Œåˆ™ä¼¸å±•è‡³æ ¹
+   BinNodePosi<T> L = _root->lc, R = _root->rc; delete _root; //è®°ä¸‹å·¦ã€å³å­æ ‘Lã€Råï¼Œé‡Šæ”¾ä¹‹
+   if ( !R ) { //è‹¥Rç©ºï¼Œåˆ™
+      if ( L ) L->parent = NULL; _root = L; //Lå³æ˜¯ä½™æ ‘
+   } else { //å¦åˆ™
+      _root = R; R->parent = NULL; search( e ); //æŸ¥æ‰¾å¿…è´¥ï¼Œä½†Rçš„æœ€å°èŠ‚ç‚¹å¿…ä¼¸å±•è‡³æ ¹ï¼Œä¸”æ— å·¦å­©å­
+      _root->attachLc( L ); //æ•…å¯ä»¤å…¶ä»¥Lä½œä¸ºå·¦å­æ ‘
    }
-   if ( --_size ) _root->updateHeight(); return true; //¸üĞÂ¹æÄ£¼°Ê÷¸ß£¬±¨¸æÉ¾³ı³É¹¦
+   if ( --_size ) _root->updateHeight(); return true; //æ›´æ–°è§„æ¨¡åŠæ ‘é«˜ï¼ŒæŠ¥å‘Šåˆ é™¤æˆåŠŸ
 }

@@ -8,20 +8,20 @@
 
 /*DSA*/#include "rpn.h"
 
-char* removeSpace ( char* s ) { //ÌÞ³ýs[]ÖÐµÄ°×¿Õ¸ñ
+char* removeSpace ( char* s ) { //å‰”é™¤s[]ä¸­çš„ç™½ç©ºæ ¼
    for ( char *p = s-1, *q = s; (p < s) || *p; *++p = *q++ )
       while ( isspace( *q ) ) q++;
    return s;
 }
 
-int main ( int argc, char* argv[] ) { //±í´ïÊ½ÇóÖµ£¨Èë¿Ú£©
-   for ( int i = 1; i < argc; i++ ) { //ÖðÒ»´¦Àí¸÷ÃüÁîÐÐ²ÎÊý£¨±í´ïÊ½£©
+int main ( int argc, char* argv[] ) { //è¡¨è¾¾å¼æ±‚å€¼ï¼ˆå…¥å£ï¼‰
+   for ( int i = 1; i < argc; i++ ) { //é€ä¸€å¤„ç†å„å‘½ä»¤è¡Œå‚æ•°ï¼ˆè¡¨è¾¾å¼ï¼‰
       /*DSA*/system ( "cls" ); printf ( "\nPress any key to evaluate: [%s]\a\n", argv[i] ); getchar();
-      char* rpn = new char[strlen( argv[i] ) * 4];   rpn[0] = '\0'; //Äæ²¨À¼±í´ïÊ½£¨4±¶Ô­´®³¤£¬Í¨³£²»ÖÂÒç³ö£©
-      double value = evaluate ( removeSpace ( argv[i] ), rpn ); //ÇóÖµ
-      /*DSA*/printf ( "EXPR\t: %s\n", argv[i] ); //Êä³öÔ­±í´ïÊ½
-      /*DSA*/printf ( "RPN\t: [ %s]\n", rpn ); //Êä³öRPN
-      /*DSA*/printf ( "Value\t= %f = %d\n\n", value, ( int ) round(value) ); //Êä³ö±í´ïÊ½µÄÖµ
+      char* rpn = new char[strlen( argv[i] ) * 4];   rpn[0] = '\0'; //é€†æ³¢å…°è¡¨è¾¾å¼ï¼ˆ4å€åŽŸä¸²é•¿ï¼Œé€šå¸¸ä¸è‡´æº¢å‡ºï¼‰
+      double value = evaluate ( removeSpace ( argv[i] ), rpn ); //æ±‚å€¼
+      /*DSA*/printf ( "EXPR\t: %s\n", argv[i] ); //è¾“å‡ºåŽŸè¡¨è¾¾å¼
+      /*DSA*/printf ( "RPN\t: [ %s]\n", rpn ); //è¾“å‡ºRPN
+      /*DSA*/printf ( "Value\t= %f = %d\n\n", value, ( int ) round(value) ); //è¾“å‡ºè¡¨è¾¾å¼çš„å€¼
       delete rpn;
       /*DSA*/getchar();
    }

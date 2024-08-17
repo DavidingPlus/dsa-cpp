@@ -8,4 +8,4 @@
 
 #pragma once
 
-template <typename T> T & PQ_ComplHeap<T>::getMax() { return _elem[0]; } //È¡ÓÅÏÈ¼¶×î¸ßµÄ´ÊÌõ
+template <typename T> T & PQ_ComplHeap<T>::getMax() { return _elem[0]; } //é¾°èš¥ç‚æ’°éƒ”è©¢è…”æ£µæ²­

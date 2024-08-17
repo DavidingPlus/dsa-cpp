@@ -8,10 +8,10 @@
 
 #pragma once
 
-#include "Vector/Vector.h" //ÒÔÏòÁ¿Îª»ùÀà£¬ÅÉÉú³öÕ»Ä£°åÀà
-template <typename T> class Stack: public Vector<T> { //½«ÏòÁ¿µÄÊ×/Ä©¶Ë×÷ÎªÕ»µ×/¶¥
-public: //Ô­ÓĞ½Ó¿ÚÒ»¸ÅÑØÓÃ
-   void push ( T const& e ) { insert ( e ); } //ÈëÕ»£ºµÈĞ§ÓÚ½«ĞÂÔªËØ×÷ÎªÏòÁ¿µÄÄ©ÔªËØ²åÈë
-   T pop() { return remove ( size() - 1 ); } //³öÕ»£ºµÈĞ§ÓÚÉ¾³ıÏòÁ¿µÄÄ©ÔªËØ
-   T& top() { return ( *this ) [size() - 1]; } //È¡¶¥£ºÖ±½Ó·µ»ØÏòÁ¿µÄÄ©ÔªËØ
+#include "Vector/Vector.h" //ä»¥å‘é‡ä¸ºåŸºç±»ï¼Œæ´¾ç”Ÿå‡ºæ ˆæ¨¡æ¿ç±»
+template <typename T> class Stack: public Vector<T> { //å°†å‘é‡çš„é¦–/æœ«ç«¯ä½œä¸ºæ ˆåº•/é¡¶
+public: //åŸæœ‰æ¥å£ä¸€æ¦‚æ²¿ç”¨
+   void push ( T const& e ) { insert ( e ); } //å…¥æ ˆï¼šç­‰æ•ˆäºå°†æ–°å…ƒç´ ä½œä¸ºå‘é‡çš„æœ«å…ƒç´ æ’å…¥
+   T pop() { return remove ( size() - 1 ); } //å‡ºæ ˆï¼šç­‰æ•ˆäºåˆ é™¤å‘é‡çš„æœ«å…ƒç´ 
+   T& top() { return ( *this ) [size() - 1]; } //å–é¡¶ï¼šç›´æ¥è¿”å›å‘é‡çš„æœ«å…ƒç´ 
 };

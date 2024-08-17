@@ -8,10 +8,10 @@
 
 #pragma once
 
-template <typename T> //ÏòÁ¿µÄÆğÅİÅÅĞò£¨ÌáÇ°ÖÕÖ¹°æ£©
+template <typename T> //å‘é‡çš„èµ·æ³¡æ’åºï¼ˆæå‰ç»ˆæ­¢ç‰ˆï¼‰
 void Vector<T>::bubbleSort( Rank lo, Rank hi ) { //assert: 0 <= lo < hi <= size
    for( bool sorted = false; sorted = !sorted; hi-- )
       for( Rank i = lo+1; i < hi; i++ )
-         if ( _elem[i - 1] > _elem[i] ) //ÈôÄæĞò£¬Ôò
-            swap( _elem[i - 1], _elem[i] ), sorted = false; //½»»»¡ª¡ªÒò´Ë²»ÄÜÅĞ¶¨ÒÑ¾­ÕûÌåÓĞĞò
+         if ( _elem[i - 1] > _elem[i] ) //è‹¥é€†åºï¼Œåˆ™
+            swap( _elem[i - 1], _elem[i] ), sorted = false; //äº¤æ¢â€”â€”å› æ­¤ä¸èƒ½åˆ¤å®šå·²ç»æ•´ä½“æœ‰åº
 }

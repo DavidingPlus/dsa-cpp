@@ -9,9 +9,9 @@
 #pragma once
 
 template <typename T> void SMMH<T>::insert( T e ) { //insert e into an SMMH
-   Vector<T>::insert(e); //Ôö¼ÓÒ»¸öµ¥Ôª
-   Rank k = _size - 1; //´ÓÄ©ÔªËØ¿ªÊ¼
-   while (1) { //Öğ²ãÉÏÂË
+   Vector<T>::insert(e); //å¢åŠ ä¸€ä¸ªå•å…ƒ
+   Rank k = _size - 1; //ä»æœ«å…ƒç´ å¼€å§‹
+   while (1) { //é€å±‚ä¸Šæ»¤
       if ( isRC(k) && (_elem[k-1] > _elem[k]) ) //Property #0
          { _elem[k] = _elem[k-1]; k--; }
       if ( !hasGP(k) ) break;
@@ -22,5 +22,5 @@ template <typename T> void SMMH<T>::insert( T e ) { //insert e into an SMMH
       else
          break;
    }
-   _elem[k] = e; //ĞÂÔªËØ¾ÍÎ»
+   _elem[k] = e; //æ–°å…ƒç´ å°±ä½
 } //insert

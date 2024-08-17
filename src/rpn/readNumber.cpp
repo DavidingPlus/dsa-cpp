@@ -8,13 +8,13 @@
 
 /*DSA*/#include "rpn.h"
 
-void readNumber ( char*& p, Stack<double>& stk ) { //½«ÆğÊ¼ÓÚpµÄ×Ó´®½âÎöÎªÊıÖµ£¬²¢´æÈë²Ù×÷ÊıÕ»
-   stk.push ( ( double ) ( *p - '0' ) ); //µ±Ç°ÊıÎ»¶ÔÓ¦µÄÊıÖµ½øÕ»
-   while ( isdigit ( * ( ++p ) ) ) //ÈôÓĞºóĞøÊı×Ö£¨¶àÎ»ÕûÊı£©£¬Ôò
-      stk.push ( stk.pop() * 10 + ( *p - '0' ) ); //×·¼ÓÖ®£¨¿ÉÄÜÉÏÒç£©
-   if ( '.' == *p ) { //Èô»¹ÓĞĞ¡Êı²¿·Ö
-      double fraction = 1; //Ôò
-      while ( isdigit ( * ( ++p ) ) ) //ÖğÎ»
-         stk.push ( stk.pop() + ( *p - '0' ) * ( fraction /= 10 ) ); //¼ÓÈë£¨¿ÉÄÜÏÂÒç£©
+void readNumber ( char*& p, Stack<double>& stk ) { //å°†èµ·å§‹äºpçš„å­ä¸²è§£æä¸ºæ•°å€¼ï¼Œå¹¶å­˜å…¥æ“ä½œæ•°æ ˆ
+   stk.push ( ( double ) ( *p - '0' ) ); //å½“å‰æ•°ä½å¯¹åº”çš„æ•°å€¼è¿›æ ˆ
+   while ( isdigit ( * ( ++p ) ) ) //è‹¥æœ‰åç»­æ•°å­—ï¼ˆå¤šä½æ•´æ•°ï¼‰ï¼Œåˆ™
+      stk.push ( stk.pop() * 10 + ( *p - '0' ) ); //è¿½åŠ ä¹‹ï¼ˆå¯èƒ½ä¸Šæº¢ï¼‰
+   if ( '.' == *p ) { //è‹¥è¿˜æœ‰å°æ•°éƒ¨åˆ†
+      double fraction = 1; //åˆ™
+      while ( isdigit ( * ( ++p ) ) ) //é€ä½
+         stk.push ( stk.pop() + ( *p - '0' ) * ( fraction /= 10 ) ); //åŠ å…¥ï¼ˆå¯èƒ½ä¸‹æº¢ï¼‰
    }
 }

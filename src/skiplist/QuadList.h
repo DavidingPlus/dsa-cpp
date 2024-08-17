@@ -8,19 +8,19 @@
 
 #pragma once
 
-#include "QuadListNode.h" //ÒıÈëQuadlist½ÚµãÀà
+#include "QuadListNode.h" //å¼•å…¥QuadlistèŠ‚ç‚¹ç±»
 
-template <typename T> struct Quadlist { //ËÄÁªÁĞ±í
-   Rank _size; //¹æÄ£
-   QNodePosi<T> head, tail; //Í·ÉÚ±ø¡¢Î²ÉÚ±ø
-   void init(); //³õÊ¼»¯
-   int clear(); //Çå³ıËùÓĞ½Úµã
-   Quadlist() { init(); } //¹¹Ôì
-   ~Quadlist() { clear(); delete head; delete tail; } //Îö¹¹
-   T remove( QNodePosi<T> p ); //É¾³ı£¨ºÏ·¨£©Î»ÖÃp´¦µÄ½Úµã£¬·µ»Ø±»É¾³ı½ÚµãµÄÊıÖµ
-   QNodePosi<T> insert( T const& e, QNodePosi<T> p, QNodePosi<T> b = NULL ); //½«e×÷ÎªpµÄºó¼Ì¡¢bµÄÉÏÁÚ²åÈë
-   void traverse( void (* ) ( T& ) ); //±éÀú¸÷½Úµã£¬ÒÀ´ÎÊµÊ©Ö¸¶¨²Ù×÷£¨º¯ÊıÖ¸Õë£¬Ö»¶Á»ò¾Ö²¿ĞŞ¸Ä£©
-   template <typename VST> void traverse ( VST& ); //±éÀú
+template <typename T> struct Quadlist { //å››è”åˆ—è¡¨
+   Rank _size; //è§„æ¨¡
+   QNodePosi<T> head, tail; //å¤´å“¨å…µã€å°¾å“¨å…µ
+   void init(); //åˆå§‹åŒ–
+   int clear(); //æ¸…é™¤æ‰€æœ‰èŠ‚ç‚¹
+   Quadlist() { init(); } //æ„é€ 
+   ~Quadlist() { clear(); delete head; delete tail; } //ææ„
+   T remove( QNodePosi<T> p ); //åˆ é™¤ï¼ˆåˆæ³•ï¼‰ä½ç½®på¤„çš„èŠ‚ç‚¹ï¼Œè¿”å›è¢«åˆ é™¤èŠ‚ç‚¹çš„æ•°å€¼
+   QNodePosi<T> insert( T const& e, QNodePosi<T> p, QNodePosi<T> b = NULL ); //å°†eä½œä¸ºpçš„åç»§ã€bçš„ä¸Šé‚»æ’å…¥
+   void traverse( void (* ) ( T& ) ); //éå†å„èŠ‚ç‚¹ï¼Œä¾æ¬¡å®æ–½æŒ‡å®šæ“ä½œï¼ˆå‡½æ•°æŒ‡é’ˆï¼Œåªè¯»æˆ–å±€éƒ¨ä¿®æ”¹ï¼‰
+   template <typename VST> void traverse ( VST& ); //éå†
 }; //Quadlist
 
 #include "Quadlist_implementation.h"

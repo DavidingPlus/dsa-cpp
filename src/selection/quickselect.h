@@ -8,17 +8,17 @@
 
 #pragma once
 
-template <typename T> Rank quickSelect( T const * A, Rank n, Rank k ) { //»ùÓÚ¿ìËÙ»®·ÖµÄkÑ¡È¡Ëã·¨
-   Vector<Rank> R(n); for ( Rank i = 0; i < n; i++ ) R.insert(i); //Ê¹ÓÃË÷ÒıÏòÁ¿£¬±£³ÖÔ­ĞòÁĞµÄ´ÎĞò
-   for ( Rank lo = 0, hi = n; ; ) { //·´¸´×öquickParititon
-      swap( R[lo], R[lo + rand()%(hi-lo)] ); T pivot = A[R[lo]]; Rank mi = lo; //´óµ¨²Â²â
-      for ( Rank i = lo+1; i < hi; i++ ) //LGU°æpartitionËã·¨
+template <typename T> Rank quickSelect( T const * A, Rank n, Rank k ) { //åŸºäºå¿«é€Ÿåˆ’åˆ†çš„ké€‰å–ç®—æ³•
+   Vector<Rank> R(n); for ( Rank i = 0; i < n; i++ ) R.insert(i); //ä½¿ç”¨ç´¢å¼•å‘é‡ï¼Œä¿æŒåŸåºåˆ—çš„æ¬¡åº
+   for ( Rank lo = 0, hi = n; ; ) { //åå¤åšquickParititon
+      swap( R[lo], R[lo + rand()%(hi-lo)] ); T pivot = A[R[lo]]; Rank mi = lo; //å¤§èƒ†çŒœæµ‹
+      for ( Rank i = lo+1; i < hi; i++ ) //LGUç‰ˆpartitionç®—æ³•
          if ( A[R[i]] < pivot )
             swap( R[++mi], R[i] );
       swap( R[lo], R[mi] ); //[0,mi) < [mi] <= (mi, n)
-      if ( mi < k ) lo = mi + 1; //²ÂĞ¡ÁË£¬Ôò¼ô³ıÇ°×º
-      else if ( k < mi ) hi = mi; //²Â´óÁË£¬Ôò¼ô³ıºó×º
-      else return R[mi]; //»òÔç»ò³Ù£¬×ÜÄÜ²ÂÖĞ
+      if ( mi < k ) lo = mi + 1; //çŒœå°äº†ï¼Œåˆ™å‰ªé™¤å‰ç¼€
+      else if ( k < mi ) hi = mi; //çŒœå¤§äº†ï¼Œåˆ™å‰ªé™¤åç¼€
+      else return R[mi]; //æˆ–æ—©æˆ–è¿Ÿï¼Œæ€»èƒ½çŒœä¸­
       //*DSA*/ printf( "%d ~ %d ~ %d : %d\n", lo, k, hi, mi );
       //*DSA*/ for ( Rank i =  0; i < lo; i++ ) printf ( "   x" ); printf("\n");
       //*DSA*/ for ( Rank i =  0; i < lo; i++ ) printf ( "    " );

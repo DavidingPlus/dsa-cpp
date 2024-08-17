@@ -6,20 +6,20 @@
  * Copyright (c) 2003-2024.
  ******************************************************************************************/
 
-#include "stack/stack.h" //½èÖúÕ»½á¹¹£¬¼ÆËãÖ±·½Í¼H[]ÖĞµÄ×î´ó¾ØĞÎ£¨²¢ÁĞÊ±È¡×î¿¿×óÕß£©
+#include "stack/stack.h" //å€ŸåŠ©æ ˆç»“æ„ï¼Œè®¡ç®—ç›´æ–¹å›¾H[]ä¸­çš„æœ€å¤§çŸ©å½¢ï¼ˆå¹¶åˆ—æ—¶å–æœ€é å·¦è€…ï¼‰
 
-__int64 mr_STACKS( int H[], Rank n, Rank& mr_r, Rank& mr_s, Rank& mr_t ) { //³ıÄ©Ïî-1ÉÚ±ø£¬H[]½Ô·Ç¸º
-   Rank* s = new Rank[n]; Stack<Rank> S; //×ÔÓÒ¿É¼ûÏîµÄÖÈ
-   for( Rank r = 0; r < n; r++ ) { //ÒÀ´Î¼ÆËã³ö
-      while ( !S.empty() && ( H[S.top()] >= H[r] ) ) S.pop(); //Ã¿Ò»¸ös(r)
+__int64 mr_STACKS( int H[], Rank n, Rank& mr_r, Rank& mr_s, Rank& mr_t ) { //é™¤æœ«é¡¹-1å“¨å…µï¼ŒH[]çš†éè´Ÿ
+   Rank* s = new Rank[n]; Stack<Rank> S; //è‡ªå³å¯è§é¡¹çš„ç§©
+   for( Rank r = 0; r < n; r++ ) { //ä¾æ¬¡è®¡ç®—å‡º
+      while ( !S.empty() && ( H[S.top()] >= H[r] ) ) S.pop(); //æ¯ä¸€ä¸ªs(r)
       s[r] = S.empty() ? 0 : 1 + S.top();
       S.push(r);
    }
    while( !S.empty() ) S.pop();
 
-   Rank* t = new Rank[n]; Stack<Rank> T; //×Ô×ó¿É¼ûÏîµÄÖÈ
-   for( Rank r = n-1; -1 != r; r-- ) { //ÒÀ´Î¼ÆËã³ö
-      while ( !T.empty() && H[r] <= H[T.top()] ) T.pop(); //Ã¿Ò»¸öt(r)
+   Rank* t = new Rank[n]; Stack<Rank> T; //è‡ªå·¦å¯è§é¡¹çš„ç§©
+   for( Rank r = n-1; -1 != r; r-- ) { //ä¾æ¬¡è®¡ç®—å‡º
+      while ( !T.empty() && H[r] <= H[T.top()] ) T.pop(); //æ¯ä¸€ä¸ªt(r)
       t[r] = T.empty() ? n : T.top();
       T.push(r);
    }
@@ -33,4 +33,4 @@ __int64 mr_STACKS( int H[], Rank n, Rank& mr_r, Rank& mr_s, Rank& mr_t ) { //³ıÄ
    }
    delete [] s; delete [] t;
    return maxRect;
-} //Ã¿Ïî½øÕ»¡¢³öÕ»²»¹ı³£Êı´Î£¬ÀÛ¼Æ³É±¾O(n)
+} //æ¯é¡¹è¿›æ ˆã€å‡ºæ ˆä¸è¿‡å¸¸æ•°æ¬¡ï¼Œç´¯è®¡æˆæœ¬O(n)

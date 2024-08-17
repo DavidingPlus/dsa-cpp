@@ -8,22 +8,22 @@
 
 /*DSA*/#include "simu.h"
 
-void simulate( Rank wins, Rank servTime ) { //°´Ö¸¶¨´°¿ÚÊı¡¢·şÎñ×ÜÊ±¼äÄ£ÄâÒøĞĞÒµÎñ
-   Queue<Customer>* window = new Queue<Customer>[wins]; //ÎªÃ¿Ò»´°¿Ú´´½¨Ò»¸ö¶ÓÁĞ
-   for ( Rank now = 0; now < servTime; now++ ) { //ÔÚÏÂ°àÖ®Ç°£¬Ã¿¸ôÒ»¸öµ¥Î»Ê±¼ä
-      if ( rand() % ( 1 + wins ) ) { //ĞÂ¹Ë¿ÍÒÔwins/(wins + 1)µÄ¸ÅÂÊµ½´ï
-         Customer c ; c.time = 1 + rand() % 98; //ĞÂ¹Ë¿Íµ½´ï£¬·şÎñÊ±³¤Ëæ»úÈ·¶¨
-         c.winId = bestWindow( window, wins ); //ÕÒ³ö×î¼Ñ£¨×î¶Ì£©µÄ·şÎñ´°¿Ú/*DSA*/ToDo: ¸ü¾«Ï¸µÄ²ßÂÔ
-         window[c.winId].enqueue( c ); //ĞÂ¹Ë¿Í¼ÓÈë¶ÔÓ¦µÄ¶ÓÁĞ
+void simulate( Rank wins, Rank servTime ) { //æŒ‰æŒ‡å®šçª—å£æ•°ã€æœåŠ¡æ€»æ—¶é—´æ¨¡æ‹Ÿé“¶è¡Œä¸šåŠ¡
+   Queue<Customer>* window = new Queue<Customer>[wins]; //ä¸ºæ¯ä¸€çª—å£åˆ›å»ºä¸€ä¸ªé˜Ÿåˆ—
+   for ( Rank now = 0; now < servTime; now++ ) { //åœ¨ä¸‹ç­ä¹‹å‰ï¼Œæ¯éš”ä¸€ä¸ªå•ä½æ—¶é—´
+      if ( rand() % ( 1 + wins ) ) { //æ–°é¡¾å®¢ä»¥wins/(wins + 1)çš„æ¦‚ç‡åˆ°è¾¾
+         Customer c ; c.time = 1 + rand() % 98; //æ–°é¡¾å®¢åˆ°è¾¾ï¼ŒæœåŠ¡æ—¶é•¿éšæœºç¡®å®š
+         c.winId = bestWindow( window, wins ); //æ‰¾å‡ºæœ€ä½³ï¼ˆæœ€çŸ­ï¼‰çš„æœåŠ¡çª—å£/*DSA*/ToDo: æ›´ç²¾ç»†çš„ç­–ç•¥
+         window[c.winId].enqueue( c ); //æ–°é¡¾å®¢åŠ å…¥å¯¹åº”çš„é˜Ÿåˆ—
       }
-      for ( Rank i = 0; i < wins; i++ ) //·Ö±ğ¼ì²é
-         if ( !window[i].empty() ) //¸÷·Ç¿Õ¶ÓÁĞ
-            if ( -- window[i].front().time <= 0 ) //¶ÓÊ×¹Ë¿ÍµÄ·şÎñÊ±³¤¼õÉÙÒ»¸öµ¥Î»
-               window[i].dequeue(); //·şÎñÍê±ÏµÄ¹Ë¿Í³öÁĞ£¬ÓÉºó¼Ì¹Ë¿Í½ÓÌæ
-      /*DSA*/displayProgress( window, wins, now ); //ÏÔÊ¾µ±Ç°¸÷£¨´°¿Ú£©¶ÓÁĞÇé¿ö
-      /*DSA*/delay > 0 ? //ÈôÃüÁîĞĞÖ¸¶¨µÄÊ±¼ä¼ä¸ôÎªÕıÊı
-      /*DSA*/  _sleep( delay ) : //Ôò×öÏàÓ¦µÄÑÓ³Ù
-      /*DSA*/  getchar(); //·ñÔò£¬ÒÔÊÖ¶¯·½Ê½µ¥²½ÑİÊ¾
+      for ( Rank i = 0; i < wins; i++ ) //åˆ†åˆ«æ£€æŸ¥
+         if ( !window[i].empty() ) //å„éç©ºé˜Ÿåˆ—
+            if ( -- window[i].front().time <= 0 ) //é˜Ÿé¦–é¡¾å®¢çš„æœåŠ¡æ—¶é•¿å‡å°‘ä¸€ä¸ªå•ä½
+               window[i].dequeue(); //æœåŠ¡å®Œæ¯•çš„é¡¾å®¢å‡ºåˆ—ï¼Œç”±åç»§é¡¾å®¢æ¥æ›¿
+      /*DSA*/displayProgress( window, wins, now ); //æ˜¾ç¤ºå½“å‰å„ï¼ˆçª—å£ï¼‰é˜Ÿåˆ—æƒ…å†µ
+      /*DSA*/delay > 0 ? //è‹¥å‘½ä»¤è¡ŒæŒ‡å®šçš„æ—¶é—´é—´éš”ä¸ºæ­£æ•°
+      /*DSA*/  _sleep( delay ) : //åˆ™åšç›¸åº”çš„å»¶è¿Ÿ
+      /*DSA*/  getchar(); //å¦åˆ™ï¼Œä»¥æ‰‹åŠ¨æ–¹å¼å•æ­¥æ¼”ç¤º
    } //for
-   delete [] window; //ÊÍ·ÅËùÓĞ¶ÓÁĞ£¨´ËÇ°£¬~List()»á×Ô¶¯Çå¿Õ¶ÓÁĞ£©
+   delete [] window; //é‡Šæ”¾æ‰€æœ‰é˜Ÿåˆ—ï¼ˆæ­¤å‰ï¼Œ~List()ä¼šè‡ªåŠ¨æ¸…ç©ºé˜Ÿåˆ—ï¼‰
 }

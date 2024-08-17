@@ -8,13 +8,13 @@
 
 #pragma once
 
-template <typename T> BinNodePosi<T> Splay<T>::insert( const T& e ) { //½«¹Ø¼üÂëe²åÈëÉìÕ¹Ê÷ÖĞ
-   if ( !_root ) { _size = 1; return _root = new BinNode<T>( e ); } //Ô­Ê÷Îª¿Õ
+template <typename T> BinNodePosi<T> Splay<T>::insert( const T& e ) { //å°†å…³é”®ç eæ’å…¥ä¼¸å±•æ ‘ä¸­
+   if ( !_root ) { _size = 1; return _root = new BinNode<T>( e ); } //åŸæ ‘ä¸ºç©º
    BinNodePosi<T> t = search( e );
-   if ( e == t->data ) return t; //Ä¿±ê½ÚµãtÈô´æÔÚ£¬ÉìÕ¹ÖÁ¸ù
-   if ( t->data < e ) //ÔÚÓÒ²à¼Ş½Ó
+   if ( e == t->data ) return t; //ç›®æ ‡èŠ‚ç‚¹tè‹¥å­˜åœ¨ï¼Œä¼¸å±•è‡³æ ¹
+   if ( t->data < e ) //åœ¨å³ä¾§å«æ¥
       { t->parent = _root = new BinNode<T>( e, NULL, t, t->rc ); t->rc = NULL; }
-   else //ÔÚ×ó²à¼Ş½Ó
+   else //åœ¨å·¦ä¾§å«æ¥
       { t->parent = _root = new BinNode<T>( e, NULL, t->lc, t ); t->lc = NULL; }
-   _size++; t->updateHeightAbove(); return _root; //¸üĞÂ¹æÄ£¼°¸ß¶È£¬±¨¸æ²åÈë³É¹¦
-} //ÎŞÂÛeÊÇ·ñ´æÔÚÓÚÔ­Ê÷ÖĞ£¬·µ»ØÊ±×ÜÓĞ_root->data == e
+   _size++; t->updateHeightAbove(); return _root; //æ›´æ–°è§„æ¨¡åŠé«˜åº¦ï¼ŒæŠ¥å‘Šæ’å…¥æˆåŠŸ
+} //æ— è®ºeæ˜¯å¦å­˜åœ¨äºåŸæ ‘ä¸­ï¼Œè¿”å›æ—¶æ€»æœ‰_root->data == e

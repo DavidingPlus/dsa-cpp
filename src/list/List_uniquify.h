@@ -8,12 +8,12 @@
 
 #pragma once
 
-template <typename T> Rank List<T>::uniquify() { //³ÉÅúÌŞ³ıÖØ¸´ÔªËØ£¬Ğ§ÂÊ¸ü¸ß
-   if ( _size < 2 ) return 0; //Æ½·²ÁĞ±í£¬×ÔÈ»²»º¬ÏàµÈÔªËØ
-   Rank oldSize = _size; //¼ÇÂ¼Ô­¹æÄ£
-   ListNodePosi<T> p = first(); ListNodePosi<T> q; //pÎª¸÷Çø¶ÎÆğµã£¬qÎªÆäºó¼Ì
-   while ( tail != ( q = p->succ ) ) //·´¸´¿¼²é½ôÁÚµÄ½Úµã¶Ô(p, q)
-      if ( p->data != q->data ) p = q; //Èô»¥Òì£¬Ôò×ªÏòÏÂÒ»Çø¶Î
-      else remove( q ); //·ñÔò£¨ÏàµÈ£©Ö±½ÓÉ¾³ıºóÕß£¬²»±ØÈçÏòÁ¿ÄÇÑù¼ä½ÓµØÍê³ÉÉ¾³ı
-   return oldSize - _size; //ÁĞ±í¹æÄ£±ä»¯Á¿£¬¼´±»É¾³ıÔªËØ×ÜÊı
+template <typename T> Rank List<T>::uniquify() { //æˆæ‰¹å‰”é™¤é‡å¤å…ƒç´ ï¼Œæ•ˆç‡æ›´é«˜
+   if ( _size < 2 ) return 0; //å¹³å‡¡åˆ—è¡¨ï¼Œè‡ªç„¶ä¸å«ç›¸ç­‰å…ƒç´ 
+   Rank oldSize = _size; //è®°å½•åŸè§„æ¨¡
+   ListNodePosi<T> p = first(); ListNodePosi<T> q; //pä¸ºå„åŒºæ®µèµ·ç‚¹ï¼Œqä¸ºå…¶åç»§
+   while ( tail != ( q = p->succ ) ) //åå¤è€ƒæŸ¥ç´§é‚»çš„èŠ‚ç‚¹å¯¹(p, q)
+      if ( p->data != q->data ) p = q; //è‹¥äº’å¼‚ï¼Œåˆ™è½¬å‘ä¸‹ä¸€åŒºæ®µ
+      else remove( q ); //å¦åˆ™ï¼ˆç›¸ç­‰ï¼‰ç›´æ¥åˆ é™¤åè€…ï¼Œä¸å¿…å¦‚å‘é‡é‚£æ ·é—´æ¥åœ°å®Œæˆåˆ é™¤
+   return oldSize - _size; //åˆ—è¡¨è§„æ¨¡å˜åŒ–é‡ï¼Œå³è¢«åˆ é™¤å…ƒç´ æ€»æ•°
 }

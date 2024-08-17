@@ -8,10 +8,10 @@
 
 #pragma once
 
-template <typename T> BinNodePosi<T> BST<T>::insert( const T& e ) { //½«¹Ø¼üÂëe²åÈëBSTÊ÷ÖĞ
-   BinNodePosi<T>& x = search( e ); //Í¨¹ı²éÕÒ
-   if ( x ) return x; //È·ÈÏÄ¿±ê²»´æÔÚ£¬²¢ÉèÖÃ_hot
-   x = new BinNode<T>( e, _hot ); //ÔÚx´¦´´½¨ĞÂ½Úµã£¬ÒÔ_hotÎª¸¸
-   _size++; x->updateHeightAbove(); //¸üĞÂÈ«Ê÷¹æÄ££¬ÒÔ¼°Àú´ú×æÏÈµÄ¸ß¶È
-   return x; //ĞÂ²åÈëµÄ½Úµã£¬±ØÎªÒ¶×Ó
-} //ÎŞÂÛeÊÇ·ñ´æÔÚÓÚÔ­Ê÷ÖĞ£¬·µ»ØÊ±×ÜÓĞx->data == e
+template <typename T> BinNodePosi<T> BST<T>::insert( const T& e ) { //å°†å…³é”®ç eæ’å…¥BSTæ ‘ä¸­
+   BinNodePosi<T>& x = search( e ); //é€šè¿‡æŸ¥æ‰¾
+   if ( x ) return x; //ç¡®è®¤ç›®æ ‡ä¸å­˜åœ¨ï¼Œå¹¶è®¾ç½®_hot
+   x = new BinNode<T>( e, _hot ); //åœ¨xå¤„åˆ›å»ºæ–°èŠ‚ç‚¹ï¼Œä»¥_hotä¸ºçˆ¶
+   _size++; x->updateHeightAbove(); //æ›´æ–°å…¨æ ‘è§„æ¨¡ï¼Œä»¥åŠå†ä»£ç¥–å…ˆçš„é«˜åº¦
+   return x; //æ–°æ’å…¥çš„èŠ‚ç‚¹ï¼Œå¿…ä¸ºå¶å­
+} //æ— è®ºeæ˜¯å¦å­˜åœ¨äºåŸæ ‘ä¸­ï¼Œè¿”å›æ—¶æ€»æœ‰x->data == e

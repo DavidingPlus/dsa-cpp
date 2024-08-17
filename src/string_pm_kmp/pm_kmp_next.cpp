@@ -8,14 +8,14 @@
 
 /*DSA*/#include "string_pm/string_pm_test.h"
 
-int* buildNext ( char* P ) { //¹¹ÔìÄ£Ê½´®PµÄnext±í
-   int m = strlen ( P ), j = 0; //¡°Ö÷¡±´®Ö¸Õë
-   int* next = new int[m]; int t = next[0] = -1; //next±í£¬Ê×Ïî±ØÎª-1
+int* buildNext ( char* P ) { //æ„é€ æ¨¡å¼ä¸²Pçš„nextè¡¨
+   int m = strlen ( P ), j = 0; //â€œä¸»â€ä¸²æŒ‡é’ˆ
+   int* next = new int[m]; int t = next[0] = -1; //nextè¡¨ï¼Œé¦–é¡¹å¿…ä¸º-1
    while ( j < m - 1 )
-      if ( 0 > t || P[t] == P[j] ) { //Æ¥Åä
-         ++t; ++j; next[j] = t; //ÔòµİÔö¸³Öµ£º´Ë´¦¿É¸Ä½ø...
-      } else //·ñÔò
-         t = next[t]; //¼ÌĞø³¢ÊÔÏÂÒ»ÖµµÃ³¢ÊÔµÄÎ»ÖÃ
+      if ( 0 > t || P[t] == P[j] ) { //åŒ¹é…
+         ++t; ++j; next[j] = t; //åˆ™é€’å¢èµ‹å€¼ï¼šæ­¤å¤„å¯æ”¹è¿›...
+      } else //å¦åˆ™
+         t = next[t]; //ç»§ç»­å°è¯•ä¸‹ä¸€å€¼å¾—å°è¯•çš„ä½ç½®
    /*DSA*/printString ( P ); printf ( "\n" );
    /*DSA*/printNext ( next, 0, m );
    return next;

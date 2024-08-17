@@ -8,12 +8,12 @@
 
 #pragma once
 
-template <typename T> void Quadlist<T>::init() { //Quadlist³õÊ¼»¯£¬´´½¨Quadlist¶ÔÏóÊ±Í³Ò»µ÷ÓÃ
-   head = new QNode<T>; //´´½¨Í·ÉÚ±ø½Úµã
-   tail = new QNode<T>; //´´½¨Î²ÉÚ±ø½Úµã
-   head->succ = tail; head->pred = NULL; //ÑØºáÏòÁª½ÓÉÚ±ø
-   tail->pred = head; tail->succ = NULL; //ÑØºáÏòÁª½ÓÉÚ±ø
-   head->above = tail->above = NULL; //×İÏòµÄºó¼ÌÖÃ¿Õ
-   head->below = tail->below = NULL; //×İÏòµÄÇ°ÇıÖÃ¿Õ
-   _size = 0; //¼ÇÂ¼¹æÄ£
-} //Èç´Ë¹¹ÔìµÄËÄÁª±í£¬²»º¬ÈÎºÎÊµÖÊµÄ½Úµã£¬ÇÒÔİÊ±ÓëÆäËüËÄÁª±íÏà»¥¶ÀÁ¢
+template <typename T> void Quadlist<T>::init() { //Quadliståˆå§‹åŒ–ï¼Œåˆ›å»ºQuadlistå¯¹è±¡æ—¶ç»Ÿä¸€è°ƒç”¨
+   head = new QNode<T>; //åˆ›å»ºå¤´å“¨å…µèŠ‚ç‚¹
+   tail = new QNode<T>; //åˆ›å»ºå°¾å“¨å…µèŠ‚ç‚¹
+   head->succ = tail; head->pred = NULL; //æ²¿æ¨ªå‘è”æ¥å“¨å…µ
+   tail->pred = head; tail->succ = NULL; //æ²¿æ¨ªå‘è”æ¥å“¨å…µ
+   head->above = tail->above = NULL; //çºµå‘çš„åç»§ç½®ç©º
+   head->below = tail->below = NULL; //çºµå‘çš„å‰é©±ç½®ç©º
+   _size = 0; //è®°å½•è§„æ¨¡
+} //å¦‚æ­¤æ„é€ çš„å››è”è¡¨ï¼Œä¸å«ä»»ä½•å®è´¨çš„èŠ‚ç‚¹ï¼Œä¸”æš‚æ—¶ä¸å…¶å®ƒå››è”è¡¨ç›¸äº’ç‹¬ç«‹

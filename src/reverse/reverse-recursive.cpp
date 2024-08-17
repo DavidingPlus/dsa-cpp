@@ -9,8 +9,8 @@
 /*DSA*/#include "_share/util.h"
 /*DSA*/#include "UniPrint/print_int_array.h"
 
-void reverse ( int * A, int n ) { //Êý×éµ¹ÖÃ£¨µÝ¹é°æ£©
+void reverse ( int * A, int n ) { //æ•°ç»„å€’ç½®ï¼ˆé€’å½’ç‰ˆï¼‰
    if ( n < 2 ) return;
-   swap ( A[0], A[n-1] ); //½»»»Ê×ÔªËØºÍÄ©ÔªËØ
-   reverse ( A + 1, n - 2 ); //µÝ¹éµ¹ÖÃÖÐ×º
-} //O(n)Ê±¼ä + O(n)¿Õ¼ä
+   swap ( A[0], A[n-1] ); //äº¤æ¢é¦–å…ƒç´ å’Œæœ«å…ƒç´ 
+   reverse ( A + 1, n - 2 ); //é€’å½’å€’ç½®ä¸­ç¼€
+} //O(n)æ—¶é—´ + O(n)ç©ºé—´

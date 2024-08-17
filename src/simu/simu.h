@@ -14,12 +14,12 @@
 #include <ctime>
 #include <climits>
 
-#include "queue/queue.h" //ÒıÈë¶ÓÁĞ
-#include "Customer.h" //¹Ë¿ÍÀà
+#include "queue/queue.h" //å¼•å…¥é˜Ÿåˆ—
+#include "Customer.h" //é¡¾å®¢ç±»
 
 int bestWindow( Queue<Customer> *, Rank );
 void printCustomer( Customer );
 void displayProgress( Queue<Customer> *, Rank, Rank );
 void simulate( Rank, Rank );
 
-extern int delay; //¿ØÖÆ½ø¶ÈÏÔÊ¾µÄÑÓ³Ù
+extern int delay; //æ§åˆ¶è¿›åº¦æ˜¾ç¤ºçš„å»¶è¿Ÿ

@@ -8,21 +8,21 @@
 
 #pragma once
 
-#include "List/List.h" //ÒıÈëÁĞ±í
-#include "Entry/Entry.h" //ÒıÈë´ÊÌõ
-#include "Quadlist.h" //ÒıÈëQuadlist
-#include "Dictionary/Dictionary.h" //ÒıÈë´Êµä
+#include "List/List.h" //å¼•å…¥åˆ—è¡¨
+#include "Entry/Entry.h" //å¼•å…¥è¯æ¡
+#include "Quadlist.h" //å¼•å…¥Quadlist
+#include "Dictionary/Dictionary.h" //å¼•å…¥è¯å…¸
 
-template <typename K, typename V> //key¡¢value
-//·ûºÏDictionary½Ó¿ÚµÄSkiplistÄ£°åÀà£¨Òşº¬¼ÙÉèÔªËØÖ®¼ä¿É±È½Ï´óĞ¡£©
+template <typename K, typename V> //keyã€value
+//ç¬¦åˆDictionaryæ¥å£çš„Skiplistæ¨¡æ¿ç±»ï¼ˆéšå«å‡è®¾å…ƒç´ ä¹‹é—´å¯æ¯”è¾ƒå¤§å°ï¼‰
 struct Skiplist : public Dictionary<K, V>, public List< Quadlist< Entry<K, V> >* > {
-   Skiplist() { insertFirst( new Quadlist< Entry<K, V> > ); }; //¼´±ãÎª¿Õ£¬Ò²ÓĞÒ»²ã¿ÕÁĞ±í
-   QNodePosi< Entry<K, V> > search( K ); //ÓÉ¹Ø¼üÂë²éÑ¯´ÊÌõ
-   Rank size() const { return empty() ? 0 : last()->data->_size; } //´ÊÌõ×ÜÊı
-   Rank height() { return List::size(); } //²ã¸ß == #Quadlist
-   V* get( K ); //¶ÁÈ¡
-   bool put(K, V); //²åÈë£¨SkiplistÔÊĞí´ÊÌõÏàµÈ£¬¹Ê±ØÈ»³É¹¦£©
-   bool remove ( K ); //É¾³ı
+   Skiplist() { insertFirst( new Quadlist< Entry<K, V> > ); }; //å³ä¾¿ä¸ºç©ºï¼Œä¹Ÿæœ‰ä¸€å±‚ç©ºåˆ—è¡¨
+   QNodePosi< Entry<K, V> > search( K ); //ç”±å…³é”®ç æŸ¥è¯¢è¯æ¡
+   Rank size() const { return empty() ? 0 : last()->data->_size; } //è¯æ¡æ€»æ•°
+   Rank height() { return List::size(); } //å±‚é«˜ == #Quadlist
+   V* get( K ); //è¯»å–
+   bool put(K, V); //æ’å…¥ï¼ˆSkiplistå…è®¸è¯æ¡ç›¸ç­‰ï¼Œæ•…å¿…ç„¶æˆåŠŸï¼‰
+   bool remove ( K ); //åˆ é™¤
 };
 
 #include "Skiplist_implementation.h"

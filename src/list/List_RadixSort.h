@@ -8,15 +8,15 @@
 
 #pragma once
 
-using U = unsigned int; //Ô¼¶¨£ºÀàĞÍT»ò¾ÍÊÇU£»»ò¿É×ª»»ÎªU£¬²¢ÒÀ´Ë¶¨Ğò
+using U = unsigned int; //çº¦å®šï¼šç±»å‹Tæˆ–å°±æ˜¯Uï¼›æˆ–å¯è½¬æ¢ä¸ºUï¼Œå¹¶ä¾æ­¤å®šåº
 
-template <typename T> //¶ÔÁĞ±íÖĞÆğÊ¼ÓÚÎ»ÖÃp¡¢¿í¶ÈÎªnµÄÇø¼ä×ö»ùÊıÅÅĞò
+template <typename T> //å¯¹åˆ—è¡¨ä¸­èµ·å§‹äºä½ç½®pã€å®½åº¦ä¸ºnçš„åŒºé—´åšåŸºæ•°æ’åº
 void List<T>::radixSort( ListNodePosi<T> p, Rank n ) { // valid(p) && Rank(p) + n <= size
    /*DSA*///printf ( "RadixSort ...\n" );
-   ListNodePosi<T> h = p->pred; //´ıÅÅĞòÇø¼äÎª(h, t)
+   ListNodePosi<T> h = p->pred; //å¾…æ’åºåŒºé—´ä¸º(h, t)
    ListNodePosi<T> t = p; for ( Rank i = 0; i < n; i++ ) t = t->succ;
-   for ( U radixBit = 0x1; radixBit && (p = h); radixBit <<= 1 ) //ÒÔÏÂ·´¸´µØ
-      for ( Rank i = 0; i < n; i++ ) //¸ù¾İµ±Ç°»ùÊıÎ»£¬½«ËùÓĞ½Úµã
-         radixBit & U (p->succ->data) ? //·Ö¼ğÎªºó×º£¨1£©ÓëÇ°×º£¨0£©
+   for ( U radixBit = 0x1; radixBit && (p = h); radixBit <<= 1 ) //ä»¥ä¸‹åå¤åœ°
+      for ( Rank i = 0; i < n; i++ ) //æ ¹æ®å½“å‰åŸºæ•°ä½ï¼Œå°†æ‰€æœ‰èŠ‚ç‚¹
+         radixBit & U (p->succ->data) ? //åˆ†æ‹£ä¸ºåç¼€ï¼ˆ1ï¼‰ä¸å‰ç¼€ï¼ˆ0ï¼‰
             insert( remove( p->succ ), t ) : p = p->succ;
-} //Îª±ÜÃâ·´¸´remove()¡¢insert()£¬¿ÉÔö¼ÓList::move(p,t)½Ó¿Ú£¬½«½ÚµãpÖ±½ÓÒÆÖÁtÖ®Ç°
+} //ä¸ºé¿å…åå¤remove()ã€insert()ï¼Œå¯å¢åŠ List::move(p,t)æ¥å£ï¼Œå°†èŠ‚ç‚¹pç›´æ¥ç§»è‡³tä¹‹å‰

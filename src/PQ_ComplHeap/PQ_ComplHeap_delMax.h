@@ -8,8 +8,8 @@
 
 #pragma once
 
-template <typename T> T PQ_ComplHeap<T>::delMax() { //È¡³ö×î´ó´ÊÌõ
-   swap( _elem[0], _elem[--_size] ); //¶Ñ¶¥¡¢¶ÑÎ²»¥»»£¨_sizeµÄµİ¼õ£¬²»ÖÂÒı·¢shrink()£©
-   percolateDown( _elem, _size, 0 ); //ĞÂ¶Ñ¶¥ÏÂÂË
-   return _elem[_size]; //·µ»ØÔ­¶Ñ¶¥
+template <typename T> T PQ_ComplHeap<T>::delMax() { //å–å‡ºæœ€å¤§è¯æ¡
+   swap( _elem[0], _elem[--_size] ); //å †é¡¶ã€å †å°¾äº’æ¢ï¼ˆ_sizeçš„é€’å‡ï¼Œä¸è‡´å¼•å‘shrink()ï¼‰
+   percolateDown( _elem, _size, 0 ); //æ–°å †é¡¶ä¸‹æ»¤
+   return _elem[_size]; //è¿”å›åŸå †é¡¶
 }

@@ -8,20 +8,20 @@
 
 #pragma once
 
-template <typename K, typename V> bool Skiplist<K, V>::put( K k, V v ) { //Ìø×ª±í´ÊÌõ²åÈëËã·¨
-   Entry<K, V> e = Entry<K, V>( k, v ); //´ı²åÈëµÄ´ÊÌõ£¨½«±»Í¬Ò»ËşÖĞËùÓĞ½Úµã¹²ÓÃ£©
-   QNodePosi< Entry<K, V> > p = search( k ); //²éÕÒ²åÈëÎ»ÖÃ£ºĞÂËş½«½ôÁÚÆäÓÒ£¬Öğ²ãÉú³¤
-   ListNodePosi< Quadlist< Entry<K, V> >* > qlist = last(); //Ê×ÏÈÔÚ×îµ×²ã
-   QNodePosi< Entry<K, V> > b = qlist->data->insert( e, p ); //´´½¨ĞÂËşµÄ»ù×ù
-   while ( rand() & 1 ) { //¾­Í¶ÖÀÓ²±Ò£¬ÈôÈ·¶¨ĞÂËşĞèÒªÔÙ³¤¸ß£¬Ôò
-      while ( p->pred && !p->above ) p = p->pred; //ÕÒ³ö²»µÍÓÚ´Ë¸ß¶ÈµÄ×î½üÇ°Çı
-      if ( !p->pred && !p->above ) { //Èô¸ÃÇ°ÇıÊÇhead£¬ÇÒÒÑÊÇ×î¶¥²ã£¬Ôò
-         insertFirst( new Quadlist< Entry<K, V> > ); //ĞèÒª´´½¨ĞÂµÄÒ»²ã
+template <typename K, typename V> bool Skiplist<K, V>::put( K k, V v ) { //è·³è½¬è¡¨è¯æ¡æ’å…¥ç®—æ³•
+   Entry<K, V> e = Entry<K, V>( k, v ); //å¾…æ’å…¥çš„è¯æ¡ï¼ˆå°†è¢«åŒä¸€å¡”ä¸­æ‰€æœ‰èŠ‚ç‚¹å…±ç”¨ï¼‰
+   QNodePosi< Entry<K, V> > p = search( k ); //æŸ¥æ‰¾æ’å…¥ä½ç½®ï¼šæ–°å¡”å°†ç´§é‚»å…¶å³ï¼Œé€å±‚ç”Ÿé•¿
+   ListNodePosi< Quadlist< Entry<K, V> >* > qlist = last(); //é¦–å…ˆåœ¨æœ€åº•å±‚
+   QNodePosi< Entry<K, V> > b = qlist->data->insert( e, p ); //åˆ›å»ºæ–°å¡”çš„åŸºåº§
+   while ( rand() & 1 ) { //ç»æŠ•æ·ç¡¬å¸ï¼Œè‹¥ç¡®å®šæ–°å¡”éœ€è¦å†é•¿é«˜ï¼Œåˆ™
+      while ( p->pred && !p->above ) p = p->pred; //æ‰¾å‡ºä¸ä½äºæ­¤é«˜åº¦çš„æœ€è¿‘å‰é©±
+      if ( !p->pred && !p->above ) { //è‹¥è¯¥å‰é©±æ˜¯headï¼Œä¸”å·²æ˜¯æœ€é¡¶å±‚ï¼Œåˆ™
+         insertFirst( new Quadlist< Entry<K, V> > ); //éœ€è¦åˆ›å»ºæ–°çš„ä¸€å±‚
          first()->data->head->below = qlist->data->head;
          qlist->data->head->above = first()->data->head;
       }
-      p = p->above; qlist = qlist->pred; //ÉÏÉıÒ»²ã£¬²¢ÔÚ¸Ã²ã
-      b = qlist->data->insert( e, p, b ); //½«ĞÂ½Úµã²åÈëpÖ®ºó¡¢bÖ®ÉÏ
-   } //¿Îºó£ºµ÷ÕûËæ»ú²ÎÊı£¬¹Û²ì×ÜÌå²ã¸ßµÄÏàÓ¦±ä»¯
-   return true; //DictionaryÔÊĞíÔªËØÏàµÈ£¬²åÈë±Ø³É¹¦
-} //Ìå»á£ºµÃÒæÓÚÉÚ±øµÄÉèÖÃ£¬ÄÄĞ©»·½Ú±»¼ò»¯ÁË£¿
+      p = p->above; qlist = qlist->pred; //ä¸Šå‡ä¸€å±‚ï¼Œå¹¶åœ¨è¯¥å±‚
+      b = qlist->data->insert( e, p, b ); //å°†æ–°èŠ‚ç‚¹æ’å…¥pä¹‹åã€bä¹‹ä¸Š
+   } //è¯¾åï¼šè°ƒæ•´éšæœºå‚æ•°ï¼Œè§‚å¯Ÿæ€»ä½“å±‚é«˜çš„ç›¸åº”å˜åŒ–
+   return true; //Dictionaryå…è®¸å…ƒç´ ç›¸ç­‰ï¼Œæ’å…¥å¿…æˆåŠŸ
+} //ä½“ä¼šï¼šå¾—ç›Šäºå“¨å…µçš„è®¾ç½®ï¼Œå“ªäº›ç¯èŠ‚è¢«ç®€åŒ–äº†ï¼Ÿ

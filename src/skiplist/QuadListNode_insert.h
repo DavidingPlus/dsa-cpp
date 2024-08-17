@@ -8,10 +8,10 @@
 
 #pragma once
 
-template <typename T> QNodePosi<T> //½«e×÷Îªµ±Ç°½ÚµãµÄºó¼Ì¡¢bµÄÉÏÁÚ²åÈëQuadlist
+template <typename T> QNodePosi<T> //å°†eä½œä¸ºå½“å‰èŠ‚ç‚¹çš„åç»§ã€bçš„ä¸Šé‚»æ’å…¥Quadlist
 QNode<T>::insert( T const& e, QNodePosi<T> b ) {
-   QNodePosi<T> x = new QNode<T>( e, this, succ, NULL, b ); //´´½¨ĞÂ½Úµã
-   succ->pred = x; succ = x; //ÉèÖÃË®Æ½ÄæÏòÁ´½Ó
-   if ( b ) b->above = x; //ÉèÖÃ´¹Ö±ÄæÏòÁ´½Ó
-   return x; //·µ»ØĞÂ½ÚµãµÄÎ»ÖÃ
+   QNodePosi<T> x = new QNode<T>( e, this, succ, NULL, b ); //åˆ›å»ºæ–°èŠ‚ç‚¹
+   succ->pred = x; succ = x; //è®¾ç½®æ°´å¹³é€†å‘é“¾æ¥
+   if ( b ) b->above = x; //è®¾ç½®å‚ç›´é€†å‘é“¾æ¥
+   return x; //è¿”å›æ–°èŠ‚ç‚¹çš„ä½ç½®
 }

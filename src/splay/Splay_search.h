@@ -8,8 +8,8 @@
 
 #pragma once
 
-template <typename T> BinNodePosi<T>& Splay<T>::search( const T& e ) { //����չ���в���e
-   BinNodePosi<T> p = BST<T>::search( e ); //��BST��׼�㷨����
-   _root = p ? splay(p) : _hot ? splay(_hot) : NULL;  //���۳ɹ���ʧ�ܡ����գ������ʵĽڵ㽫��չ����
+template <typename T> BinNodePosi<T>& Splay<T>::search( const T& e ) { //在伸展树中查找e
+   BinNodePosi<T> p = BST<T>::search( e ); //按BST标准算法查找
+   _root = p ? splay(p) : _hot ? splay(_hot) : NULL;  //无论成功、失败、树空，被访问的节点将伸展至根
    return _root;
-} //������BST��ͬ��������Σ�_root��ָ����󱻷��ʵĽڵ�
+} //与其它BST不同，无论如何，_root都指向最后被访问的节点

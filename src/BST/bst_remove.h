@@ -8,9 +8,9 @@
 
 #pragma once
 
-template <typename T> bool BST<T>::remove( const T& e ) { //´ÓBSTÊ÷ÖĞÉ¾³ı¹Ø¼üÂëe
-   BinNodePosi<T>& x = search( e ); if ( !x ) return false; //È·ÈÏÄ¿±ê´æÔÚ£¨ÁôÒâ_hotµÄÉèÖÃ£©
-   removeAt( x, _hot ); //ÊµÊ©É¾³ı
-   _size--; _hot->updateHeightAbove(); //¸üĞÂÈ«Ê÷¸ß¶È£¬ÒÔ¼°Àú´ú×æÏÈµÄ¸ß¶È
+template <typename T> bool BST<T>::remove( const T& e ) { //ä»BSTæ ‘ä¸­åˆ é™¤å…³é”®ç e
+   BinNodePosi<T>& x = search( e ); if ( !x ) return false; //ç¡®è®¤ç›®æ ‡å­˜åœ¨ï¼ˆç•™æ„_hotçš„è®¾ç½®ï¼‰
+   removeAt( x, _hot ); //å®æ–½åˆ é™¤
+   _size--; _hot->updateHeightAbove(); //æ›´æ–°å…¨æ ‘é«˜åº¦ï¼Œä»¥åŠå†ä»£ç¥–å…ˆçš„é«˜åº¦
    return true;
-} //É¾³ı³É¹¦Óë·ñ£¬ÓÉ·µ»ØÖµÖ¸Ê¾
+} //åˆ é™¤æˆåŠŸä¸å¦ï¼Œç”±è¿”å›å€¼æŒ‡ç¤º

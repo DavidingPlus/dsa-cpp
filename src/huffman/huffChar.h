@@ -8,12 +8,12 @@
 
 #pragma once
 
-#define  N_CHAR  (0x80 - 0x20) //½öÒÔ¿É´òÓ¡×Ö·ûÎªÀı
-struct HuffChar { //Huffman£¨³¬£©×Ö·û
-   char ch; unsigned int weight; //×Ö·û¡¢ÆµÂÊ
+#define  N_CHAR  (0x80 - 0x20) //ä»…ä»¥å¯æ‰“å°å­—ç¬¦ä¸ºä¾‹
+struct HuffChar { //Huffmanï¼ˆè¶…ï¼‰å­—ç¬¦
+   char ch; unsigned int weight; //å­—ç¬¦ã€é¢‘ç‡
    HuffChar ( char c = '^', unsigned int w = 0 ) : ch ( c ), weight ( w ) {};
    HuffChar ( HuffChar const & hc ) : ch( hc.ch ), weight( hc.weight ) {};
-   // ±È½ÏÆ÷¡¢ÅĞµÈÆ÷£¨¸÷ÁĞÆäÒ»£¬ÆäÓà×ÔĞĞ²¹³ä£©
-   bool operator< ( HuffChar const& hc ) { return weight > hc.weight; } //´Ë´¦¹ÊÒâ´óĞ¡µßµ¹
+   // æ¯”è¾ƒå™¨ã€åˆ¤ç­‰å™¨ï¼ˆå„åˆ—å…¶ä¸€ï¼Œå…¶ä½™è‡ªè¡Œè¡¥å……ï¼‰
+   bool operator< ( HuffChar const& hc ) { return weight > hc.weight; } //æ­¤å¤„æ•…æ„å¤§å°é¢ å€’
    bool operator== ( HuffChar const& hc ) { return weight == hc.weight; }
 };

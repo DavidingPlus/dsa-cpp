@@ -8,14 +8,14 @@
 
 #pragma once
 
-template <typename T> //ºÏ²¢ÒÔaºÍbÎª¸ù½ÚµãµÄÁ½¸ö×óÊ½¶Ñ£¨µİ¹é°æ£©
+template <typename T> //åˆå¹¶ä»¥aå’Œbä¸ºæ ¹èŠ‚ç‚¹çš„ä¸¤ä¸ªå·¦å¼å †ï¼ˆé€’å½’ç‰ˆï¼‰
 BinNodePosi<T> merge( BinNodePosi<T> a, BinNodePosi<T> b ) {
-   if ( !a ) return b; //ÍË»¯Çé¿ö
-   if ( !b ) return a; //ÍË»¯Çé¿ö
-   if ( *a < *b ) swap( a, b ); //È·±£a>=b
-   ( a->rc = merge( a->rc, b ) )->parent = a; //½«aµÄÓÒ×Ó¶Ñ£¬ÓëbºÏ²¢
-   if ( !a->lc || ( a->lc->npl < a->rc->npl ) ) //ÈôÓĞ±ØÒª
-      swap( a->lc, a->rc ); //½»»»aµÄ×ó¡¢ÓÒ×Ó¶Ñ£¬ÒÔÈ·±£ÓÒ×Ó¶ÑµÄnpl²»´ó
-   a->npl = a->rc ? a->rc->npl + 1 : 1; //¸üĞÂaµÄnpl
-   return a; //·µ»ØºÏ²¢ºóµÄ¶Ñ¶¥
-} //±¾Ëã·¨Ö»ÊµÏÖ½á¹¹ÉÏµÄºÏ²¢£¬¶ÑµÄ¹æÄ£ĞëÓÉÉÏ²ãµ÷ÓÃÕß¸ºÔğ¸üĞÂ
+   if ( !a ) return b; //é€€åŒ–æƒ…å†µ
+   if ( !b ) return a; //é€€åŒ–æƒ…å†µ
+   if ( *a < *b ) swap( a, b ); //ç¡®ä¿a>=b
+   ( a->rc = merge( a->rc, b ) )->parent = a; //å°†açš„å³å­å †ï¼Œä¸båˆå¹¶
+   if ( !a->lc || ( a->lc->npl < a->rc->npl ) ) //è‹¥æœ‰å¿…è¦
+      swap( a->lc, a->rc ); //äº¤æ¢açš„å·¦ã€å³å­å †ï¼Œä»¥ç¡®ä¿å³å­å †çš„nplä¸å¤§
+   a->npl = a->rc ? a->rc->npl + 1 : 1; //æ›´æ–°açš„npl
+   return a; //è¿”å›åˆå¹¶åçš„å †é¡¶
+} //æœ¬ç®—æ³•åªå®ç°ç»“æ„ä¸Šçš„åˆå¹¶ï¼Œå †çš„è§„æ¨¡é¡»ç”±ä¸Šå±‚è°ƒç”¨è€…è´Ÿè´£æ›´æ–°

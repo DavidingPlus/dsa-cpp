@@ -8,9 +8,9 @@
 
 #pragma once
 
-template <typename T> void Vector<T>::expand() { //ÏòÁ¿¿Õ¼ä²»×ãÊ±À©Èİ
-   if ( _size < _capacity ) return; //ÉĞÎ´ÂúÔ±Ê±£¬²»±ØÀ©Èİ
-   T* oldElem = _elem; copyFrom( oldElem, 0, _capacity ); //ÈİÁ¿¼Ó±¶
+template <typename T> void Vector<T>::expand() { //å‘é‡ç©ºé—´ä¸è¶³æ—¶æ‰©å®¹
+   if ( _size < _capacity ) return; //å°šæœªæ»¡å‘˜æ—¶ï¼Œä¸å¿…æ‰©å®¹
+   T* oldElem = _elem; copyFrom( oldElem, 0, _capacity ); //å®¹é‡åŠ å€
    /*DSA*/ //printf("\n_ELEM [%x]*%d/%d expanded and shift to [%x]*%d/%d\n", oldElem, _size, _capacity/2, _elem, _size, _capacity);
-   delete [] oldElem; //ÊÍ·ÅÔ­¿Õ¼ä
+   delete [] oldElem; //é‡Šæ”¾åŸç©ºé—´
 }

@@ -8,14 +8,14 @@
 
 #pragma once
 
-template <typename T> BinNodePosi<T> AVL<T>::insert( const T& e ) { //½«¹Ø¼üÂëe²åÈëAVLÊ÷ÖĞ
-   BinNodePosi<T>& x = search( e ); if ( x ) return x; //²åÈëÊ§°Ü
-   BinNodePosi<T> xx = x = new BinNode<T>( e, _hot ); _size++; //´´½¨ĞÂ½Úµãx
-// ´ËÊ±£¬xµÄ¸¸Ç×_hotÈôÔö¸ß£¬ÔòÆä×æ¸¸ÓĞ¿ÉÄÜÊ§ºâ
-   for ( BinNodePosi<T> g = _hot; g; g->updateHeight(), g = g->parent ) //Öğ²ãÉÏËİ
-      if ( !AvlBalanced( g ) ) { //Ò»µ©·¢ÏÖÊ§ºâ×æÏÈg£¬Ôò
-         rotateAt( tallerChild( tallerChild( g ) ) ); //£¨²ÉÓÃ¡°3+4¡±Ëã·¨£©Ê¹Ö®¸´ºâ
-         break; //²¢Ëæ¼´ÖÕÖ¹£¨¾Ö²¿×ÓÊ÷¸´ºâºó£¬¸ß¶È±ØÈ»¸´Ô­£»ËùÓĞ×æÏÈÒà±Ø¸´ºâ£©
+template <typename T> BinNodePosi<T> AVL<T>::insert( const T& e ) { //å°†å…³é”®ç eæ’å…¥AVLæ ‘ä¸­
+   BinNodePosi<T>& x = search( e ); if ( x ) return x; //æ’å…¥å¤±è´¥
+   BinNodePosi<T> xx = x = new BinNode<T>( e, _hot ); _size++; //åˆ›å»ºæ–°èŠ‚ç‚¹x
+// æ­¤æ—¶ï¼Œxçš„çˆ¶äº²_hotè‹¥å¢é«˜ï¼Œåˆ™å…¶ç¥–çˆ¶æœ‰å¯èƒ½å¤±è¡¡
+   for ( BinNodePosi<T> g = _hot; g; g->updateHeight(), g = g->parent ) //é€å±‚ä¸Šæº¯
+      if ( !AvlBalanced( g ) ) { //ä¸€æ—¦å‘ç°å¤±è¡¡ç¥–å…ˆgï¼Œåˆ™
+         rotateAt( tallerChild( tallerChild( g ) ) ); //ï¼ˆé‡‡ç”¨â€œ3+4â€ç®—æ³•ï¼‰ä½¿ä¹‹å¤è¡¡
+         break; //å¹¶éšå³ç»ˆæ­¢ï¼ˆå±€éƒ¨å­æ ‘å¤è¡¡åï¼Œé«˜åº¦å¿…ç„¶å¤åŸï¼›æ‰€æœ‰ç¥–å…ˆäº¦å¿…å¤è¡¡ï¼‰
       }
-   return xx; //²åÈë³É¹¦
-} //ÖÁ¶à»á×öO(1)´Îµ÷Õû
+   return xx; //æ’å…¥æˆåŠŸ
+} //è‡³å¤šä¼šåšO(1)æ¬¡è°ƒæ•´

@@ -8,7 +8,7 @@
 
 #pragma once
 
-template <typename K, typename V> V* Skiplist<K, V>::get( K k ) { //Ìø×ª±í´ÊÌõ²éÕÒËã·¨
-   QNode< Entry<K, V> >* p = search(k); //ÎŞÂÛÊÇ·ñÃüÖĞ£¬search()¶¼²»»á·µ»ØNULL
-   return (p->pred && p->entry.key == k) ? &(p->entry.value) : NULL; //¹ÊĞëÔÙ×öÅĞ¶Ï
-} //ÓĞ¶à¸öÃüÖĞÊ±¿¿ºóÕßÓÅÏÈ
+template <typename K, typename V> V* Skiplist<K, V>::get( K k ) { //è·³è½¬è¡¨è¯æ¡æŸ¥æ‰¾ç®—æ³•
+   QNode< Entry<K, V> >* p = search(k); //æ— è®ºæ˜¯å¦å‘½ä¸­ï¼Œsearch()éƒ½ä¸ä¼šè¿”å›NULL
+   return (p->pred && p->entry.key == k) ? &(p->entry.value) : NULL; //æ•…é¡»å†åšåˆ¤æ–­
+} //æœ‰å¤šä¸ªå‘½ä¸­æ—¶é åè€…ä¼˜å…ˆ

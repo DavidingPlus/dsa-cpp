@@ -9,16 +9,16 @@
 #pragma once
 
 /******************************************************************************************
- * BST�ڵ���ת�任ͳһ�㷨��3�ڵ� + 4�����������ص���֮��ֲ��������ڵ��λ��
- * ע�⣺��������������ȷָ���ϲ�ڵ㣨������ڣ�������������������ϲ㺯�����
+ * BST节点旋转变换统一算法（3节点 + 4子树），返回调整之后局部子树根节点的位置
+ * 注意：尽管子树根会正确指向上层节点（如果存在），但反向的联接须由上层函数完成
  ******************************************************************************************/
-template <typename T> BinNodePosi<T> BST<T>::rotateAt( BinNodePosi<T> v ) { //vΪ�ǿ��ﱲ�ڵ�
+template <typename T> BinNodePosi<T> BST<T>::rotateAt( BinNodePosi<T> v ) { //v为非空孙辈节点
    /*DSA*/if ( !v ) { printf ( "\a\nFail to rotate a null node\n" ); exit ( -1 ); }
    BinNodePosi<T> p = v->parent; int TurnV = (v == p->rc);
    BinNodePosi<T> g = p->parent; int TurnP = (p == g->rc);
-   BinNodePosi<T> r = ( TurnP == TurnV ) ? p : v; //�����µĸ��ڵ�
-   ( FromParentTo(g) = r )->parent = g->parent;; //�뱣����ĸ��������
-   switch ( ( TurnP << 1 ) | TurnV ) { //��p��v�Ĺ����޷��������
+   BinNodePosi<T> r = ( TurnP == TurnV ) ? p : v; //子树新的根节点
+   ( FromParentTo(g) = r )->parent = g->parent;; //须保持与母树的联接
+   switch ( ( TurnP << 1 ) | TurnV ) { //视p、v的拐向，无非四种情况
       case 0b00 : //zig-zig
          return connect34( v, p, g,  v->lc, v->rc, p->rc, g->rc );
       case 0b01 : //zig-zag

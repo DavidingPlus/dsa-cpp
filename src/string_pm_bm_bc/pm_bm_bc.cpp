@@ -8,14 +8,14 @@
 
 /*DSA*/#include "string_pm/string_pm_test.h"
 
-int match( char* P, char* T ) { //Boyer-MorreËã·¨£¨¼ò»¯°æ£¬Ö»¿¼ÂÇBad Character Shift£©
-   int* bc = buildBC( P ); //Ô¤´¦Àí
-   int n = strlen( T ), i; //ÎÄ±¾´®³¤¶È¡¢ÓëÄ£Ê½´®Ê××Ö·ûµÄ¶ÔÆëÎ»ÖÃ
-   int m = strlen( P ), j; //Ä£Ê½´®³¤¶È¡¢Ä£Ê½´®µ±Ç°×Ö·ûÎ»ÖÃ
-   for ( i = 0; i+m <= n; i += max(1, j - bc[ T[i+j] ]) ) { //²»¶ÏÓÒÒÆP
-      for ( j = m-1; (0 <= j) && (P[j] == T[i+j]); j-- ); //×ÔÓÒÏò×óÖğ¸ö±È¶Ô
+int match( char* P, char* T ) { //Boyer-Morreç®—æ³•ï¼ˆç®€åŒ–ç‰ˆï¼Œåªè€ƒè™‘Bad Character Shiftï¼‰
+   int* bc = buildBC( P ); //é¢„å¤„ç†
+   int n = strlen( T ), i; //æ–‡æœ¬ä¸²é•¿åº¦ã€ä¸æ¨¡å¼ä¸²é¦–å­—ç¬¦çš„å¯¹é½ä½ç½®
+   int m = strlen( P ), j; //æ¨¡å¼ä¸²é•¿åº¦ã€æ¨¡å¼ä¸²å½“å‰å­—ç¬¦ä½ç½®
+   for ( i = 0; i+m <= n; i += max(1, j - bc[ T[i+j] ]) ) { //ä¸æ–­å³ç§»P
+      for ( j = m-1; (0 <= j) && (P[j] == T[i+j]); j-- ); //è‡ªå³å‘å·¦é€ä¸ªæ¯”å¯¹
       /*DSA*/showProgress ( T, P, i, j );
-      if ( j < 0 ) break; //Ò»µ©ÍêÈ«Æ¥Åä£¬Ëæ¼´ÊÕ¹¤
+      if ( j < 0 ) break; //ä¸€æ—¦å®Œå…¨åŒ¹é…ï¼Œéšå³æ”¶å·¥
    }
-   delete [] bc; return i; //Ïú»ÙBC±í£¬·µ»Ø×îÖÕµÄ¶ÔÆëÎ»ÖÃ
+   delete [] bc; return i; //é”€æ¯BCè¡¨ï¼Œè¿”å›æœ€ç»ˆçš„å¯¹é½ä½ç½®
 }

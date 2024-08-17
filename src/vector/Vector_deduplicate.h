@@ -8,12 +8,12 @@
 
 #pragma once
 
-template <typename T> Rank Vector<T>::dedup() { //É¾³ıÎŞĞòÏòÁ¿ÖĞÖØ¸´ÔªËØ£¨¸ßĞ§°æ£©
-   Rank oldSize = _size; //¼ÇÂ¼Ô­¹æÄ£
-   for ( Rank i = 1; i < _size; ) //×ÔÇ°ÏòºóÖğ¸ö¿¼²é_elem[1,_size)
-      if ( -1 == find(_elem[i], 0, i) ) //ÔÚÇ°×º[0,i)ÖĞÑ°ÕÒÓë[i]À×Í¬Õß£¨ÖÁ¶àÒ»¸ö£©£¬O(i)
-         i++; //ÈôÎŞÀ×Í¬£¬Ôò¼ÌĞø¿¼²éÆäºó¼Ì
+template <typename T> Rank Vector<T>::dedup() { //åˆ é™¤æ— åºå‘é‡ä¸­é‡å¤å…ƒç´ ï¼ˆé«˜æ•ˆç‰ˆï¼‰
+   Rank oldSize = _size; //è®°å½•åŸè§„æ¨¡
+   for ( Rank i = 1; i < _size; ) //è‡ªå‰å‘åé€ä¸ªè€ƒæŸ¥_elem[1,_size)
+      if ( -1 == find(_elem[i], 0, i) ) //åœ¨å‰ç¼€[0,i)ä¸­å¯»æ‰¾ä¸[i]é›·åŒè€…ï¼ˆè‡³å¤šä¸€ä¸ªï¼‰ï¼ŒO(i)
+         i++; //è‹¥æ— é›·åŒï¼Œåˆ™ç»§ç»­è€ƒæŸ¥å…¶åç»§
       else
-         remove(i); //·ñÔòÉ¾³ı[i]£¬O(_size-i)
-   return oldSize - _size; //±»É¾³ıÔªËØ×ÜÊı
+         remove(i); //å¦åˆ™åˆ é™¤[i]ï¼ŒO(_size-i)
+   return oldSize - _size; //è¢«åˆ é™¤å…ƒç´ æ€»æ•°
 }

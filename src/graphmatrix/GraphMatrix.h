@@ -8,82 +8,82 @@
 
 #pragma once
 
-#include "Vector/Vector.h" //ÒıÈëÏòÁ¿
-#include "Graph/Graph.h" //ÒıÈëÍ¼ADT
+#include "Vector/Vector.h" //å¼•å…¥å‘é‡
+#include "Graph/Graph.h" //å¼•å…¥å›¾ADT
 
-template <typename Tv> struct Vertex { //¶¥µã¶ÔÏó£¨Îª¼ò»¯Æğ¼û£¬²¢Î´ÑÏ¸ñ·â×°£©
-   Tv data; int inDegree, outDegree; VStatus status; //Êı¾İ¡¢³öÈë¶ÈÊı¡¢×´Ì¬
-   Rank dTime, fTime; //Ê±¼ä±êÇ©
-   Rank parent; int priority; //ÔÚ±éÀúÊ÷ÖĞµÄ¸¸½Úµã¡¢ÓÅÏÈ¼¶Êı
-   Vertex( Tv const& d = (Tv)0 ) : //¹¹ÔìĞÂ¶¥µã
+template <typename Tv> struct Vertex { //é¡¶ç‚¹å¯¹è±¡ï¼ˆä¸ºç®€åŒ–èµ·è§ï¼Œå¹¶æœªä¸¥æ ¼å°è£…ï¼‰
+   Tv data; int inDegree, outDegree; VStatus status; //æ•°æ®ã€å‡ºå…¥åº¦æ•°ã€çŠ¶æ€
+   Rank dTime, fTime; //æ—¶é—´æ ‡ç­¾
+   Rank parent; int priority; //åœ¨éå†æ ‘ä¸­çš„çˆ¶èŠ‚ç‚¹ã€ä¼˜å…ˆçº§æ•°
+   Vertex( Tv const& d = (Tv)0 ) : //æ„é€ æ–°é¡¶ç‚¹
       data( d ), inDegree( 0 ), outDegree( 0 ), status( UNDISCOVERED ), dTime( -1 ),
-      fTime( -1 ), parent( -1 ), priority( INT_MAX ) {} //Ôİ²»¿¼ÂÇÈ¨ÖØÒç³ö
+      fTime( -1 ), parent( -1 ), priority( INT_MAX ) {} //æš‚ä¸è€ƒè™‘æƒé‡æº¢å‡º
 };
 
-template <typename Te> struct Edge { //±ß¶ÔÏó£¨Îª¼ò»¯Æğ¼û£¬²¢Î´ÑÏ¸ñ·â×°£©
+template <typename Te> struct Edge { //è¾¹å¯¹è±¡ï¼ˆä¸ºç®€åŒ–èµ·è§ï¼Œå¹¶æœªä¸¥æ ¼å°è£…ï¼‰
    Te data; int weight;
-   EType type; //Êı¾İ¡¢È¨ÖØ¡¢ÀàĞÍ
-   Edge( Te const& d, int w ) : data( d ), weight( w ), type( UNDETERMINED ) {} //¹¹Ôì
+   EType type; //æ•°æ®ã€æƒé‡ã€ç±»å‹
+   Edge( Te const& d, int w ) : data( d ), weight( w ), type( UNDETERMINED ) {} //æ„é€ 
 };
 
-template <typename Tv, typename Te> //¶¥µãÀàĞÍ¡¢±ßÀàĞÍ
-class GraphMatrix : public Graph<Tv, Te> { //»ùÓÚÏòÁ¿£¬ÒÔÁÚ½Ó¾ØÕóĞÎÊ½ÊµÏÖµÄÍ¼
+template <typename Tv, typename Te> //é¡¶ç‚¹ç±»å‹ã€è¾¹ç±»å‹
+class GraphMatrix : public Graph<Tv, Te> { //åŸºäºå‘é‡ï¼Œä»¥é‚»æ¥çŸ©é˜µå½¢å¼å®ç°çš„å›¾
 private:
-   Vector<Vertex<Tv>> V; //¶¥µã¼¯£¨ÏòÁ¿£©
-   Vector<Vector<Edge<Te>*>> E; //±ß¼¯£¨ÁÚ½Ó¾ØÕó£©
+   Vector<Vertex<Tv>> V; //é¡¶ç‚¹é›†ï¼ˆå‘é‡ï¼‰
+   Vector<Vector<Edge<Te>*>> E; //è¾¹é›†ï¼ˆé‚»æ¥çŸ©é˜µï¼‰
 public:
-   GraphMatrix() { n = e = 0; } //¹¹Ôì
-   ~GraphMatrix() { //Îö¹¹
-      for ( Rank v = 0; v < n; v++ ) //ËùÓĞ¶¯Ì¬´´½¨µÄ
-         for ( Rank u = 0; u < n; u++ ) //±ß¼ÇÂ¼
-            delete E[v][u]; //ÖğÌõÇå³ı
+   GraphMatrix() { n = e = 0; } //æ„é€ 
+   ~GraphMatrix() { //ææ„
+      for ( Rank v = 0; v < n; v++ ) //æ‰€æœ‰åŠ¨æ€åˆ›å»ºçš„
+         for ( Rank u = 0; u < n; u++ ) //è¾¹è®°å½•
+            delete E[v][u]; //é€æ¡æ¸…é™¤
    }
-// ¶¥µãµÄ»ù±¾²Ù×÷£º²éÑ¯µÚv¸ö¶¥µã£¨0 <= v < n£©
-   virtual Tv& vertex( Rank v ) { return V[v].data; } //Êı¾İ
-   virtual Rank inDegree( Rank v ) { return V[v].inDegree; } //Èë¶È
-   virtual Rank outDegree( Rank v ) { return V[v].outDegree; } //³ö¶È
-   virtual Rank firstNbr( Rank v ) { return nextNbr( v, n ); } //Ê×¸öÁÚ½Ó¶¥µã
-   virtual Rank nextNbr( Rank v, Rank u ) //Ïà¶ÔÓÚ¶¥µãuµÄÏÂÒ»ÁÚ½Ó¶¥µã£¨¸ÄÓÃÁÚ½Ó±íĞ§ÂÊ¸ü¸ß£©
-      { while ( ( -1 != --u ) && !exists( v, u ) ); return u; } //ÄæÏòÏßĞÔÊÔÌ½
-   virtual VStatus& status( Rank v ) { return V[v].status; } //×´Ì¬
-   virtual Rank& dTime( Rank v ) { return V[v].dTime; } //Ê±¼ä±êÇ©dTime
-   virtual Rank& fTime( Rank v ) { return V[v].fTime; } //Ê±¼ä±êÇ©fTime
-   virtual Rank& parent( Rank v ) { return V[v].parent; } //ÔÚ±éÀúÊ÷ÖĞµÄ¸¸Ç×
-   virtual int& priority( Rank v ) { return V[v].priority; } //ÔÚ±éÀúÊ÷ÖĞµÄÓÅÏÈ¼¶Êı
-// ¶¥µãµÄ¶¯Ì¬²Ù×÷
-   virtual Rank insert( Tv const& vertex ) { //²åÈë¶¥µã£¬·µ»Ø±àºÅ
-      for ( Rank u = 0; u < n; u++ ) E[u].insert( NULL ); n++; //¸÷¶¥µãÔ¤ÁôÒ»ÌõÇ±ÔÚµÄ¹ØÁª±ß
-      E.insert( Vector<Edge<Te>*>( n, n, (Edge<Te>*)NULL ) ); //´´½¨ĞÂ¶¥µã¶ÔÓ¦µÄ±ßÏòÁ¿
-      return V.insert( Vertex<Tv>( vertex ) ); //¶¥µãÏòÁ¿Ôö¼ÓÒ»¸ö¶¥µã
+// é¡¶ç‚¹çš„åŸºæœ¬æ“ä½œï¼šæŸ¥è¯¢ç¬¬vä¸ªé¡¶ç‚¹ï¼ˆ0 <= v < nï¼‰
+   virtual Tv& vertex( Rank v ) { return V[v].data; } //æ•°æ®
+   virtual Rank inDegree( Rank v ) { return V[v].inDegree; } //å…¥åº¦
+   virtual Rank outDegree( Rank v ) { return V[v].outDegree; } //å‡ºåº¦
+   virtual Rank firstNbr( Rank v ) { return nextNbr( v, n ); } //é¦–ä¸ªé‚»æ¥é¡¶ç‚¹
+   virtual Rank nextNbr( Rank v, Rank u ) //ç›¸å¯¹äºé¡¶ç‚¹uçš„ä¸‹ä¸€é‚»æ¥é¡¶ç‚¹ï¼ˆæ”¹ç”¨é‚»æ¥è¡¨æ•ˆç‡æ›´é«˜ï¼‰
+      { while ( ( -1 != --u ) && !exists( v, u ) ); return u; } //é€†å‘çº¿æ€§è¯•æ¢
+   virtual VStatus& status( Rank v ) { return V[v].status; } //çŠ¶æ€
+   virtual Rank& dTime( Rank v ) { return V[v].dTime; } //æ—¶é—´æ ‡ç­¾dTime
+   virtual Rank& fTime( Rank v ) { return V[v].fTime; } //æ—¶é—´æ ‡ç­¾fTime
+   virtual Rank& parent( Rank v ) { return V[v].parent; } //åœ¨éå†æ ‘ä¸­çš„çˆ¶äº²
+   virtual int& priority( Rank v ) { return V[v].priority; } //åœ¨éå†æ ‘ä¸­çš„ä¼˜å…ˆçº§æ•°
+// é¡¶ç‚¹çš„åŠ¨æ€æ“ä½œ
+   virtual Rank insert( Tv const& vertex ) { //æ’å…¥é¡¶ç‚¹ï¼Œè¿”å›ç¼–å·
+      for ( Rank u = 0; u < n; u++ ) E[u].insert( NULL ); n++; //å„é¡¶ç‚¹é¢„ç•™ä¸€æ¡æ½œåœ¨çš„å…³è”è¾¹
+      E.insert( Vector<Edge<Te>*>( n, n, (Edge<Te>*)NULL ) ); //åˆ›å»ºæ–°é¡¶ç‚¹å¯¹åº”çš„è¾¹å‘é‡
+      return V.insert( Vertex<Tv>( vertex ) ); //é¡¶ç‚¹å‘é‡å¢åŠ ä¸€ä¸ªé¡¶ç‚¹
    }
-   virtual Tv remove( Rank v ) { //É¾³ıµÚv¸ö¶¥µã¼°Æä¹ØÁª±ß£¨0 <= v < n£©
-      for ( Rank u = 0; u < n; u++ ) //ËùÓĞ
-         if ( exists( v, u ) ) //³ö±ß
-            { delete E[v][u]; V[u].inDegree--; e--; } //ÖğÌõÉ¾³ı
-      E.remove( v ); n--; //É¾³ıµÚvĞĞ
-      Tv vBak = vertex( v ); V.remove( v ); //É¾³ı¶¥µãv
-      for ( Rank u = 0; u < n; u++ ) //ËùÓĞ
-         if ( Edge<Te>* x = E[u].remove( v ) ) //Èë±ß
-            { delete x; V[u].outDegree--; e--; } //ÖğÌõÉ¾³ı
-      return vBak; //·µ»Ø±»É¾³ı¶¥µãµÄĞÅÏ¢
+   virtual Tv remove( Rank v ) { //åˆ é™¤ç¬¬vä¸ªé¡¶ç‚¹åŠå…¶å…³è”è¾¹ï¼ˆ0 <= v < nï¼‰
+      for ( Rank u = 0; u < n; u++ ) //æ‰€æœ‰
+         if ( exists( v, u ) ) //å‡ºè¾¹
+            { delete E[v][u]; V[u].inDegree--; e--; } //é€æ¡åˆ é™¤
+      E.remove( v ); n--; //åˆ é™¤ç¬¬vè¡Œ
+      Tv vBak = vertex( v ); V.remove( v ); //åˆ é™¤é¡¶ç‚¹v
+      for ( Rank u = 0; u < n; u++ ) //æ‰€æœ‰
+         if ( Edge<Te>* x = E[u].remove( v ) ) //å…¥è¾¹
+            { delete x; V[u].outDegree--; e--; } //é€æ¡åˆ é™¤
+      return vBak; //è¿”å›è¢«åˆ é™¤é¡¶ç‚¹çš„ä¿¡æ¯
    }
-// ±ßµÄÈ·ÈÏ²Ù×÷
-   virtual bool exists( Rank v, Rank u ) //±ß(v, u)ÊÇ·ñ´æÔÚ
+// è¾¹çš„ç¡®è®¤æ“ä½œ
+   virtual bool exists( Rank v, Rank u ) //è¾¹(v, u)æ˜¯å¦å­˜åœ¨
       { return ( v < n ) && ( u < n ) && ( E[v][u] != NULL ); }
-// ±ßµÄ»ù±¾²Ù×÷£º²éÑ¯¶¥µãvÓëuÖ®¼äµÄÁª±ß£¨0 <= v, u < nÇÒexists(v, u)£©
-   virtual EType& type( Rank v, Rank u ) { return E[v][u]->type; } //±ß(v, u)µÄÀàĞÍ
-   virtual Te& edge( Rank v, Rank u ) { return E[v][u]->data; } //±ß(v, u)µÄÊı¾İ
-   virtual int& weight( Rank v, Rank u ) { return E[v][u]->weight; } //±ß(v, u)µÄÈ¨ÖØ
-// ±ßµÄ¶¯Ì¬²Ù×÷
-   virtual void insert( Te const& edge, int w, Rank v, Rank u ) { //²åÈëÈ¨ÖØÎªwµÄ±ß(v, u)
-      if ( exists( v, u ) ) return; //È·±£¸Ã±ßÉĞ²»´æÔÚ
-      E[v][u] = new Edge<Te>( edge, w ); //´´½¨ĞÂ±ß
-      e++; V[v].outDegree++; V[u].inDegree++; //¸üĞÂ±ß¼ÆÊıÓë¹ØÁª¶¥µãµÄ¶ÈÊı
+// è¾¹çš„åŸºæœ¬æ“ä½œï¼šæŸ¥è¯¢é¡¶ç‚¹vä¸uä¹‹é—´çš„è”è¾¹ï¼ˆ0 <= v, u < nä¸”exists(v, u)ï¼‰
+   virtual EType& type( Rank v, Rank u ) { return E[v][u]->type; } //è¾¹(v, u)çš„ç±»å‹
+   virtual Te& edge( Rank v, Rank u ) { return E[v][u]->data; } //è¾¹(v, u)çš„æ•°æ®
+   virtual int& weight( Rank v, Rank u ) { return E[v][u]->weight; } //è¾¹(v, u)çš„æƒé‡
+// è¾¹çš„åŠ¨æ€æ“ä½œ
+   virtual void insert( Te const& edge, int w, Rank v, Rank u ) { //æ’å…¥æƒé‡ä¸ºwçš„è¾¹(v, u)
+      if ( exists( v, u ) ) return; //ç¡®ä¿è¯¥è¾¹å°šä¸å­˜åœ¨
+      E[v][u] = new Edge<Te>( edge, w ); //åˆ›å»ºæ–°è¾¹
+      e++; V[v].outDegree++; V[u].inDegree++; //æ›´æ–°è¾¹è®¡æ•°ä¸å…³è”é¡¶ç‚¹çš„åº¦æ•°
    }
-   virtual Te remove( Rank v, Rank u ) { //É¾³ı¶¥µãvºÍuÖ®¼äµÄÁª±ß£¨exists(v, u)£©
+   virtual Te remove( Rank v, Rank u ) { //åˆ é™¤é¡¶ç‚¹vå’Œuä¹‹é—´çš„è”è¾¹ï¼ˆexists(v, u)ï¼‰
       Te eBak = edge( v, u ); delete E[v][u];
-      E[v][u] = NULL; //±¸·İºóÉ¾³ı±ß¼ÇÂ¼
-      e--; V[v].outDegree--; V[u].inDegree--; //¸üĞÂ±ß¼ÆÊıÓë¹ØÁª¶¥µãµÄ¶ÈÊı
-      return eBak; //·µ»Ø±»É¾³ı±ßµÄĞÅÏ¢
+      E[v][u] = NULL; //å¤‡ä»½ååˆ é™¤è¾¹è®°å½•
+      e--; V[v].outDegree--; V[u].inDegree--; //æ›´æ–°è¾¹è®¡æ•°ä¸å…³è”é¡¶ç‚¹çš„åº¦æ•°
+      return eBak; //è¿”å›è¢«åˆ é™¤è¾¹çš„ä¿¡æ¯
    }
 }; //Graph

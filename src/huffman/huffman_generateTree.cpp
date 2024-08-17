@@ -8,22 +8,22 @@
 
 /*DSA*/#include "huffman_PQ.h"
 
-HuffTree delMax( HuffForest* forest ) { //´ÓHuffmanÉ­ÁÖÖĞ£¬ÕÒ³öÓÅÏÈ¼¶×î¸ß£¨È¨ÖØ×îĞ¡£©µÄÊ÷
-   ListNodePosi<HuffTree> m = forest->first(); //´ÓÊ×½Úµã³ö·¢
-   for ( ListNodePosi<HuffTree> p = m->succ; forest->valid( p ); p = p->succ ) //±éÀúËùÓĞ½Úµã
-      if ( m->data < p->data ) //²»¶Ï¸üĞÂ£¨ÒòÒÑ¶¨Òå±È½ÏÆ÷£¬¹ÊÄÜ¼ò½İ£©
-         m = p; //ÓÅÏÈ¼¶¸ü¸ß£¨È¨ÖØ¸üĞ¡£©Õß
-   return forest->remove( m ); //È¡³ö×î¸ßÕß²¢·µ»Ø
-} //O(n)£¬¸ÄÓÃÓÅÏÈ¼¶¶ÓÁĞºó¿É×öµ½O(logn)
+HuffTree delMax( HuffForest* forest ) { //ä»Huffmanæ£®æ—ä¸­ï¼Œæ‰¾å‡ºä¼˜å…ˆçº§æœ€é«˜ï¼ˆæƒé‡æœ€å°ï¼‰çš„æ ‘
+   ListNodePosi<HuffTree> m = forest->first(); //ä»é¦–èŠ‚ç‚¹å‡ºå‘
+   for ( ListNodePosi<HuffTree> p = m->succ; forest->valid( p ); p = p->succ ) //éå†æ‰€æœ‰èŠ‚ç‚¹
+      if ( m->data < p->data ) //ä¸æ–­æ›´æ–°ï¼ˆå› å·²å®šä¹‰æ¯”è¾ƒå™¨ï¼Œæ•…èƒ½ç®€æ·ï¼‰
+         m = p; //ä¼˜å…ˆçº§æ›´é«˜ï¼ˆæƒé‡æ›´å°ï¼‰è€…
+   return forest->remove( m ); //å–å‡ºæœ€é«˜è€…å¹¶è¿”å›
+} //O(n)ï¼Œæ”¹ç”¨ä¼˜å…ˆçº§é˜Ÿåˆ—åå¯åšåˆ°O(logn)
 
-HuffTree generateTree( HuffForest* forest ) { //ÓÉHuffmanÉ­ÁÖ£¬¹¹Ôì³öHuffman±àÂëÊ÷
-   while ( 1 < forest->size() ) { //Ã¿µü´úÒ»²½£¬É­ÁÖÖĞ¶¼»á¼õÉÙÒ»¿ÃÊ÷
-      HuffTree T1 = delMax( forest ), T2 = delMax( forest ); //È¡³öÈ¨ÖØ×îĞ¡µÄÁ½¿ÃÊ÷
+HuffTree generateTree( HuffForest* forest ) { //ç”±Huffmanæ£®æ—ï¼Œæ„é€ å‡ºHuffmanç¼–ç æ ‘
+   while ( 1 < forest->size() ) { //æ¯è¿­ä»£ä¸€æ­¥ï¼Œæ£®æ—ä¸­éƒ½ä¼šå‡å°‘ä¸€æ£µæ ‘
+      HuffTree T1 = delMax( forest ), T2 = delMax( forest ); //å–å‡ºæƒé‡æœ€å°çš„ä¸¤æ£µæ ‘
       /*DSA*/printf( "Merging " ); print( T1.root()->data ); printf( " with " ); print( T2.root()->data ); printf( " ...\n" );
-      HuffTree S; //½«ÆäºÏ²¢³ÉÒ»¿ÃĞÂÊ÷
+      HuffTree S; //å°†å…¶åˆå¹¶æˆä¸€æ£µæ–°æ ‘
       S.insert( HuffChar ( '^', T1.root()->data.weight + T2.root()->data.weight ) );
-      S.attach( T2, S.root() ); S.attach( S.root(), T1 ); //T2È¨ÖØ²»Ğ¡ÓÚT1
-      forest->insertLast( S ); //ÔÙ²å»ØÖÁÉ­ÁÖ
-   } //É­ÁÖÖĞ×îÖÕÎ¨Ò»ËùÊ£µÄÄÇ¿ÃÊ÷£¬¼´Huffman±àÂëÊ÷£¨ÇÒÆä²ã´Î±éÀúĞòÁĞ±ØÈ»µ¥µ÷·ÇÔö£©
-   return forest->first()->data; //¹Ê·µ»ØÖ®
+      S.attach( T2, S.root() ); S.attach( S.root(), T1 ); //T2æƒé‡ä¸å°äºT1
+      forest->insertLast( S ); //å†æ’å›è‡³æ£®æ—
+   } //æ£®æ—ä¸­æœ€ç»ˆå”¯ä¸€æ‰€å‰©çš„é‚£æ£µæ ‘ï¼Œå³Huffmanç¼–ç æ ‘ï¼ˆä¸”å…¶å±‚æ¬¡éå†åºåˆ—å¿…ç„¶å•è°ƒéå¢ï¼‰
+   return forest->first()->data; //æ•…è¿”å›ä¹‹
 }

@@ -8,8 +8,8 @@
 
 #pragma once
 
-template <typename T> Rank List<T>::clear() { //清空列表
+template <typename T> Rank List<T>::clear() { //娓呯┖鍒楄〃
    Rank oldSize = _size;
-   while ( 0 < _size ) remove ( head->succ ); //反复删除首节点，直至列表变空
+   while ( 0 < _size ) remove ( head->succ ); //鍙嶅鍒犻櫎棣栬妭鐐癸紝鐩磋嚦鍒楄〃鍙樼┖
    return oldSize;
 }

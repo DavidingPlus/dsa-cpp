@@ -11,13 +11,13 @@
  ******************************************************************************************/
 #include "list_test.h"
 
-Rank testID = 0; //²âÊÔ±àºÅ
+Rank testID = 0; //æµ‹è¯•ç¼–å·
 
 /******************************************************************************************
- * Ëæ»úÉú³É³¤¶ÈÎªnµÄÁĞ±í£¨ÆäÖĞ¿ÉÄÜ°üº¬ÖØ¸´½Úµã£©
+ * éšæœºç”Ÿæˆé•¿åº¦ä¸ºnçš„åˆ—è¡¨ï¼ˆå…¶ä¸­å¯èƒ½åŒ…å«é‡å¤èŠ‚ç‚¹ï¼‰
  ******************************************************************************************/
-template <typename T> //ÔªËØÀàĞÍ
-void randomList ( List<T> & list, Rank n ) { //´´½¨³¤¶ÈÎªnµÄÁĞ±í£¬ÆäÔªËØËæ»úÈ¡×Ô[0, 4n)
+template <typename T> //å…ƒç´ ç±»å‹
+void randomList ( List<T> & list, Rank n ) { //åˆ›å»ºé•¿åº¦ä¸ºnçš„åˆ—è¡¨ï¼Œå…¶å…ƒç´ éšæœºå–è‡ª[0, 4n)
    ListNodePosi<T> p =
       ( rand() % 2 )
          ? list.insertLast  ( rand() % ( T ) ( n * 4 ) )
@@ -29,7 +29,7 @@ void randomList ( List<T> & list, Rank n ) { //´´½¨³¤¶ÈÎªnµÄÁĞ±í£¬ÆäÔªËØËæ»úÈ¡×Ô
 }
 
 /******************************************************************************************
- * ²âÊÔÁĞ±í
+ * æµ‹è¯•åˆ—è¡¨
  ******************************************************************************************/
 template <typename T> void testList( Rank testSize ) {
    printf("\n  ==== Test %2d. Generate a random list with %d elements\n", testID++, testSize);
@@ -82,23 +82,23 @@ template <typename T> void testList( Rank testSize ) {
    List<T> Lf ( La ); PRINT ( Lf );
 //
    printf ( "\n  ==== Test %2d. FIND in\n", testID++ ); PRINT ( Lf );
-   for ( Rank i = 0; i <= testSize * 2; i++ ) { //ÖğÒ»²âÊÔ[0, 2n]ÖĞµÄËùÓĞ¿ÉÄÜ
+   for ( Rank i = 0; i <= testSize * 2; i++ ) { //é€ä¸€æµ‹è¯•[0, 2n]ä¸­çš„æ‰€æœ‰å¯èƒ½
       ListNodePosi<T> p = Lf.find ( ( T ) i ); printf ( "Looking for " ); print ( ( T ) i ); printf ( ": " );
       if ( p ) { printf ( "found with" ); print ( p->data ); }
       else printf ( "not found" );
       printf ( "\n" );
-   } //ÕıÈ·µÄ½á¹¹Ó¦¸ÃÊÇ´óÖÂ£¨n+1´Î£©Ê§°Ü¡¢£¨n´Î£©³É¹¦Ïà¼ä
+   } //æ­£ç¡®çš„ç»“æ„åº”è¯¥æ˜¯å¤§è‡´ï¼ˆn+1æ¬¡ï¼‰å¤±è´¥ã€ï¼ˆnæ¬¡ï¼‰æˆåŠŸç›¸é—´
 //
    printf ( "\n  ==== Test %2d. Sort\n", testID++ ); PRINT ( La );
    La.sort(); PRINT ( La );
 //
    printf ( "\n  ==== Test %2d. SEARCH in\n", testID++ ); PRINT ( La );
-   for ( Rank i = 0; i <= testSize * 2; i++ ) { //ÖğÒ»²âÊÔ[0, 2n]ÖĞµÄËùÓĞ¿ÉÄÜ
+   for ( Rank i = 0; i <= testSize * 2; i++ ) { //é€ä¸€æµ‹è¯•[0, 2n]ä¸­çš„æ‰€æœ‰å¯èƒ½
       ListNodePosi<T> p = La.search ( ( T ) i ); printf ( "Looking for " ); print ( ( T ) i ); printf ( ": " );
       printf( ( La.valid( p ) && ( (T)i == p->data ) ) ? "found at" : "failed at" );
       La.valid( p ) ? print( p->data ) : print( "head" );
       printf ( "\n" );
-   } //ÕıÈ·µÄ½á¹¹Ó¦¸ÃÊÇ´óÖÂ£¨n+1´Î£©Ê§°Ü¡¢£¨n´Î£©³É¹¦Ïà¼ä
+   } //æ­£ç¡®çš„ç»“æ„åº”è¯¥æ˜¯å¤§è‡´ï¼ˆn+1æ¬¡ï¼‰å¤±è´¥ã€ï¼ˆnæ¬¡ï¼‰æˆåŠŸç›¸é—´
 //
    printf ( "\n  ==== Test %2d. Remove redundancy in\n", testID++ ); PRINT ( La );
    printf ( "%d node(s) removed\n", La.uniquify() ); PRINT ( La ); La.reverse(); PRINT ( La );
@@ -113,12 +113,12 @@ template <typename T> void testList( Rank testSize ) {
 }
 
 /******************************************************************************************
- * ²âÊÔÁĞ±í
+ * æµ‹è¯•åˆ—è¡¨
  ******************************************************************************************/
 int main ( int argc, char* argv[] ) {
    if ( 2 > argc ) { printf ( "Usage: %s <size of test>\a\a\n", argv[0] ); return 1; }
-   srand( (unsigned int)time( NULL ) ); //Ëæ»úÖÖ×Ó
-   //srand( 31415926 ); //¹Ì¶¨ÖÖ×Ó£¨¼ÙÖÖ×Ó£¬µ÷ÊÔÓÃ£©
-   testList<int>( atoi( argv[1] ) ); //ÔªËØÀàĞÍ¿ÉÒÔÔÚÕâÀïÈÎÒâÑ¡Ôñ
+   srand( (unsigned int)time( NULL ) ); //éšæœºç§å­
+   //srand( 31415926 ); //å›ºå®šç§å­ï¼ˆå‡ç§å­ï¼Œè°ƒè¯•ç”¨ï¼‰
+   testList<int>( atoi( argv[1] ) ); //å…ƒç´ ç±»å‹å¯ä»¥åœ¨è¿™é‡Œä»»æ„é€‰æ‹©
    return 0;
 }

@@ -8,9 +8,9 @@
 
 #pragma once
 
-template <typename T> //ÖØÔØÏÂ±ê²Ù×÷·û£¬ÒÔÍ¨¹ıÖÈÖ±½Ó·ÃÎÊÁĞ±í½Úµã£¨O(r)Ğ§ÂÊ£¬Ëä·½±ã£¬Îğ¶àÓÃ£©
+template <typename T> //é‡è½½ä¸‹æ ‡æ“ä½œç¬¦ï¼Œä»¥é€šè¿‡ç§©ç›´æ¥è®¿é—®åˆ—è¡¨èŠ‚ç‚¹ï¼ˆO(r)æ•ˆç‡ï¼Œè™½æ–¹ä¾¿ï¼Œå‹¿å¤šç”¨ï¼‰
 ListNodePosi<T> List<T>::operator[]( Rank r ) const { // 0 <= r < size
-   ListNodePosi<T> p = first(); //´ÓÊ×½Úµã³ö·¢
-   while ( 0 < r-- ) p = p->succ; //Ë³ÊıµÚr¸ö½Úµã¼´ÊÇ
-   return p; //Ä¿±ê½Úµã
+   ListNodePosi<T> p = first(); //ä»é¦–èŠ‚ç‚¹å‡ºå‘
+   while ( 0 < r-- ) p = p->succ; //é¡ºæ•°ç¬¬rä¸ªèŠ‚ç‚¹å³æ˜¯
+   return p; //ç›®æ ‡èŠ‚ç‚¹
 }

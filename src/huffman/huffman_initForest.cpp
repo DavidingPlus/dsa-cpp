@@ -8,12 +8,12 @@
 
 /*DSA*/#include "Huffman_PQ.h"
 
-HuffForest* initForest ( unsigned int* freq ) { //¸ù¾İÆµÂÊÍ³¼Æ±í£¬ÎªÃ¿¸ö×Ö·û´´½¨Ò»¿ÃÊ÷
-   HuffForest* forest = new HuffForest; //ÒÔListÊµÏÖHuffmanÉ­ÁÖ
-   //HuffForest* forest = new HuffForest; //Èô²»Îª²âÊÔÀ©Èİ£¬¿ÉÖ±½Ónew HuffForest(0x80-0x20)
-   for ( int i = 0; i < N_CHAR; i++ ) { //ÎªÃ¿¸ö×Ö·û
-      forest->insertLast ( *( new HuffTree ) ); //Éú³ÉÒ»¿ÃÊ÷£¬²¢½«×Ö·û¼°ÆäÆµÂÊ
-      forest->last()->data.insert ( HuffChar ( 0x20 + i, freq[i] ) ); //´æÈëÆäÖĞ
+HuffForest* initForest ( unsigned int* freq ) { //æ ¹æ®é¢‘ç‡ç»Ÿè®¡è¡¨ï¼Œä¸ºæ¯ä¸ªå­—ç¬¦åˆ›å»ºä¸€æ£µæ ‘
+   HuffForest* forest = new HuffForest; //ä»¥Listå®ç°Huffmanæ£®æ—
+   //HuffForest* forest = new HuffForest; //è‹¥ä¸ä¸ºæµ‹è¯•æ‰©å®¹ï¼Œå¯ç›´æ¥new HuffForest(0x80-0x20)
+   for ( int i = 0; i < N_CHAR; i++ ) { //ä¸ºæ¯ä¸ªå­—ç¬¦
+      forest->insertLast ( *( new HuffTree ) ); //ç”Ÿæˆä¸€æ£µæ ‘ï¼Œå¹¶å°†å­—ç¬¦åŠå…¶é¢‘ç‡
+      forest->last()->data.insert ( HuffChar ( 0x20 + i, freq[i] ) ); //å­˜å…¥å…¶ä¸­
    }
    return forest;
 }

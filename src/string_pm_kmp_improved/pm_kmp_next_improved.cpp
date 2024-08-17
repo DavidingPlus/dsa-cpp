@@ -8,17 +8,17 @@
 
 /*DSA*/#include "string_pm/string_pm_test.h"
 
-int* buildNext ( char* P ) { //¹¹ÔìÄ£Ê½´®PµÄnext±í£¨¸Ä½ø°æ±¾£©
-   int m = strlen ( P ), j = 0; //¡°Ö÷¡±´®Ö¸Õë
-   int* next = new int[m]; int t = next[0] = -1; //next±í£¬Ê×Ïî±ØÎª-1
+int* buildNext ( char* P ) { //æ„é€ æ¨¡å¼ä¸²Pçš„nextè¡¨ï¼ˆæ”¹è¿›ç‰ˆæœ¬ï¼‰
+   int m = strlen ( P ), j = 0; //â€œä¸»â€ä¸²æŒ‡é’ˆ
+   int* next = new int[m]; int t = next[0] = -1; //nextè¡¨ï¼Œé¦–é¡¹å¿…ä¸º-1
    while ( j < m - 1 )
-      if ( 0 <= t && P[t] != P[j] ) //Ê§Åä
-         t = next[t]; //¼ÌĞø³¢ÊÔÏÂÒ»ÖµµÃ³¢ÊÔµÄÎ»ÖÃ
-      else //Æ¥Åä
-         if ( P[++t] != P[++j] ) //¸½¼ÓÌõ¼şÅĞ¶Ï
-            next[j] = t; //Î¨µ±ĞÂµÄÒ»¶Ô×Ö·ûÒ²Æ¥ÅäÊ±£¬·½ÕÕÔ­·½·¨¸³Öµ
+      if ( 0 <= t && P[t] != P[j] ) //å¤±é…
+         t = next[t]; //ç»§ç»­å°è¯•ä¸‹ä¸€å€¼å¾—å°è¯•çš„ä½ç½®
+      else //åŒ¹é…
+         if ( P[++t] != P[++j] ) //é™„åŠ æ¡ä»¶åˆ¤æ–­
+            next[j] = t; //å”¯å½“æ–°çš„ä¸€å¯¹å­—ç¬¦ä¹ŸåŒ¹é…æ—¶ï¼Œæ–¹ç…§åŸæ–¹æ³•èµ‹å€¼
          else
-            next[j] = next[t]; //·ñÔò£¬¸ÄÓÃnext[t]£¨´ËÊ±±ØÓĞ£ºP[next[t]] != P[t] == P[j]£©
+            next[j] = next[t]; //å¦åˆ™ï¼Œæ”¹ç”¨next[t]ï¼ˆæ­¤æ—¶å¿…æœ‰ï¼šP[next[t]] != P[t] == P[j]ï¼‰
    /*DSA*/printString ( P ); printf ( "\n" );
    /*DSA*/printNext ( next, 0, m );
    return next;

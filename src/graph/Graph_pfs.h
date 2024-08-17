@@ -8,24 +8,24 @@
 
 #pragma once
 
-template <typename Tv, typename Te> template <typename PU> //ÓÅÏÈ¼¶ËÑË÷£¨È«Í¼£©
+template <typename Tv, typename Te> template <typename PU> //ä¼˜å…ˆçº§æœç´¢ï¼ˆå…¨å›¾ï¼‰
 void Graph<Tv, Te>::pfs( Rank s, PU prioUpdater ) { // s < n
-   reset(); //È«Í¼¸´Î»
-   for ( Rank v = s; v < s + n; v++ ) //´ÓsÆğË³´Î¼ì²éËùÓĞ¶¥µã
-      if ( UNDISCOVERED == status( v % n ) ) //Ò»µ©Óöµ½ÉĞÎ´·¢ÏÖÕß
-         PFS( v % n, prioUpdater ); //¼´´ÓËü³ö·¢Æô¶¯Ò»´ÎPFS
-} //Èç´Ë¿ÉÍêÕû¸²¸ÇÈ«Í¼£¬ÇÒ×ÜÌå¸´ÔÓ¶ÈÒÀÈ»±£³ÖÎªO(n+e)
+   reset(); //å…¨å›¾å¤ä½
+   for ( Rank v = s; v < s + n; v++ ) //ä»sèµ·é¡ºæ¬¡æ£€æŸ¥æ‰€æœ‰é¡¶ç‚¹
+      if ( UNDISCOVERED == status( v % n ) ) //ä¸€æ—¦é‡åˆ°å°šæœªå‘ç°è€…
+         PFS( v % n, prioUpdater ); //å³ä»å®ƒå‡ºå‘å¯åŠ¨ä¸€æ¬¡PFS
+} //å¦‚æ­¤å¯å®Œæ•´è¦†ç›–å…¨å›¾ï¼Œä¸”æ€»ä½“å¤æ‚åº¦ä¾ç„¶ä¿æŒä¸ºO(n+e)
 
-template <typename Tv, typename Te> template <typename PU> //¶¥µãÀàĞÍ¡¢±ßÀàĞÍ¡¢ÓÅÏÈ¼¶¸üĞÂÆ÷
-void Graph<Tv, Te>::PFS( Rank v, PU prioUpdater ) { //ÓÅÏÈ¼¶ËÑË÷£¨µ¥¸öÁ¬Í¨Óò£©
-   priority( v ) = 0; status( v ) = VISITED; //³õÊ¼»¯£¬Æğµãv¼ÓÖÁPFSÊ÷ÖĞ
-   for ( Rank k = 1 ; k < n ; k++ ) { //Öğ²½½«n-1¶¥µãºÍn-1Ìõ±ß¼ÓÖÁPFSÊ÷ÖĞ
-      for ( Rank u = firstNbr( v ); - 1 != u; u = nextNbr( v, u ) ) //¶ÔvµÄÃ¿Ò»¸öÁÚ¾Óu
-         prioUpdater( this, v, u ); //¸üĞÂÆäÓÅÏÈ¼¶¼°Æä¸¸Ç×
+template <typename Tv, typename Te> template <typename PU> //é¡¶ç‚¹ç±»å‹ã€è¾¹ç±»å‹ã€ä¼˜å…ˆçº§æ›´æ–°å™¨
+void Graph<Tv, Te>::PFS( Rank v, PU prioUpdater ) { //ä¼˜å…ˆçº§æœç´¢ï¼ˆå•ä¸ªè¿é€šåŸŸï¼‰
+   priority( v ) = 0; status( v ) = VISITED; //åˆå§‹åŒ–ï¼Œèµ·ç‚¹våŠ è‡³PFSæ ‘ä¸­
+   for ( Rank k = 1 ; k < n ; k++ ) { //é€æ­¥å°†n-1é¡¶ç‚¹å’Œn-1æ¡è¾¹åŠ è‡³PFSæ ‘ä¸­
+      for ( Rank u = firstNbr( v ); - 1 != u; u = nextNbr( v, u ) ) //å¯¹vçš„æ¯ä¸€ä¸ªé‚»å±…u
+         prioUpdater( this, v, u ); //æ›´æ–°å…¶ä¼˜å…ˆçº§åŠå…¶çˆ¶äº²
       int shortest = INT_MAX;
-      for ( Rank u = 0; u < n; u++ ) //´ÓÉĞÎ´¼ÓÈë±éÀúÊ÷µÄ¶¥µãÖĞ£¬Ñ¡³öÏÂÒ»¸öÓÅÏÈ¼¶
-         if ( ( UNDISCOVERED == status( u ) ) && ( shortest > priority( u ) ) ) //×î¸ßµÄ
-            { shortest = priority( u ), v = u; } //¶¥µãv
-      status( v ) = VISITED; type( parent( v ), v ) = TREE; //½«v¼ÓÈë±éÀúÊ÷
+      for ( Rank u = 0; u < n; u++ ) //ä»å°šæœªåŠ å…¥éå†æ ‘çš„é¡¶ç‚¹ä¸­ï¼Œé€‰å‡ºä¸‹ä¸€ä¸ªä¼˜å…ˆçº§
+         if ( ( UNDISCOVERED == status( u ) ) && ( shortest > priority( u ) ) ) //æœ€é«˜çš„
+            { shortest = priority( u ), v = u; } //é¡¶ç‚¹v
+      status( v ) = VISITED; type( parent( v ), v ) = TREE; //å°†våŠ å…¥éå†æ ‘
    } //for
-} //Í¨¹ı¶¨Òå¾ßÌåµÄÓÅÏÈ¼¶¸üĞÂ²ßÂÔprioUpdater£¬¼´¿ÉÊµÏÖ²»Í¬µÄËã·¨¹¦ÄÜ
+} //é€šè¿‡å®šä¹‰å…·ä½“çš„ä¼˜å…ˆçº§æ›´æ–°ç­–ç•¥prioUpdaterï¼Œå³å¯å®ç°ä¸åŒçš„ç®—æ³•åŠŸèƒ½

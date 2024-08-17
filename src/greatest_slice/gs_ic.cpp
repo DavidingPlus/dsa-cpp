@@ -8,13 +8,13 @@
 
 extern int s_lo, s_hi;
 
-int gs_IC( int A[], int n ) { //µÝÔö²ßÂÔ£ºO(n^2)
+int gs_IC( int A[], int n ) { //é€’å¢žç­–ç•¥ï¼šO(n^2)
    int gs = A[0]; s_lo = 0; s_hi = 1;
-   for ( int lo = 0; lo < n; lo++ ) { //Ã¶¾ÙËùÓÐÆðÊ¼ÓÚlo
-      for ( int s = 0, hi = lo; hi < n; ) { //ÖÕÖ¹ÓÚhiµÄÇø¼ä
-         s += A[hi++]; //µÝÔöµØµÃµ½Æä×ÜºÍ£ºO(1)
+   for ( int lo = 0; lo < n; lo++ ) { //æžšä¸¾æ‰€æœ‰èµ·å§‹äºŽlo
+      for ( int s = 0, hi = lo; hi < n; ) { //ç»ˆæ­¢äºŽhiçš„åŒºé—´
+         s += A[hi++]; //é€’å¢žåœ°å¾—åˆ°å…¶æ€»å’Œï¼šO(1)
          if ( gs < s )
-            { gs = s; s_lo = lo; s_hi = hi; } //ÔñÓÅ¡¢¸üÐÂ
+            { gs = s; s_lo = lo; s_hi = hi; } //æ‹©ä¼˜ã€æ›´æ–°
       }
    }
    return gs;

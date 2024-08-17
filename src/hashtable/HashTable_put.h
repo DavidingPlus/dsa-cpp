@@ -8,11 +8,11 @@
 
 #pragma once
 
-template <typename K, typename V> bool Hashtable<K, V>::put( K k, V v ) { //É¢ÁĞ±í´ÊÌõ²åÈë
-   if ( ht[ probe4Hit( k ) ] ) return false; //ºöÂÔÏàµÈÔªËØ
-   Rank r = probe4Free( k ); //ÕÒ¸ö¿ÕÍ°£¨Ö»Òª×°ÌîÒò×Ó¿ØÖÆµÃµ±£¬±ØÈ»³É¹¦£©
-   ht[ r ] = new Entry<K, V>( k, v ); ++N; //²åÈëĞÂ´ÊÌõ
-   removed->clear( r );  //Çå³ıÀÁ¶èÉ¾³ı±ê¼Ç
-   if ( (N + removed->size())*2 > M ) rehash(); //Èô×°ÌîÒò×Ó¸ßÓÚ50%£¬ÖØÉ¢ÁĞ
+template <typename K, typename V> bool Hashtable<K, V>::put( K k, V v ) { //æ•£åˆ—è¡¨è¯æ¡æ’å…¥
+   if ( ht[ probe4Hit( k ) ] ) return false; //å¿½ç•¥ç›¸ç­‰å…ƒç´ 
+   Rank r = probe4Free( k ); //æ‰¾ä¸ªç©ºæ¡¶ï¼ˆåªè¦è£…å¡«å› å­æ§åˆ¶å¾—å½“ï¼Œå¿…ç„¶æˆåŠŸï¼‰
+   ht[ r ] = new Entry<K, V>( k, v ); ++N; //æ’å…¥æ–°è¯æ¡
+   removed->clear( r );  //æ¸…é™¤æ‡’æƒ°åˆ é™¤æ ‡è®°
+   if ( (N + removed->size())*2 > M ) rehash(); //è‹¥è£…å¡«å› å­é«˜äº50%ï¼Œé‡æ•£åˆ—
    return true;
 }

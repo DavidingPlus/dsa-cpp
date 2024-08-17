@@ -8,10 +8,10 @@
 
 /*DSA*/#include "conversion/convert.h"
 
-void convert ( Stack<char>& S, unsigned long long n, int base ) { //ÕûÊýnµÄ1<base<=16½øÖÆ´òÓ¡£¨µÝ¹é°æ£©
-   static char digit[] = "0123456789ABCDEF"; //ÊýÎ»·ûºÅ£¬ÈçÓÐ±ØÒª¿ÉÏàÓ¦À©³ä
-   if ( 0 < n ) { //ÔÚÉÐÓÐÓàÊýÖ®Ç°£¬·´¸´µØ
-      S.push ( digit[n % base] ); //ÄæÏò¼ÇÂ¼µ±Ç°×îµÍÎ»£¬ÔÙ
-      convert ( S, n / base, base ); //Í¨¹ýµÝ¹éµÃµ½ËùÓÐ¸ü¸ßÎ»
+void convert ( Stack<char>& S, unsigned long long n, int base ) { //æ•´æ•°nçš„1<base<=16è¿›åˆ¶æ‰“å°ï¼ˆé€’å½’ç‰ˆï¼‰
+   static char digit[] = "0123456789ABCDEF"; //æ•°ä½ç¬¦å·ï¼Œå¦‚æœ‰å¿…è¦å¯ç›¸åº”æ‰©å……
+   if ( 0 < n ) { //åœ¨å°šæœ‰ä½™æ•°ä¹‹å‰ï¼Œåå¤åœ°
+      S.push ( digit[n % base] ); //é€†å‘è®°å½•å½“å‰æœ€ä½Žä½ï¼Œå†
+      convert ( S, n / base, base ); //é€šè¿‡é€’å½’å¾—åˆ°æ‰€æœ‰æ›´é«˜ä½
    }
-} //ÐÂ½øÖÆÏÂÓÉ¸ßµ½µÍµÄ¸÷ÊýÎ»£¬×Ô¶¥¶øÏÂ±£´æÓÚÕ»SÖÐ
+} //æ–°è¿›åˆ¶ä¸‹ç”±é«˜åˆ°ä½Žçš„å„æ•°ä½ï¼Œè‡ªé¡¶è€Œä¸‹ä¿å­˜äºŽæ ˆSä¸­
